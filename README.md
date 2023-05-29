@@ -20,7 +20,6 @@ In addition, there will be a configuration page where the user can choose
 - best value ratio (between commonness of triangle pair and number of valid hooks)
 - grading settings used to assess performance
 - graphical settings
-- 
 
 ## Structure
 This is a MAUI project, and thus consists of 
@@ -47,3 +46,11 @@ Thus far component pages include
 - Create a function that can solve a boggle 4x4 given a dictionary
 - Formalise a way to store graphical settings like colours of buttons
 - Amend the menu buttons such that they show they are being pressed
+- 
+
+# How to get started
+1. Send me your Github username, then accept the request to collaborate
+2. Download visual studio installer if you haven't and install Visual Studio
+3. Under Workloads, ensure that the .NET Multiplatform UI Development (under Desktop & Mobile) is seletected amongst others
+4. Open Visual Studio, select clone a repository, dump the url of this repository in
+5. Ensure you pull before you begin (under Git tab)
