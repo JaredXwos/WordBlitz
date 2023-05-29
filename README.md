@@ -1,4 +1,4 @@
-# WordBlit
+# WordBlitz
 
 ## Project Ideals
 
