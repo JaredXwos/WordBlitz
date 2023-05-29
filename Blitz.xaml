@@ -4,25 +4,39 @@
              x:Class="WordBlitz.Blitz"
              Title="Blitz">
     <VerticalStackLayout>
-        <Grid>
+        <Grid
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            RowSpacing="5"
+            ColumnSpacing="5">
             <Grid.RowDefinitions>
-                <RowDefinition Height="5"/>
-                <RowDefinition Height="5"/>
-                <RowDefinition Height="5"/>
-                <RowDefinition Height="5"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
             </Grid.ColumnDefinitions>
-            <Button/>
-            <Button/>
+            <Button x:Name="Button00" BackgroundColor ="Navy" TextColor="Pink" Text="A" FontSize="45" Grid.Column="0" Grid.Row="0" Clicked="LetterSelected"/>
+            <Button x:Name="Button01" BackgroundColor ="Navy" TextColor="Pink" Text="A" FontSize="45" Grid.Column="0" Grid.Row="1" Clicked="LetterSelected"/>
+            <Button x:Name="Button02" BackgroundColor ="Navy" TextColor="Pink" Text="A" FontSize="45" Grid.Column="0" Grid.Row="2" Clicked="LetterSelected"/>
+            <Button x:Name="Button03" BackgroundColor ="Navy" TextColor="Pink" Text="A" FontSize="45" Grid.Column="0" Grid.Row="3" Clicked="LetterSelected"/>
+            <Button x:Name="Button10" BackgroundColor ="Navy" TextColor="Pink" Text="A" FontSize="45" Grid.Column="1" Grid.Row="0" Clicked="LetterSelected"/>
+            <Button x:Name="Button11" BackgroundColor ="Navy" TextColor="Pink" Text="A" FontSize="45" Grid.Column="1" Grid.Row="1" Clicked="LetterSelected"/>
+            <Button x:Name="Button12" BackgroundColor ="Navy" TextColor="Pink" Text="A" FontSize="45" Grid.Column="1" Grid.Row="2" Clicked="LetterSelected"/>
+            <Button x:Name="Button13" BackgroundColor ="Navy" TextColor="Pink" Text="A" FontSize="45" Grid.Column="1" Grid.Row="3" Clicked="LetterSelected"/>
+            <Button x:Name="Button20" BackgroundColor ="Navy" TextColor="Pink" Text="A" FontSize="45" Grid.Column="2" Grid.Row="0" Clicked="LetterSelected"/>
+            <Button x:Name="Button21" BackgroundColor ="Navy" TextColor="Pink" Text="A" FontSize="45" Grid.Column="2" Grid.Row="1" Clicked="LetterSelected"/>
+            <Button x:Name="Button22" BackgroundColor ="Navy" TextColor="Pink" Text="A" FontSize="45" Grid.Column="2" Grid.Row="2" Clicked="LetterSelected"/>
+            <Button x:Name="Button23" BackgroundColor ="Navy" TextColor="Pink" Text="A" FontSize="45" Grid.Column="2" Grid.Row="3" Clicked="LetterSelected"/>
+            <Button x:Name="Button30" BackgroundColor ="Navy" TextColor="Pink" Text="A" FontSize="45" Grid.Column="3" Grid.Row="0" Clicked="LetterSelected"/>
+            <Button x:Name="Button31" BackgroundColor ="Navy" TextColor="Pink" Text="A" FontSize="45" Grid.Column="3" Grid.Row="1" Clicked="LetterSelected"/>
+            <Button x:Name="Button32" BackgroundColor ="Navy" TextColor="Pink" Text="A" FontSize="45" Grid.Column="3" Grid.Row="2" Clicked="LetterSelected"/>
+            <Button x:Name="Button33" BackgroundColor ="Navy" TextColor="Pink" Text="A" FontSize="45" Grid.Column="3" Grid.Row="3" Clicked="LetterSelected"/>
         </Grid>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
     </VerticalStackLayout>
 </ContentPage>

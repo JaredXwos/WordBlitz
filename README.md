@@ -37,7 +37,7 @@ Thus far component pages include
 
 ## Immediate To-do
 - Formalise a dictionary and dice format in global variables
-- Create graphics interface for buttons on the game page
+- Enable the picker in settings to reflect the current values stored in config
 - Create a function to generate the random letters based off the dice and amend the buttons accordingly
 - Create a function to bind with the game buttons to make sense of button inputs during game phase
 

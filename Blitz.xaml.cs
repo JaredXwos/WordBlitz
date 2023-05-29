@@ -6,4 +6,8 @@ public partial class Blitz : ContentPage
 	{
 		InitializeComponent();
 	}
+    private void LetterSelected(object sender, EventArgs e)
+    {
+        ((Button)sender).Text=String.Empty;
+    }
 }
