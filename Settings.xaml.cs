@@ -10,6 +10,6 @@ public partial class Settings : ContentPage
     {
         Picker picker = (Picker)sender;
         int selectedIndex = picker.SelectedIndex;
-        if (selectedIndex != -1) Config.Dict = (string)picker.ItemsSource[selectedIndex];
+        if (selectedIndex != -1) Config.DictName = (string)picker.ItemsSource[selectedIndex];
     }
 }

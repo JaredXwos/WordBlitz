@@ -8,6 +8,7 @@ namespace WordBlitz
 {
     public class Config
     {
-        public static string Dict = "YES";
+        public static string DictName = "YES";
+        public static HashSet<string> Lexicon = new();
     }
 }

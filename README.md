@@ -37,8 +37,6 @@ Thus far component pages include
 
 ## Immediate To-do
 - Formalise a dice format in global variables
-- Attach a CSW22 dictionary txt
-- Create code to import txt files into a SortedSet
 - Redo buttons to be automatically generated via JS instead of repeated lines in the XAML File
 - Enable the picker in settings to reflect the current values stored in config
 - Create a function to generate the random letters based off the dice and amend the buttons accordingly
@@ -50,6 +48,7 @@ Thus far component pages include
 - Formalise a way to store graphical settings like colours of buttons
 - Amend the menu buttons such that they show they are being pressed
 - Create a loading bar XAML
+- Make loading of dictionaries truly async
 
 # How to get started
 1. Send me your Github username, then accept the request to collaborate
