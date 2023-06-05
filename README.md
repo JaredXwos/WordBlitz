@@ -38,7 +38,6 @@ Thus far component pages include
 ## Immediate To-do
 - Formalise a dice format in global variables
 - Ensure CSW22.txt is only loaded when CSW22 is selected, with default CSW22.
-- Redo buttons to be automatically generated via JS instead of repeated lines in the XAML File
 - Enable the picker in settings to reflect the current values stored in config
 - Create a function to generate the random letters based off the dice and amend the buttons accordingly
 - Create a function to bind with the game buttons to make sense of button inputs during game phase
@@ -49,6 +48,7 @@ Thus far component pages include
 - Formalise a way to store graphical settings like colours of buttons
 - Amend the menu buttons such that they show they are being pressed
 - Create a loading bar XAML
+- Figure out how to allow code to load a grid object
 - Make loading of dictionaries truly async
 
 # How to get started
