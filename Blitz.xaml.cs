@@ -16,21 +16,19 @@ public partial class Blitz : ContentPage
         }).Wait();
         InitializeComponent();
 
-        Application.Current.Dispatcher.Dispatch(() =>
+        
+        for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++)
         {
-            for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++)
-                {
-                    Button button = new()
-                    {
-                        BackgroundColor = Colors.Navy,
-                        TextColor = Colors.Pink,
-                        Text = "Qu",
-                        FontSize = 45
-                    };
-                    button.Clicked += (object sender, EventArgs e) => ((Button)sender).Text = Config.Lexicon.Count.ToString();
-                    board.Add(button, i, j);
-                }
-        });
+            Button button = new()
+            {
+                BackgroundColor = Colors.Navy,
+                TextColor = Colors.Pink,
+                Text = "Qu",
+                FontSize = 45
+            };
+            button.Clicked += (object sender, EventArgs e) => ((Button)sender).Text = Config.Lexicon.Count.ToString();
+            Application.Current.Dispatcher.Dispatch(() => board.Add(button, i, j));
+        }
         
 
     }
