@@ -24,7 +24,7 @@ public partial class Blitz : ContentPage
                     {
                         BackgroundColor = Colors.Navy,
                         TextColor = Colors.Pink,
-                        Text = "A",
+                        Text = "Qu",
                         FontSize = 45
                     };
                     button.Clicked += (object sender, EventArgs e) => ((Button)sender).Text = Config.Lexicon.Count.ToString();

@@ -6,15 +6,17 @@
     <VerticalStackLayout
         x:Name="gamescreen"
         HorizontalOptions="Center"
-        VerticalOptions="Center">
+        VerticalOptions="Center"
+        HeightRequest="360"
+        WidthRequest="360">
         <Grid
             x:Name="board"
-            RowDefinitions="90, 90, 90, 90"
-            ColumnDefinitions="90, 90, 90, 90"
-            HorizontalOptions="Center"
-            VerticalOptions="Center"
+            RowDefinitions="*, *, *, *"
+            ColumnDefinitions="*, *, *, *"
             RowSpacing="5"
-            ColumnSpacing="5">
+            ColumnSpacing="5"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill">
         </Grid>
     </VerticalStackLayout>
 </ContentPage>
