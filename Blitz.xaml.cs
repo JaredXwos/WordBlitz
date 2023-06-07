@@ -18,7 +18,7 @@ public partial class Blitz : ContentPage
     {
         using var stream = await FileSystem.OpenAppPackageFileAsync(Config.DiceName);
         using var reader = new StreamReader(stream);
-        Config.CurrentDice = reader.ReadToEnd().Split('\n').Select(s=>s.Split(' ')).ToArray();
+        Config.CurrentDice = reader.ReadToEnd().Split('\n').Select(s=>s.Split(' ').Select(r=>r.Trim()).ToArray()).ToArray();
         return Config.CurrentDice;
     }
     public  Blitz()
@@ -35,7 +35,7 @@ public partial class Blitz : ContentPage
                     {
                         BackgroundColor = Colors.Navy,
                         TextColor = Colors.Pink,
-                        Text = Config.CurrentDice[3][2],
+                        Text = Config.CurrentDice[i*4+j][Config.Random.Next()%6],
                         FontSize = 45
                     };
                     button.Clicked += (object sender, EventArgs e) => ((Button)sender).Text = Config.Lexicon.Count.ToString();

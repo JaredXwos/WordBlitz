@@ -36,8 +36,11 @@ Thus far component pages include
 - Config (Navigates back to Config)
 
 ## Immediate To-do
-- Create a function to generate the random letters based off the dice and amend the buttons accordingly
+- Create a function to verify if the given words are found in the dictionary
 - Create a function to bind with the game buttons to make sense of button inputs during game phase
+- Create XAML submit button
+- Create a function to bind with the submit button to collate words
+- Create a label to display all the words submitted
 
 ### Less immediate To-do
 - Figure out how to detect swiping and fix that as a binding

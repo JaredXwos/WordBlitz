@@ -10,7 +10,7 @@ namespace WordBlitz
     {
         public static string DictName = "CSW22.txt";
         public static string DiceName = "DiceModern.txt";
-
+        public static Random Random = new(Guid.NewGuid().GetHashCode());
 
         public static HashSet<string> Lexicon = new();
         public static string[][] CurrentDice = new string[16][];
