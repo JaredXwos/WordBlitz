@@ -9,17 +9,30 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <Picker 
-            x:Name="picker"
+            x:Name="Dictpicker"
             SelectedIndexChanged="ConfigUpdate"
+             
             Title="Set Dictionary"
             VerticalOptions="Center"
             HorizontalOptions="Center">   
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
-                    <x:String>CSW22</x:String>
+                    <x:String>CSW22.txt</x:String>
                 </x:Array>
             </Picker.ItemsSource>
         </Picker>
-
+        <Picker 
+            x:Name="Dicepicker"
+            SelectedIndexChanged="ConfigUpdate"
+            Title="Set Dice"
+            VerticalOptions="Center"
+            HorizontalOptions="Center">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>DiceModern.txt</x:String>
+                    <x:String>DiceClassic.txt</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
     </VerticalStackLayout>
 </ContentPage>

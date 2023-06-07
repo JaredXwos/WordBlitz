@@ -10,6 +10,13 @@ public partial class Settings : ContentPage
     {
         Picker picker = (Picker)sender;
         int selectedIndex = picker.SelectedIndex;
-        if (selectedIndex != -1) Config.DictName = (string)picker.ItemsSource[selectedIndex];
+        if (selectedIndex != -1) switch (picker.StyleId)
+        {
+            case "Dictpicker":
+                Config.DictName = (string)picker.ItemsSource[selectedIndex]; break;
+            case "Dicepicker":
+                Config.DiceName = (string)picker.ItemsSource[selectedIndex]; break;
+            default: break;
+        }
     }
 }

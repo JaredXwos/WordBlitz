@@ -36,8 +36,6 @@ Thus far component pages include
 - Config (Navigates back to Config)
 
 ## Immediate To-do
-- Formalise a dice format in global variables
-- Ensure CSW22.txt is only loaded when CSW22 is selected, with default CSW22.
 - Enable the picker in settings to reflect the current values stored in config
 - Create a function to generate the random letters based off the dice and amend the buttons accordingly
 - Create a function to bind with the game buttons to make sense of button inputs during game phase

@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace WordBlitz
 {
-    public class Config
+    public static class Config
     {
-        public static string DictName = "YES";
+        public static string DictName = "CSW22.txt";
+        public static string DiceName = "DiceModern.txt";
+
+
         public static HashSet<string> Lexicon = new();
+        public static string[][] CurrentDice = new string[16][];
     }
 }
