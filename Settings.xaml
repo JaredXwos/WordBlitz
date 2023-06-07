@@ -8,19 +8,22 @@
             Text="Settings"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        
+        
         <Picker 
-            x:Name="Dictpicker"
-            SelectedIndexChanged="ConfigUpdate"
-             
-            Title="Set Dictionary"
-            VerticalOptions="Center"
-            HorizontalOptions="Center">   
+        x:Name="Dictpicker"
+        SelectedIndexChanged="ConfigUpdate"
+        Title="Set Dictionary"
+        VerticalOptions="Center"
+        HorizontalOptions="Start">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>CSW22.txt</x:String>
                 </x:Array>
             </Picker.ItemsSource>
         </Picker>
+                
+            
         <Picker 
             x:Name="Dicepicker"
             SelectedIndexChanged="ConfigUpdate"
@@ -34,5 +37,6 @@
                 </x:Array>
             </Picker.ItemsSource>
         </Picker>
+            
     </VerticalStackLayout>
 </ContentPage>

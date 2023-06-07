@@ -5,6 +5,8 @@ public partial class Settings : ContentPage
 	public Settings()
 	{
 		InitializeComponent();
+        Dictpicker.SelectedItem = Config.DictName;
+        Dicepicker.SelectedItem = Config.DiceName;
     }
     private void ConfigUpdate(object sender, EventArgs e)
     {
