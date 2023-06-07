@@ -15,7 +15,7 @@
         SelectedIndexChanged="ConfigUpdate"
         Title="Set Dictionary"
         VerticalOptions="Center"
-        HorizontalOptions="Start">
+        HorizontalOptions="Center">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>CSW22.txt</x:String>
