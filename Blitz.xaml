@@ -3,20 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WordBlitz.Blitz"
              Title="Blitz">
-    <VerticalStackLayout
-        x:Name="gamescreen"
-        HorizontalOptions="Center"
-        VerticalOptions="Center"
-        HeightRequest="360"
-        WidthRequest="360">
-        <Grid
-            x:Name="board"
-            RowDefinitions="*, *, *, *"
-            ColumnDefinitions="*, *, *, *"
-            RowSpacing="5"
-            ColumnSpacing="5"
-            HorizontalOptions="Fill"
-            VerticalOptions="Fill">
-        </Grid>
-    </VerticalStackLayout>
+    <ContentView>
+        <ContentView.GestureRecognizers>
+            <SwipeGestureRecognizer Direction="Left,Right" Swiped="OnSwiped" Threshold="40"/>
+            <SwipeGestureRecognizer Direction="Up,Down" Swiped="OnSwiped" Threshold="40"/>
+        </ContentView.GestureRecognizers>
+        <VerticalStackLayout
+            x:Name="gamescreen"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            HeightRequest="360"
+            WidthRequest="360">
+            <Grid
+                x:Name="board"
+                RowDefinitions="*, *, *, *"
+                ColumnDefinitions="*, *, *, *"
+                RowSpacing="5"
+                ColumnSpacing="5"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill">
+            </Grid>
+            <Label
+                x:Name="Submitted"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+            <Button x:Name="testbutton" BackgroundColor="Pink" Clicked="testbutton_Clicked"/>
+        </VerticalStackLayout>
+    </ContentView>
+    
 </ContentPage>

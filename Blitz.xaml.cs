@@ -21,28 +21,62 @@ public partial class Blitz : ContentPage
         Config.CurrentDice = reader.ReadToEnd().Split('\n').Select(s=>s.Split(' ').Select(r=>r.Trim()).ToArray()).ToArray();
         return Config.CurrentDice;
     }
+
+    private string selectedword = "";
+
     public  Blitz()
 	{
         Task.Run(Loaddict).Wait();
         Task.Run(Loaddice).Wait();
         InitializeComponent();
 
-        Application.Current.Dispatcher.Dispatch(() =>
+        Dispatcher.Dispatch(() =>
         {
             for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++)
+            {
+                Button button = new()
                 {
-                    Button button = new()
+                    BackgroundColor = Colors.Navy,
+                    FontSize = 40,
+                    Text = Config.CurrentDice[i * 4 + j][Config.Random.Next() % 6]
+                };
+                button.Pressed += (object sender, EventArgs e) =>
+                {
+                    Button button = (Button)sender;
+                    if (button.IsEnabled)
                     {
-                        BackgroundColor = Colors.Navy,
-                        TextColor = Colors.Pink,
-                        Text = Config.CurrentDice[i*4+j][Config.Random.Next()%6],
-                        FontSize = 45
-                    };
-                    button.Clicked += (object sender, EventArgs e) => ((Button)sender).Text = Config.Lexicon.Count.ToString();
-                    board.Add(button, i, j);
-                }
+                        selectedword += button.Text;
+                        button.BackgroundColor = Colors.Black;
+                        foreach (Button child in board.Children) if(child.BackgroundColor != Colors.Black) child.IsEnabled = true;
+                        foreach (Button child in board.Children.Where(c => 
+                            board.GetRow(c) < board.GetRow(button) - 1 ||
+                            board.GetRow(c) > board.GetRow(button) + 1 ||
+                            board.GetColumn(c) < board.GetColumn(button) - 1 ||
+                            board.GetColumn(c) > board.GetColumn(button) + 1
+                        )) child.IsEnabled = false;
+                    }
+                };
+                button.Released += (object sender, EventArgs e) =>
+                {
+                    Button button = (Button)sender;
+                    if (selectedword != "") button.IsEnabled = false;
+                };
+                
+                board.Add(button, i, j);
+            }
         });
-        
-
     }
+
+    private void OnSwiped(object sender, SwipedEventArgs e)
+    {
+        Submitted.Text = selectedword;
+        selectedword = string.Empty;
+        foreach (Button child in board.Children)
+        {
+            child.IsEnabled = true;
+            child.BackgroundColor = Colors.Navy;
+        }
+    }
+
+    private void testbutton_Clicked(object sender, EventArgs e) => ((Button)sender).BackgroundColor = Colors.Red;
 }

@@ -37,8 +37,8 @@ Thus far component pages include
 
 ## Immediate To-do
 - Create a function to verify if the given words are found in the dictionary
-- Create a function to bind with the game buttons to make sense of button inputs during game phase
-- Create XAML submit button
+- Fix clunkly swipe gestures on Windows and Android (clunky in different ways)
+- Optimise the button clicks and swipes somehow (was built rushed)
 - Create a function to bind with the submit button to collate words
 - Create a label to display all the words submitted
 
