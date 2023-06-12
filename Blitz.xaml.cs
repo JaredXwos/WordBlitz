@@ -67,7 +67,7 @@ public partial class Blitz : ContentPage
             }
         });
         IDispatcherTimer timer = Dispatcher.CreateTimer();
-        timer.Interval = TimeSpan.FromSeconds(20);
+        timer.Interval = TimeSpan.FromSeconds(120);
         timer.Tick += (object sender, EventArgs e) =>
         {
             Submitted.Text = string.Empty;
@@ -79,7 +79,7 @@ public partial class Blitz : ContentPage
             foreach(string word in Config.Lexicon.Intersect(words).Where(c=>c.Length>2))
             {
                 Submitted.Text += word;
-                Submitted.Text += '\n';
+                Submitted.Text += ' ';
             }
         };
         timer.Start();

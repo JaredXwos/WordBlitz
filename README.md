@@ -40,7 +40,6 @@ Thus far component pages include
 - Optimise the button clicks and swipes somehow (was built rushed)
 - Make a picker to allow users to choose timing for simulated boggle game
 - Create a field in config to save a user created time and use that in the timer object
-- Figure out how to make text wrap in the collated submissions label
 - Allow for score of correct words to be counted
 - Count wrong words
 
