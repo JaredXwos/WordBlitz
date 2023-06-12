@@ -65,6 +65,10 @@ public partial class Blitz : ContentPage
                 board.Add(button, i, j);
             }
         });
+        IDispatcherTimer timer = Dispatcher.CreateTimer();
+        timer.Interval = TimeSpan.FromSeconds(180);
+        timer.Tick += (object sender, EventArgs e) => Navigation.PopAsync();
+        timer.Start();
     }
 
     private void OnSwiped(object sender, SwipedEventArgs e)
