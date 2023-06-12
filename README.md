@@ -39,6 +39,7 @@ Thus far component pages include
 - Create a function to verify if the given words are found in the dictionary
 - Fix clunkly swipe gestures on Windows and Android (clunky in different ways)
 - Optimise the button clicks and swipes somehow (was built rushed)
+- Insert 3 min timer for boggle
 - Create a function to bind with the submit button to collate words
 - Create a label to display all the words submitted
 
