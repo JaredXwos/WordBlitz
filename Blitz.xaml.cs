@@ -23,6 +23,7 @@ public partial class Blitz : ContentPage
     }
 
     private string selectedword = "";
+    private List<string> words = new();
 
     public  Blitz()
 	{
@@ -66,14 +67,28 @@ public partial class Blitz : ContentPage
             }
         });
         IDispatcherTimer timer = Dispatcher.CreateTimer();
-        timer.Interval = TimeSpan.FromSeconds(180);
-        timer.Tick += (object sender, EventArgs e) => Navigation.PopAsync();
+        timer.Interval = TimeSpan.FromSeconds(20);
+        timer.Tick += (object sender, EventArgs e) =>
+        {
+            Submitted.Text = string.Empty;
+            foreach (Button child in board.Children)
+            {
+                child.IsEnabled = false;
+                child.BackgroundColor = Colors.Navy;
+            }
+            foreach(string word in Config.Lexicon.Intersect(words).Where(c=>c.Length>2))
+            {
+                Submitted.Text += word;
+                Submitted.Text += '\n';
+            }
+        };
         timer.Start();
     }
 
     private void OnSwiped(object sender, SwipedEventArgs e)
     {
         Submitted.Text = selectedword;
+        words.Add(selectedword);
         selectedword = string.Empty;
         foreach (Button child in board.Children)
         {

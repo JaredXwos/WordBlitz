@@ -36,13 +36,13 @@ Thus far component pages include
 - Config (Navigates back to Config)
 
 ## Immediate To-do
-- Create a function to verify if the given words are found in the dictionary
 - Fix clunkly swipe gestures on Windows and Android (clunky in different ways)
 - Optimise the button clicks and swipes somehow (was built rushed)
 - Make a picker to allow users to choose timing for simulated boggle game
 - Create a field in config to save a user created time and use that in the timer object
-- Create a function to bind with the submit button to collate words
-- Create a label to display all the words submitted
+- Figure out how to make text wrap in the collated submissions label
+- Allow for score of correct words to be counted
+- Count wrong words
 
 ### Less immediate To-do
 - Figure out how to detect swiping and fix that as a binding
@@ -52,6 +52,7 @@ Thus far component pages include
 - Create a loading bar XAML
 - Figure out how to allow code to load a grid object
 - Make loading of dictionaries truly async
+- Allow users to delete words before they are checked and score counted
 
 # How to get started
 1. Send me your Github username, then accept the request to collaborate
