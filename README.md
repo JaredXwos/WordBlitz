@@ -40,8 +40,7 @@ Thus far component pages include
 - Optimise the button clicks and swipes somehow (was built rushed)
 - Make a picker to allow users to choose timing for simulated boggle game
 - Create a field in config to save a user created time and use that in the timer object
-- Allow for score of correct words to be counted
-- Count wrong words
+- Allow users to delete words before they are checked and score counted
 
 ### Less immediate To-do
 - Figure out how to detect swiping and fix that as a binding
@@ -51,7 +50,7 @@ Thus far component pages include
 - Create a loading bar XAML
 - Figure out how to allow code to load a grid object
 - Make loading of dictionaries truly async
-- Allow users to delete words before they are checked and score counted
+
 
 # How to get started
 1. Send me your Github username, then accept the request to collaborate

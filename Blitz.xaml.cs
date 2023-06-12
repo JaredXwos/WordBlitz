@@ -67,7 +67,7 @@ public partial class Blitz : ContentPage
             }
         });
         IDispatcherTimer timer = Dispatcher.CreateTimer();
-        timer.Interval = TimeSpan.FromSeconds(120);
+        timer.Interval = TimeSpan.FromSeconds(80);
         timer.Tick += (object sender, EventArgs e) =>
         {
             Submitted.Text = string.Empty;
@@ -76,11 +76,24 @@ public partial class Blitz : ContentPage
                 child.IsEnabled = false;
                 child.BackgroundColor = Colors.Navy;
             }
-            foreach(string word in Config.Lexicon.Intersect(words).Where(c=>c.Length>2))
+
+            int points = 0;
+            IEnumerable<string> validwords = Config.Lexicon.Intersect(words).Where(c => c.Length > 2);
+            foreach(string word in validwords)
             {
+                switch (word.Length)
+                {
+                    case 3: points++; break;
+                    case 4: points++; break;
+                    case 5: points += 2; break;
+                    case 6: points += 3; break;
+                    case 7: points += 5; break;
+                    default: points += 11; break;
+                }
                 Submitted.Text += word;
                 Submitted.Text += ' ';
             }
+            testbutton.Text = (points - words.Count + validwords.Count()).ToString();
         };
         timer.Start();
     }
