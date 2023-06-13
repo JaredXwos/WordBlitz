@@ -39,7 +39,7 @@
                 HorizontalOptions="Center"/>
 
             <Button
-                x:Name="SettingsBtn"
+                x:Name="SettingsScreenNavButton"
                 Text="Settings"
                 FontSize="20"
                 SemanticProperties.Hint="Navigates to settings page"

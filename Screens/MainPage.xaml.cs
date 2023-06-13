@@ -7,11 +7,6 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
 	}
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		Navigation.PushAsync(new SettingsScreen());
-	}
-
     private async void OnPlayButtonClicked(object sender, EventArgs e)
     {
         BlitzScreenNavButton.IsEnabled = false;
@@ -24,6 +19,13 @@ public partial class MainPage : ContentPage
         AnalysisScreenNavButton.IsEnabled = false;
         await Navigation.PushAsync(new AnalysisScreen());
         AnalysisScreenNavButton.IsEnabled = true;
+    }
+
+    private async void OnCounterClicked(object sender, EventArgs e)
+    {
+        SettingsScreenNavButton.IsEnabled = false;
+        await Navigation.PushAsync(new SettingsScreen());
+        SettingsScreenNavButton.IsEnabled = true;
     }
 }
 
