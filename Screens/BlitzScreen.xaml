@@ -17,24 +17,33 @@
             <VerticalStackLayout
                 x:Name="gamescreen"
                 HorizontalOptions="Center"
-                VerticalOptions="Center"
-                HeightRequest="450"
-                WidthRequest="450">
+                VerticalOptions="Center">
                 <Frame
-                    BackgroundColor="Yellow"
-                    CornerRadius="40"
+                    BackgroundColor="Blue"
+                    CornerRadius="10"
                     Padding="10"
+                    MinimumWidthRequest="320"
+                    MinimumHeightRequest="320"
                     HorizontalOptions="Center"
                     VerticalOptions="Center">
-                    <Grid
-                        x:Name="boardGrid"
-                        RowDefinitions="*, *, *, *"
-                        ColumnDefinitions="*, *, *, *"
-                        RowSpacing="5"
-                        ColumnSpacing="5"
-                        HorizontalOptions="Fill"
-                        VerticalOptions="Fill">
-                    </Grid>
+                    <Frame
+                        BackgroundColor="SaddleBrown"
+                        CornerRadius="10"
+                        Padding="10"
+                        MinimumWidthRequest="300"
+                        MinimumHeightRequest="300"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                        <Grid
+                            x:Name="boardGrid"
+                            RowDefinitions="*, *, *, *"
+                            ColumnDefinitions="*, *, *, *"
+                            RowSpacing="5"
+                            ColumnSpacing="5"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Fill">
+                        </Grid>
+                    </Frame>
                 </Frame>
                 <Label
                     x:Name="Submitted"
