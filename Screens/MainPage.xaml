@@ -23,12 +23,20 @@
                 HorizontalOptions="Center" />
 
             <Button
-                x:Name="CounterBtn"
+                x:Name="BlitzScreenNavButton"
                 Text="Play"
                 FontSize="20"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnPlayClicked"
+                SemanticProperties.Hint="Starts the game"
+                Clicked="OnPlayButtonClicked"
                 HorizontalOptions="Center" />
+
+            <Button
+                x:Name="AnalysisScreenNavButton"
+                Text="Analysis"
+                FontSize="20"
+                SemanticProperties.Hint="Starts the Analysis"
+                Clicked="OnAnalysisButtonClicked"
+                HorizontalOptions="Center"/>
 
             <Button
                 x:Name="SettingsBtn"

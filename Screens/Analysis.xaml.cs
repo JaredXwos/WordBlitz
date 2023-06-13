@@ -1,6 +1,8 @@
+using WordBlitz.tools;
+
 namespace WordBlitz;
 
-public partial class Analysis : ContentPage
+public partial class AnalysisScreen : ContentPage
 {
     private static async Task<HashSet<string>> Loaddict()
     {
@@ -9,7 +11,7 @@ public partial class Analysis : ContentPage
         Config.Lexicon = new HashSet<string>(reader.ReadToEnd().Split('\n'));
         return Config.Lexicon;
     }
-    public Analysis()
+    public AnalysisScreen()
 	{
         Task.Run(Loaddict).Wait();
         InitializeComponent();

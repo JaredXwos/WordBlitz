@@ -12,13 +12,14 @@ public partial class MainPage : ContentPage
 		Navigation.PushAsync(new SettingsScreen());
 	}
 
-    private void OnPlayClicked(object sender, EventArgs e)
+    private void OnPlayButtonClicked(object sender, EventArgs e)
     {
-<<<<<<< HEAD:Screens/MainPage.xaml.cs
         Navigation.PushAsync(new BlitzScreen());
-=======
-        Navigation.PushAsync(new Analysis());
->>>>>>> master:MainPage.xaml.cs
+    }
+
+    private void OnAnalysisButtonClicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new AnalysisScreen());
     }
 }
 
