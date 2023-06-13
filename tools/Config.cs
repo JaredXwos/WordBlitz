@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WordBlitz
+namespace WordBlitz.tools
 {
     public static class Config
     {

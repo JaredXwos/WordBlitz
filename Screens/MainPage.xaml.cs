@@ -9,12 +9,12 @@ public partial class MainPage : ContentPage
 
 	private void OnCounterClicked(object sender, EventArgs e)
 	{
-		Navigation.PushAsync(new Settings());
+		Navigation.PushAsync(new SettingsScreen());
 	}
 
     private void OnPlayClicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new Blitz());
+        Navigation.PushAsync(new BlitzScreen());
     }
 }
 

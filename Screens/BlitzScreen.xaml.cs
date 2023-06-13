@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Specialized;
 using System.Text;
+using WordBlitz.tools;
 
 namespace WordBlitz;
 
-public partial class Blitz : ContentPage
+public partial class BlitzScreen : ContentPage
 {
     private static async Task<HashSet<string>> Loaddict()
     {
@@ -25,7 +26,7 @@ public partial class Blitz : ContentPage
     private string selectedword = "";
     private List<string> words = new();
 
-    public  Blitz()
+    public  BlitzScreen()
 	{
         Task.Run(Loaddict).Wait();
         Task.Run(Loaddice).Wait();

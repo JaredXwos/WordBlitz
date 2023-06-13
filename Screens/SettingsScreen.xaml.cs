@@ -1,8 +1,10 @@
+using WordBlitz.tools;
+
 namespace WordBlitz;
 
-public partial class Settings : ContentPage
+public partial class SettingsScreen : ContentPage
 {
-	public Settings()
+	public SettingsScreen()
 	{
 		InitializeComponent();
         Dictpicker.SelectedItem = Config.DictName;
