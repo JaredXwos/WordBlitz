@@ -14,7 +14,11 @@ public partial class MainPage : ContentPage
 
     private void OnPlayClicked(object sender, EventArgs e)
     {
+<<<<<<< HEAD:Screens/MainPage.xaml.cs
         Navigation.PushAsync(new BlitzScreen());
+=======
+        Navigation.PushAsync(new Analysis());
+>>>>>>> master:MainPage.xaml.cs
     }
 }
 

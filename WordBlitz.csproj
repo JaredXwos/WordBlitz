@@ -63,10 +63,16 @@
 	  <Compile Update="Screens\SettingsScreen.xaml.cs">
 	    <DependentUpon>SettingsScreen.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Analysis.xaml.cs">
+	    <DependentUpon>Analysis.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="Screens\BlitzScreen.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Analysis.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
