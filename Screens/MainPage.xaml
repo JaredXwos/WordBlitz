@@ -11,8 +11,8 @@
             VerticalOptions="Center">
 
             <Image
-                Source="w_tile.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                Source="title_screen_image.png"
+                SemanticProperties.Description="partially transparent image of a boggle board."
                 HeightRequest="200"
                 HorizontalOptions="Center" />
 

@@ -34,13 +34,14 @@ public partial class BlitzScreen : ContentPage
 
         Dispatcher.Dispatch(() =>
         {
+        int[] shuffleArray = Enumerable.Range(0, 16).OrderBy(lambda => Guid.NewGuid()).ToArray();// creates a unique one-to-one shuffle for the dice
             for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++)
             {
-                Button button = new()
-                {
-                    BackgroundColor = Colors.Navy,
-                    FontSize = 40,
-                    Text = Config.CurrentDice[Enumerable.Range(0, 16).OrderBy(lambda => Guid.NewGuid()).ToArray()[i * 4 + j]][Config.Random.Next() % 6]
+                    Button button = new()
+                    {
+                        BackgroundColor = Colors.Navy,
+                        FontSize = 40,
+                        Text = Config.CurrentDice[shuffleArray[i * 4 + j]][Config.Random.Next() % 6]
                 };
                 button.Pressed += (object sender, EventArgs e) =>
                 {

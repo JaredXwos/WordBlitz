@@ -125,7 +125,7 @@
 	  <None Remove="Resources\Images\Tile_Images\x_tile.png" />
 	  <None Remove="Resources\Images\Tile_Images\y_tile.png" />
 	  <None Remove="Resources\Images\Tile_Images\z_tile.png" />
-	  <None Remove="Resources\Images\title.png" />
+	  <None Remove="Resources\Images\title_screen_image.png" />
 	  <None Remove="Resources\Images\u.png" />
 	  <None Remove="Resources\Images\v.png" />
 	  <None Remove="Resources\Images\x.png" />
