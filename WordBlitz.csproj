@@ -37,6 +37,33 @@
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiImage Include="Resources\Images\Backgrounds\wooden_study.png" />
+		<MauiImage Include="Resources\Images\Tile_Images\a_tile.png" />
+		<MauiImage Include="Resources\Images\Tile_Images\b_tile.png" />
+		<MauiImage Include="Resources\Images\Tile_Images\c_tile.png" />
+		<MauiImage Include="Resources\Images\Tile_Images\d_tile.png" />
+		<MauiImage Include="Resources\Images\Tile_Images\e_tile.png" />
+		<MauiImage Include="Resources\Images\Tile_Images\f_tile.png" />
+		<MauiImage Include="Resources\Images\Tile_Images\g_tile.png" />
+		<MauiImage Include="Resources\Images\Tile_Images\h_tile.png" />
+		<MauiImage Include="Resources\Images\Tile_Images\i_tile.png" />
+		<MauiImage Include="Resources\Images\Tile_Images\j_tile.png" />
+		<MauiImage Include="Resources\Images\Tile_Images\k_tile.png" />
+		<MauiImage Include="Resources\Images\Tile_Images\l_tile.png" />
+		<MauiImage Include="Resources\Images\Tile_Images\m_tile.png" />
+		<MauiImage Include="Resources\Images\Tile_Images\n_tile.png" />
+		<MauiImage Include="Resources\Images\Tile_Images\o_tile.png" />
+		<MauiImage Include="Resources\Images\Tile_Images\p_tile.png" />
+		<MauiImage Include="Resources\Images\Tile_Images\q_tile.png" />
+		<MauiImage Include="Resources\Images\Tile_Images\r_tile.png" />
+		<MauiImage Include="Resources\Images\Tile_Images\s_tile.png" />
+		<MauiImage Include="Resources\Images\Tile_Images\t_tile.png" />
+		<MauiImage Include="Resources\Images\Tile_Images\u_tile.png" />
+		<MauiImage Include="Resources\Images\Tile_Images\v_tile.png" />
+		<MauiImage Include="Resources\Images\Tile_Images\w_tile.png" />
+		<MauiImage Include="Resources\Images\Tile_Images\x_tile.png" />
+		<MauiImage Include="Resources\Images\Tile_Images\y_tile.png" />
+		<MauiImage Include="Resources\Images\Tile_Images\z_tile.png" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
@@ -53,23 +80,82 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\a.png" />
+	  <None Remove="Resources\Images\b.png" />
+	  <None Remove="Resources\Images\c.png" />
+	  <None Remove="Resources\Images\d.png" />
+	  <None Remove="Resources\Images\e.png" />
+	  <None Remove="Resources\Images\f.png" />
+	  <None Remove="Resources\Images\g.png" />
+	  <None Remove="Resources\Images\h.png" />
+	  <None Remove="Resources\Images\i.png" />
+	  <None Remove="Resources\Images\j.png" />
+	  <None Remove="Resources\Images\k.png" />
+	  <None Remove="Resources\Images\l.png" />
+	  <None Remove="Resources\Images\m.png" />
+	  <None Remove="Resources\Images\n.png" />
+	  <None Remove="Resources\Images\o.png" />
+	  <None Remove="Resources\Images\p.png" />
+	  <None Remove="Resources\Images\q.png" />
+	  <None Remove="Resources\Images\r.png" />
+	  <None Remove="Resources\Images\s.png" />
+	  <None Remove="Resources\Images\t.png" />
+	  <None Remove="Resources\Images\Tile_Images\a_tile.png" />
+	  <None Remove="Resources\Images\Tile_Images\b_tile.png" />
+	  <None Remove="Resources\Images\Tile_Images\c_tile.png" />
+	  <None Remove="Resources\Images\Tile_Images\d_tile.png" />
+	  <None Remove="Resources\Images\Tile_Images\e_tile.png" />
+	  <None Remove="Resources\Images\Tile_Images\f_tile.png" />
+	  <None Remove="Resources\Images\Tile_Images\g_tile.png" />
+	  <None Remove="Resources\Images\Tile_Images\h_tile.png" />
+	  <None Remove="Resources\Images\Tile_Images\i_tile.png" />
+	  <None Remove="Resources\Images\Tile_Images\j_tile.png" />
+	  <None Remove="Resources\Images\Tile_Images\k_tile.png" />
+	  <None Remove="Resources\Images\Tile_Images\l_tile.png" />
+	  <None Remove="Resources\Images\Tile_Images\m_tile.png" />
+	  <None Remove="Resources\Images\Tile_Images\n_tile.png" />
+	  <None Remove="Resources\Images\Tile_Images\o_tile.png" />
+	  <None Remove="Resources\Images\Tile_Images\p_tile.png" />
+	  <None Remove="Resources\Images\Tile_Images\q_tile.png" />
+	  <None Remove="Resources\Images\Tile_Images\r_tile.png" />
+	  <None Remove="Resources\Images\Tile_Images\s_tile.png" />
+	  <None Remove="Resources\Images\Tile_Images\t_tile.png" />
+	  <None Remove="Resources\Images\Tile_Images\u_tile.png" />
+	  <None Remove="Resources\Images\Tile_Images\v_tile.png" />
+	  <None Remove="Resources\Images\Tile_Images\w_tile.png" />
+	  <None Remove="Resources\Images\Tile_Images\x_tile.png" />
+	  <None Remove="Resources\Images\Tile_Images\y_tile.png" />
+	  <None Remove="Resources\Images\Tile_Images\z_tile.png" />
+	  <None Remove="Resources\Images\title_screen_image.png" />
+	  <None Remove="Resources\Images\u.png" />
+	  <None Remove="Resources\Images\v.png" />
+	  <None Remove="Resources\Images\wooden_study.png" />
+	  <None Remove="Resources\Images\x.png" />
+	  <None Remove="Resources\Images\y.png" />
+	  <None Remove="Resources\Images\z.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Blitz.xaml.cs">
-	    <DependentUpon>Blitz.xaml</DependentUpon>
+	  <Compile Update="Screens\BlitzScreen.xaml.cs">
+	    <DependentUpon>BlitzScreen.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Analysis.xaml.cs">
+	  <Compile Update="Screens\SettingsScreen.xaml.cs">
+	    <DependentUpon>SettingsScreen.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Screens\Analysis.xaml.cs">
 	    <DependentUpon>Analysis.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Blitz.xaml">
+	  <MauiXaml Update="Screens\BlitzScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Analysis.xaml">
+	  <MauiXaml Update="Screens\Analysis.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

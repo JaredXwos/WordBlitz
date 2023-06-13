@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WordBlitz.BlitzScreen"
+             Title="Blitz">
+    <Grid>
+        <Image
+            Source="wooden_study.png"
+            Aspect="AspectFill"/>
+        <ContentView
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+            <ContentView.GestureRecognizers>
+                <SwipeGestureRecognizer Direction="Left,Right" Swiped="OnSwiped" Threshold="40"/>
+                <SwipeGestureRecognizer Direction="Up,Down" Swiped="OnSwiped" Threshold="40"/>
+            </ContentView.GestureRecognizers>
+            <VerticalStackLayout
+                x:Name="gamescreen"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                HeightRequest="450"
+                WidthRequest="450">
+                <Frame
+                    BackgroundColor="Yellow"
+                    CornerRadius="40"
+                    Padding="10"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                    <Grid
+                        x:Name="boardGrid"
+                        RowDefinitions="*, *, *, *"
+                        ColumnDefinitions="*, *, *, *"
+                        RowSpacing="5"
+                        ColumnSpacing="5"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Fill">
+                    </Grid>
+                </Frame>
+                <Label
+                    x:Name="Submitted"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    LineBreakMode="WordWrap"
+                    BackgroundColor="White"
+                    />
+                <Button
+                    x:Name="testbutton"
+                    BackgroundColor="Pink"
+                    Clicked="testbutton_Clicked"
+                    WidthRequest="100"/>
+            </VerticalStackLayout>
+        </ContentView>
+    </Grid>
+</ContentPage>
