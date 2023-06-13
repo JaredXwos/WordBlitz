@@ -40,6 +40,8 @@ Thus far component pages include
 - Optimise the button clicks and swipes somehow (was built rushed)
 - Make a picker to allow users to choose timing for simulated boggle game
 - Create a field in config to save a user created time and use that in the timer object
+- Make a picker to allow users to choose the number of pts for words of specific lengths
+- Create a field in config to save user configured scoring system and use that in score tabulation
 - Allow users to delete words before they are checked and score counted
 
 ### Less immediate To-do
