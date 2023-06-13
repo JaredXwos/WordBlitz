@@ -23,7 +23,7 @@
                 HorizontalOptions="Center" />
 
             <Button
-                x:Name="BlitzScreenNavButton"
+                x:Name="blitzScreenNavButton"
                 Text="Play"
                 FontSize="20"
                 SemanticProperties.Hint="Starts the game"
@@ -31,7 +31,7 @@
                 HorizontalOptions="Center" />
 
             <Button
-                x:Name="AnalysisScreenNavButton"
+                x:Name="analysisScreenNavButton"
                 Text="Analysis"
                 FontSize="20"
                 SemanticProperties.Hint="Starts the Analysis"
@@ -39,7 +39,7 @@
                 HorizontalOptions="Center"/>
 
             <Button
-                x:Name="SettingsScreenNavButton"
+                x:Name="settingsScreenNavButton"
                 Text="Settings"
                 FontSize="20"
                 SemanticProperties.Hint="Navigates to settings page"

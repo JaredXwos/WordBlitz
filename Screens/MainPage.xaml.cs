@@ -9,23 +9,23 @@ public partial class MainPage : ContentPage
 
     private async void OnPlayButtonClicked(object sender, EventArgs e)
     {
-        BlitzScreenNavButton.IsEnabled = false;
+        blitzScreenNavButton.IsEnabled = false;
         await Navigation.PushAsync(new BlitzScreen());
-        BlitzScreenNavButton.IsEnabled = true;
+        blitzScreenNavButton.IsEnabled = true;
     }
 
     private async void OnAnalysisButtonClicked(object sender, EventArgs e)
     {
-        AnalysisScreenNavButton.IsEnabled = false;
+        analysisScreenNavButton.IsEnabled = false;
         await Navigation.PushAsync(new AnalysisScreen());
-        AnalysisScreenNavButton.IsEnabled = true;
+        analysisScreenNavButton.IsEnabled = true;
     }
 
     private async void OnCounterClicked(object sender, EventArgs e)
     {
-        SettingsScreenNavButton.IsEnabled = false;
+        settingsScreenNavButton.IsEnabled = false;
         await Navigation.PushAsync(new SettingsScreen());
-        SettingsScreenNavButton.IsEnabled = true;
+        settingsScreenNavButton.IsEnabled = true;
     }
 }
 

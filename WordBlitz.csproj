@@ -128,6 +128,7 @@
 	  <None Remove="Resources\Images\title_screen_image.png" />
 	  <None Remove="Resources\Images\u.png" />
 	  <None Remove="Resources\Images\v.png" />
+	  <None Remove="Resources\Images\wooden_study.png" />
 	  <None Remove="Resources\Images\x.png" />
 	  <None Remove="Resources\Images\y.png" />
 	  <None Remove="Resources\Images\z.png" />

@@ -37,11 +37,11 @@ public partial class BlitzScreen : ContentPage
         int[] shuffleArray = Enumerable.Range(0, 16).OrderBy(lambda => Guid.NewGuid()).ToArray();// creates a unique one-to-one shuffle for the dice
             for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++)
             {
-                    Button button = new()
-                    {
-                        BackgroundColor = Colors.Navy,
-                        FontSize = 40,
-                        Text = Config.CurrentDice[shuffleArray[i * 4 + j]][Config.Random.Next() % 6]
+                Button button = new()
+                {
+                    BackgroundColor = Colors.Navy,
+                    FontSize = 40,
+                    Text = Config.CurrentDice[shuffleArray[i * 4 + j]][Config.Random.Next() % 6]
                 };
                 button.Pressed += (object sender, EventArgs e) =>
                 {
@@ -50,12 +50,12 @@ public partial class BlitzScreen : ContentPage
                     {
                         selectedword += button.Text;
                         button.BackgroundColor = Colors.Black;
-                        foreach (Button child in board.Children) if(child.BackgroundColor != Colors.Black) child.IsEnabled = true;
-                        foreach (Button child in board.Children.Where(c => 
-                            board.GetRow(c) < board.GetRow(button) - 1 ||
-                            board.GetRow(c) > board.GetRow(button) + 1 ||
-                            board.GetColumn(c) < board.GetColumn(button) - 1 ||
-                            board.GetColumn(c) > board.GetColumn(button) + 1
+                        foreach (Button child in boardGrid.Children) if(child.BackgroundColor != Colors.Black) child.IsEnabled = true;
+                        foreach (Button child in boardGrid.Children.Where(c => 
+                            boardGrid.GetRow(c) < boardGrid.GetRow(button) - 1 ||
+                            boardGrid.GetRow(c) > boardGrid.GetRow(button) + 1 ||
+                            boardGrid.GetColumn(c) < boardGrid.GetColumn(button) - 1 ||
+                            boardGrid.GetColumn(c) > boardGrid.GetColumn(button) + 1
                         )) child.IsEnabled = false;
                     }
                 };
@@ -65,7 +65,7 @@ public partial class BlitzScreen : ContentPage
                     if (selectedword != "") button.IsEnabled = false;
                 };
                 
-                board.Add(button, i, j);
+                boardGrid.Add(button, i, j);
             }
         });
         IDispatcherTimer timer = Dispatcher.CreateTimer();
@@ -73,7 +73,7 @@ public partial class BlitzScreen : ContentPage
         timer.Tick += (object sender, EventArgs e) =>
         {
             Submitted.Text = string.Empty;
-            foreach (Button child in board.Children)
+            foreach (Button child in boardGrid.Children)
             {
                 child.IsEnabled = false;
                 child.BackgroundColor = Colors.Navy;
@@ -105,7 +105,7 @@ public partial class BlitzScreen : ContentPage
         Submitted.Text = selectedword;
         words.Add(selectedword);
         selectedword = string.Empty;
-        foreach (Button child in board.Children)
+        foreach (Button child in boardGrid.Children)
         {
             child.IsEnabled = true;
             child.BackgroundColor = Colors.Navy;
