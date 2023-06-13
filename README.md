@@ -34,6 +34,7 @@ Thus far component pages include
 - MainPage (Home page which navigates to blitz and config)
 - Blitz (Navigates back to MainPage, navigates to Analysis)
 - Config (Navigates back to MainPage)
+- Analysis (Navigates back to MainPage)
 
 ## Immediate To-do
 - Fix clunkly swipe gestures on Windows and Android (clunky in different ways)
@@ -42,7 +43,10 @@ Thus far component pages include
 - Create a field in config to save a user created time and use that in the timer object
 - Make a picker to allow users to choose the number of pts for words of specific lengths
 - Create a field in config to save user configured scoring system and use that in score tabulation
-- Allow users to delete words before they are checked and score counted
+- Create a field in config for submitted words, and ensure submitted words are pushed there
+- Allow Analysis to import the words into the buttons
+- Implement tap to crossout, tap again to undo in analysis
+- Reimplement counting of score in Analysis
 
 ### Less immediate To-do
 - Figure out how to detect swiping and fix that as a binding
