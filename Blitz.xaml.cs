@@ -39,7 +39,7 @@ public partial class Blitz : ContentPage
                 {
                     BackgroundColor = Colors.Navy,
                     FontSize = 40,
-                    Text = Config.CurrentDice[i * 4 + j][Config.Random.Next() % 6]
+                    Text = Config.CurrentDice[Enumerable.Range(0, 16).OrderBy(lambda => Guid.NewGuid()).ToArray()[i * 4 + j]][Config.Random.Next() % 6]
                 };
                 button.Pressed += (object sender, EventArgs e) =>
                 {
