@@ -60,10 +60,16 @@
 	  <Compile Update="Blitz.xaml.cs">
 	    <DependentUpon>Blitz.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Analysis.xaml.cs">
+	    <DependentUpon>Analysis.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="Blitz.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Analysis.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

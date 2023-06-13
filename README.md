@@ -32,8 +32,8 @@ Component pages are nested under the AppShell, which is in turn nested under the
 
 Thus far component pages include
 - MainPage (Home page which navigates to blitz and config)
-- Blitz (Navigates back to MainPage)
-- Config (Navigates back to Config)
+- Blitz (Navigates back to MainPage, navigates to Analysis)
+- Config (Navigates back to MainPage)
 
 ## Immediate To-do
 - Fix clunkly swipe gestures on Windows and Android (clunky in different ways)
