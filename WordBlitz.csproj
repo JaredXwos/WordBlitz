@@ -37,6 +37,7 @@
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiImage Include="Resources\Images\Backgrounds\wooden_study.png" />
 		<MauiImage Include="Resources\Images\Tile_Images\a_tile.png" />
 		<MauiImage Include="Resources\Images\Tile_Images\b_tile.png" />
 		<MauiImage Include="Resources\Images\Tile_Images\c_tile.png" />

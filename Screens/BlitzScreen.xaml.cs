@@ -9,18 +9,18 @@ public partial class BlitzScreen : ContentPage
 {
     private static async Task<HashSet<string>> Loaddict()
     {
-        using var stream = await FileSystem.OpenAppPackageFileAsync(Config.DictName);
+        using var stream = await FileSystem.OpenAppPackageFileAsync(Config.dictionaryConfig);
         using var reader = new StreamReader(stream);
-        Config.Lexicon = new HashSet<string>(reader.ReadToEnd().Split('\n'));
-        return Config.Lexicon;
+        Config.lexicon = new HashSet<string>(reader.ReadToEnd().Split('\n'));
+        return Config.lexicon;
     }
 
     private static async Task<string[][]> Loaddice()
     {
-        using var stream = await FileSystem.OpenAppPackageFileAsync(Config.DiceName);
+        using var stream = await FileSystem.OpenAppPackageFileAsync(Config.diceTypeConfig);
         using var reader = new StreamReader(stream);
-        Config.CurrentDice = reader.ReadToEnd().Split('\n').Select(s=>s.Split(' ').Select(r=>r.Trim()).ToArray()).ToArray();
-        return Config.CurrentDice;
+        Config.currentDice = reader.ReadToEnd().Split('\n').Select(s=>s.Split(' ').Select(r=>r.Trim()).ToArray()).ToArray();
+        return Config.currentDice;
     }
 
     private string selectedword = "";
@@ -34,14 +34,14 @@ public partial class BlitzScreen : ContentPage
 
         Dispatcher.Dispatch(() =>
         {
-        int[] shuffleArray = Enumerable.Range(0, 16).OrderBy(lambda => Guid.NewGuid()).ToArray();// creates a unique one-to-one shuffle for the dice
+        int[] shuffleArray = Enumerable.Range(0, 16)./*OrderBy(lambda => Guid.NewGuid()).*/ToArray();// creates a unique one-to-one shuffle for the dice
             for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++)
             {
                 Button button = new()
                 {
                     BackgroundColor = Colors.Navy,
-                    FontSize = 40,
-                    Text = Config.CurrentDice[shuffleArray[i * 4 + j]][Config.Random.Next() % 6]
+                    FontSize = 30,
+                    Text = Config.currentDice[shuffleArray[i * 4 + j]][/*Config.random.Next() % 6*/0]
                 };
                 button.Pressed += (object sender, EventArgs e) =>
                 {
@@ -80,7 +80,7 @@ public partial class BlitzScreen : ContentPage
             }
 
             int points = 0;
-            IEnumerable<string> validwords = Config.Lexicon.Intersect(words).Where(c => c.Length > 2);
+            IEnumerable<string> validwords = Config.lexicon.Intersect(words).Where(c => c.Length > 2);
             foreach(string word in validwords)
             {
                 switch (word.Length)

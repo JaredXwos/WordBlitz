@@ -5,11 +5,12 @@
              Title="Blitz">
     <Grid>
         <Image
-            Source="wooden_study.png"/>
+            Source="wooden_study.png"
+            Aspect="AspectFill"/>
         <ContentView
             HorizontalOptions="Center"
             VerticalOptions="Center">
-        <ContentView.GestureRecognizers>
+            <ContentView.GestureRecognizers>
                 <SwipeGestureRecognizer Direction="Left,Right" Swiped="OnSwiped" Threshold="40"/>
                 <SwipeGestureRecognizer Direction="Up,Down" Swiped="OnSwiped" Threshold="40"/>
             </ContentView.GestureRecognizers>

@@ -7,8 +7,9 @@ public partial class SettingsScreen : ContentPage
 	public SettingsScreen()
 	{
 		InitializeComponent();
-        Dictpicker.SelectedItem = Config.DictName;
-        Dicepicker.SelectedItem = Config.DiceName;
+        dictPicker.SelectedItem       = Config.dictionaryConfig;
+        dicePicker.SelectedItem       = Config.diceTypeConfig;
+        backgroundPicker.SelectedItem = Config.diceTypeConfig;
     }
     private void ConfigUpdate(object sender, EventArgs e)
     {
@@ -16,11 +17,13 @@ public partial class SettingsScreen : ContentPage
         int selectedIndex = picker.SelectedIndex;
         if (selectedIndex != -1) switch (picker.StyleId)
         {
-            case "Dictpicker":
-                Config.DictName = (string)picker.ItemsSource[selectedIndex]; break;
-            case "Dicepicker":
-                Config.DiceName = (string)picker.ItemsSource[selectedIndex]; break;
-            default: break;
+            case "dictPicker":
+                Config.dictionaryConfig = (string)picker.ItemsSource[selectedIndex]; break;
+            case "dicePicker":
+                Config.diceTypeConfig = (string)picker.ItemsSource[selectedIndex]; break;
+            case "backgroundPicker":
+                Config.backgroundConfig = (string)picker.ItemsSource[selectedIndex]; break;
+                default: break;
         }
     }
 }

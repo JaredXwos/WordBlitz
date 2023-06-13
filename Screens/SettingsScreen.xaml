@@ -8,14 +8,16 @@
             Text="Settings"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        
-        
+
+
         <Picker 
-        x:Name="Dictpicker"
-        SelectedIndexChanged="ConfigUpdate"
-        Title="Set Dictionary"
-        VerticalOptions="Center"
-        HorizontalOptions="Center">
+            x:Name="dictPicker"
+            SelectedIndexChanged="ConfigUpdate"
+            Title="Set Dictionary"
+            VerticalOptions="Center"
+            VerticalTextAlignment="Center"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>CSW22.txt</x:String>
@@ -25,11 +27,13 @@
                 
             
         <Picker 
-            x:Name="Dicepicker"
+            x:Name="dicePicker"
             SelectedIndexChanged="ConfigUpdate"
             Title="Set Dice"
             VerticalOptions="Center"
-            HorizontalOptions="Center">
+            VerticalTextAlignment="Center"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>DiceModern.txt</x:String>
@@ -37,6 +41,28 @@
                 </x:Array>
             </Picker.ItemsSource>
         </Picker>
-            
+
+        <Picker 
+            x:Name="backgroundPicker"
+            SelectedIndexChanged="ConfigUpdate"
+            Title="Select Background"
+            VerticalOptions="Center"
+            VerticalTextAlignment="Center"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Zen                     </x:String>
+                    <x:String>NOT Zen                 </x:String>
+                    <x:String>Darkmode                </x:String>
+                    <x:String>Anime                   </x:String>
+                    <x:String>AHHH my eyes            </x:String>
+                    <x:String>i dont want a background</x:String>
+                    <x:String>SuRpRiSe                </x:String>
+                    <x:String>Gigachads               </x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
     </VerticalStackLayout>
 </ContentPage>
