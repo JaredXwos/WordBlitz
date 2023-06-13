@@ -12,14 +12,18 @@ public partial class MainPage : ContentPage
 		Navigation.PushAsync(new SettingsScreen());
 	}
 
-    private void OnPlayButtonClicked(object sender, EventArgs e)
+    private async void OnPlayButtonClicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new BlitzScreen());
+        BlitzScreenNavButton.IsEnabled = false;
+        await Navigation.PushAsync(new BlitzScreen());
+        BlitzScreenNavButton.IsEnabled = true;
     }
 
-    private void OnAnalysisButtonClicked(object sender, EventArgs e)
+    private async void OnAnalysisButtonClicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new AnalysisScreen());
+        AnalysisScreenNavButton.IsEnabled = false;
+        await Navigation.PushAsync(new AnalysisScreen());
+        AnalysisScreenNavButton.IsEnabled = true;
     }
 }
 
