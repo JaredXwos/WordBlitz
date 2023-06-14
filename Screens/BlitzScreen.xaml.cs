@@ -11,8 +11,8 @@ public partial class BlitzScreen : ContentPage
     {
         using var stream = await FileSystem.OpenAppPackageFileAsync(Config.dictionaryConfig);
         using var reader = new StreamReader(stream);
-        Config.Lexicon = new HashSet<string>(reader.ReadToEnd().Split('\n'));
-        return Config.Lexicon;
+        Config.currentDict = new HashSet<string>(reader.ReadToEnd().Split('\n'));
+        return Config.currentDict;
     }
 
     private static async Task<string[][]> Loaddice()
@@ -80,7 +80,7 @@ public partial class BlitzScreen : ContentPage
             }
 
             int points = 0;
-            IEnumerable<string> validwords = Config.Lexicon.Intersect(words).Where(c => c.Length > 2);
+            IEnumerable<string> validwords = Config.currentDict.Intersect(words).Where(c => c.Length > 2);
             foreach(string word in validwords)
             {
                 switch (word.Length)

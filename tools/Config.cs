@@ -14,7 +14,7 @@ namespace WordBlitz.tools
 
         public static Random random = new(Guid.NewGuid().GetHashCode());
 
-        public static HashSet<string> lexicon = new();
+        public static HashSet<string> currentDict = new();
         public static string[][] currentDice = new string[16][];
     }
 }

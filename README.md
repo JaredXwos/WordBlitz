@@ -37,8 +37,9 @@ Thus far component pages include
 - Analysis (Navigates back to MainPage)
 
 ## Immediate To-do
-- Fix clunkly swipe gestures on Windows and Android (clunky in different ways)
-- Optimise the button clicks and swipes somehow (was built rushed)
+- Fix the swipe in android which broke by adding a label to be swiped over at the top and bottom
+- Ensure the padding is enough to cover the rounded edges
+- Ensure the picture can be resized to fit the height of the screen automatically
 - Make a picker to allow users to choose timing for simulated boggle game
 - Create a field in config to save a user created time and use that in the timer object
 - Make a picker to allow users to choose the number of pts for words of specific lengths

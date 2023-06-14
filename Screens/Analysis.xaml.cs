@@ -8,14 +8,14 @@ public partial class AnalysisScreen : ContentPage
     {
         using var stream = await FileSystem.OpenAppPackageFileAsync(Config.dictionaryConfig);
         using var reader = new StreamReader(stream);
-        Config.Lexicon = new HashSet<string>(reader.ReadToEnd().Split('\n'));
-        return Config.Lexicon;
+        Config.currentDict = new HashSet<string>(reader.ReadToEnd().Split('\n'));
+        return Config.currentDict;
     }
     public AnalysisScreen()
 	{
         Task.Run(Loaddict).Wait();
         InitializeComponent();
-		Dispatcher.Dispatch(()=> { foreach (string word in Config.Lexicon.Take(100)) Display.Add(new Button { Text = word }); });
+		Dispatcher.Dispatch(()=> { foreach (string word in Config.currentDict.Take(100)) Display.Add(new Button { Text = word }); });
 		
 	}
 }
