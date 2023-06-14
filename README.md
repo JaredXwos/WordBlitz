@@ -37,7 +37,7 @@ Thus far component pages include
 - Analysis (Navigates back to MainPage)
 
 ## Immediate To-do
-- Fix the swipe in android which broke by adding a label to be swiped over at the top and bottom
+- Fix the swipe in android which broke by adding a label to be swiped over at the top and bottom <JX working on this
 - Ensure the padding is enough to cover the rounded edges
 - Ensure the picture can be resized to fit the height of the screen automatically
 - Make a picker to allow users to choose timing for simulated boggle game
