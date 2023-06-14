@@ -44,8 +44,6 @@ Thus far component pages include
 - Create a field in config to save a user created time and use that in the timer object
 - Make a picker to allow users to choose the number of pts for words of specific lengths
 - Create a field in config to save user configured scoring system and use that in score tabulation
-- Create a field in config for submitted words, and ensure submitted words are pushed there <JX working on this
-- Allow Analysis to import the words into the buttons
 - Implement tap to crossout, tap again to undo in analysis
 - Reimplement counting of score in Analysis
 

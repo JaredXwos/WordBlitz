@@ -72,6 +72,7 @@ public partial class BlitzScreen : ContentPage
         timer.Interval = TimeSpan.FromSeconds(80);
         timer.Tick += (object sender, EventArgs e) =>
         {
+            Navigation.PushAsync(new AnalysisScreen());
             Submitted.Text = string.Empty;
             foreach (Button child in boardGrid.Children)
             {
