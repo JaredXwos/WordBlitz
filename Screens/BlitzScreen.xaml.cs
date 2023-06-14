@@ -41,13 +41,8 @@ public partial class BlitzScreen : ContentPage
                 Button button = new()
                 {
                     BackgroundColor = Colors.Navy,
-<<<<<<< HEAD
                     FontSize = 40,
                     Text = Config.currentDice[shuffleArray[i * 4 + j]][/*Config.random.Next() % 6*/0]
-=======
-                    FontSize = 30,
-                    Text = Config.currentDice[shuffleArray[i * 4 + j]][Config.random.Next() % 6]
->>>>>>> 72ad49d8fa4bc75f7c640fe5edbab9002eb98224
                 };
                 button.Pressed += (object sender, EventArgs e) =>
                 {
