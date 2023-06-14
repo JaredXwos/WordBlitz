@@ -16,5 +16,6 @@ namespace WordBlitz.tools
 
         public static HashSet<string> currentDict = new();
         public static string[][] currentDice = new string[16][];
+        public static List<string> submittedWords = new();
     }
 }
