@@ -42,6 +42,7 @@
                     VerticalOptions="Center"
                     LineBreakMode="WordWrap"
                     BackgroundColor="White"
+                    TextColor="Black"
                     />
                 <Button
                     x:Name="testbutton"

@@ -104,6 +104,7 @@ public partial class BlitzScreen : ContentPage
     {
         Submitted.Text = selectedword;
         words.Add(selectedword);
+        Config.submittedWords.Add(selectedword);
         selectedword = string.Empty;
         foreach (Button child in boardGrid.Children)
         {
