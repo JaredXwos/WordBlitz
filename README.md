@@ -46,6 +46,7 @@ Thus far component pages include
 - Create a field in config to save user configured scoring system and use that in score tabulation
 - Implement tap to crossout, tap again to undo in analysis
 - Reimplement counting of score in Analysis
+- Create a class for grid buttons
 
 ### Less immediate To-do
 - Figure out how to detect swiping and fix that as a binding
