@@ -37,16 +37,15 @@ Thus far component pages include
 - Analysis (Navigates back to MainPage)
 
 ## Immediate To-do
-- Fix clunkly swipe gestures on Windows and Android (clunky in different ways)
-- Optimise the button clicks and swipes somehow (was built rushed)
-- Make a picker to allow users to choose timing for simulated boggle game
-- Create a field in config to save a user created time and use that in the timer object
+- Fix the swipe in android which broke by adding a label to be swiped over at the top and bottom
+- Ensure the padding is enough to cover the rounded edges
+- Ensure the picture can be resized to fit the height of the screen automatically
+- Make a picker to allow users to choose timing for simulated boggle game <- JX working on this
 - Make a picker to allow users to choose the number of pts for words of specific lengths
 - Create a field in config to save user configured scoring system and use that in score tabulation
-- Create a field in config for submitted words, and ensure submitted words are pushed there
-- Allow Analysis to import the words into the buttons
 - Implement tap to crossout, tap again to undo in analysis
 - Reimplement counting of score in Analysis
+- Create a class for grid buttons
 
 ### Less immediate To-do
 - Figure out how to detect swiping and fix that as a binding

@@ -11,8 +11,8 @@ public partial class BlitzScreen : ContentPage
     {
         using var stream = await FileSystem.OpenAppPackageFileAsync(Config.dictionaryConfig);
         using var reader = new StreamReader(stream);
-        Config.lexicon = new HashSet<string>(reader.ReadToEnd().Split('\n'));
-        return Config.lexicon;
+        Config.currentDict = new HashSet<string>(reader.ReadToEnd().Split('\n'));
+        return Config.currentDict;
     }
 
     private static async Task<string[][]> Loaddice()
@@ -34,15 +34,20 @@ public partial class BlitzScreen : ContentPage
         InitializeComponent();
 
         Dispatcher.Dispatch(() =>
-        {
-        int[] shuffleArray = Enumerable.Range(0, 16)./*OrderBy(lambda => Guid.NewGuid()).*/ToArray();// creates a unique one-to-one shuffle for the dice
+        {// creates a unique one-to-one shuffle for the dice
+        int[] shuffleArray = Enumerable.Range(0, 16).OrderBy(a=>Config.random.Next()).ToArray();
             for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++)
             {
                 Button button = new()
                 {
                     BackgroundColor = Colors.Navy,
+<<<<<<< HEAD
                     FontSize = 40,
                     Text = Config.currentDice[shuffleArray[i * 4 + j]][/*Config.random.Next() % 6*/0]
+=======
+                    FontSize = 30,
+                    Text = Config.currentDice[shuffleArray[i * 4 + j]][Config.random.Next() % 6]
+>>>>>>> 72ad49d8fa4bc75f7c640fe5edbab9002eb98224
                 };
                 button.Pressed += (object sender, EventArgs e) =>
                 {
@@ -70,9 +75,10 @@ public partial class BlitzScreen : ContentPage
             }
         });
         IDispatcherTimer timer = Dispatcher.CreateTimer();
-        timer.Interval = TimeSpan.FromSeconds(80);
+        timer.Interval = TimeSpan.FromSeconds(Config.blitzTimeConfig);
         timer.Tick += (object sender, EventArgs e) =>
         {
+            Navigation.PushAsync(new AnalysisScreen());
             Submitted.Text = string.Empty;
             foreach (Button child in boardGrid.Children)
             {
@@ -81,7 +87,7 @@ public partial class BlitzScreen : ContentPage
             }
 
             int points = 0;
-            IEnumerable<string> validwords = Config.lexicon.Intersect(words).Where(c => c.Length > 2);
+            IEnumerable<string> validwords = Config.currentDict.Intersect(words).Where(c => c.Length > 2);
             foreach(string word in validwords)
             {
                 switch (word.Length)
@@ -105,6 +111,7 @@ public partial class BlitzScreen : ContentPage
     {
         Submitted.Text = selectedword;
         words.Add(selectedword);
+        Config.submittedWords.Add(selectedword);
         selectedword = string.Empty;
         foreach (Button child in boardGrid.Children)
         {
