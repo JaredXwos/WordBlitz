@@ -10,8 +10,8 @@ public partial class Blitz : ContentPage
     {
         using var stream = await FileSystem.OpenAppPackageFileAsync(Config.DictName);
         using var reader = new StreamReader(stream);
-        Config.Lexicon = new HashSet<string>(reader.ReadToEnd().Split('\n'));
-        return Config.Lexicon;
+        Config.CurrentDict = new HashSet<string>(reader.ReadToEnd().Split('\n'));
+        return Config.CurrentDict;
     }
 
     private static async Task<string[][]> Loaddice()
@@ -78,7 +78,7 @@ public partial class Blitz : ContentPage
             }
 
             int points = 0;
-            IEnumerable<string> validwords = Config.Lexicon.Intersect(words).Where(c => c.Length > 2);
+            IEnumerable<string> validwords = Config.CurrentDict.Intersect(words).Where(c => c.Length > 2);
             foreach(string word in validwords)
             {
                 switch (word.Length)

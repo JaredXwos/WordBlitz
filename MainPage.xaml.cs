@@ -14,7 +14,7 @@ public partial class MainPage : ContentPage
 
     private void OnPlayClicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new Analysis());
+        Navigation.PushAsync(new Blitz());
     }
 }
 
