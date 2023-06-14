@@ -33,15 +33,15 @@ public partial class BlitzScreen : ContentPage
         InitializeComponent();
 
         Dispatcher.Dispatch(() =>
-        {
-        int[] shuffleArray = Enumerable.Range(0, 16)./*OrderBy(lambda => Guid.NewGuid()).*/ToArray();// creates a unique one-to-one shuffle for the dice
+        {// creates a unique one-to-one shuffle for the dice
+        int[] shuffleArray = Enumerable.Range(0, 16).OrderBy(a=>Config.random.Next()).ToArray();
             for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++)
             {
                 Button button = new()
                 {
                     BackgroundColor = Colors.Navy,
                     FontSize = 30,
-                    Text = Config.currentDice[shuffleArray[i * 4 + j]][/*Config.random.Next() % 6*/0]
+                    Text = Config.currentDice[shuffleArray[i * 4 + j]][Config.random.Next() % 6]
                 };
                 button.Pressed += (object sender, EventArgs e) =>
                 {
@@ -69,7 +69,7 @@ public partial class BlitzScreen : ContentPage
             }
         });
         IDispatcherTimer timer = Dispatcher.CreateTimer();
-        timer.Interval = TimeSpan.FromSeconds(80);
+        timer.Interval = TimeSpan.FromSeconds(Config.blitzTimeConfig);
         timer.Tick += (object sender, EventArgs e) =>
         {
             Navigation.PushAsync(new AnalysisScreen());
