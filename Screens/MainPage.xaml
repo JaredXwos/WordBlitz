@@ -11,9 +11,9 @@
             VerticalOptions="Center">
 
             <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="100"
+                Source="title_screen_image.png"
+                SemanticProperties.Description="partially transparent image of a boggle board."
+                HeightRequest="200"
                 HorizontalOptions="Center" />
 
             <Label
@@ -23,15 +23,23 @@
                 HorizontalOptions="Center" />
 
             <Button
-                x:Name="CounterBtn"
+                x:Name="blitzScreenNavButton"
                 Text="Play"
                 FontSize="20"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnPlayClicked"
+                SemanticProperties.Hint="Starts the game"
+                Clicked="OnPlayButtonClicked"
                 HorizontalOptions="Center" />
 
             <Button
-                x:Name="SettingsBtn"
+                x:Name="analysisScreenNavButton"
+                Text="Analysis"
+                FontSize="20"
+                SemanticProperties.Hint="Starts the Analysis"
+                Clicked="OnAnalysisButtonClicked"
+                HorizontalOptions="Center"/>
+
+            <Button
+                x:Name="settingsScreenNavButton"
                 Text="Settings"
                 FontSize="20"
                 SemanticProperties.Hint="Navigates to settings page"
