@@ -60,6 +60,8 @@
                     <x:String>i dont want a background</x:String>
                     <x:String>SuRpRiSe                </x:String>
                     <x:String>Gigachads               </x:String>
+                    <x:String>Scrabble                </x:String>
+                    <!--update "tools/BackgroundMappings" if these names changed--> 
                 </x:Array>
             </Picker.ItemsSource>
         </Picker>

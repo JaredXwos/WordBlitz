@@ -25,12 +25,14 @@ public partial class BlitzScreen : ContentPage
 
     private string selectedword = "";
     private List<string> words = new();
+    private string backgroundPath = BackgroundsMapping.getBackgroundFilename(Config.backgroundConfig);
 
-    public  BlitzScreen()
+    public BlitzScreen()
 	{
         Task.Run(Loaddict).Wait();
         Task.Run(Loaddice).Wait();
         InitializeComponent();
+        blitzScreenBackgroundView.Source = backgroundPath;
 
         Dispatcher.Dispatch(() =>
         {// creates a unique one-to-one shuffle for the dice
@@ -40,8 +42,8 @@ public partial class BlitzScreen : ContentPage
                 Button button = new()
                 {
                     BackgroundColor = Colors.Navy,
-                    FontSize = 30,
-                    Text = Config.currentDice[shuffleArray[i * 4 + j]][Config.random.Next() % 6]
+                    FontSize = 40,
+                    Text = Config.currentDice[shuffleArray[i * 4 + j]][/*Config.random.Next() % 6*/0]
                 };
                 button.Pressed += (object sender, EventArgs e) =>
                 {

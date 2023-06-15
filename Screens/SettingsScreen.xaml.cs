@@ -9,7 +9,7 @@ public partial class SettingsScreen : ContentPage
 		InitializeComponent();
         dictPicker.SelectedItem       = Config.dictionaryConfig;
         dicePicker.SelectedItem       = Config.diceTypeConfig;
-        backgroundPicker.SelectedItem = Config.diceTypeConfig;
+        backgroundPicker.SelectedItem = Config.backgroundConfig;
     }
     private void ConfigUpdate(object sender, EventArgs e)
     {
