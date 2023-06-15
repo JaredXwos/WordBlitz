@@ -142,22 +142,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Screens\BlitzScreen.xaml.cs">
+	  <Compile Update="Screens\BlitzScreen\BlitzScreen.xaml.cs">
 	    <DependentUpon>BlitzScreen.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Screens\SettingsScreen.xaml.cs">
+	  <Compile Update="Screens\Settings\SettingsScreen.xaml.cs">
 	    <DependentUpon>SettingsScreen.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Screens\Analysis.xaml.cs">
+	  <Compile Update="Screens\Analysis\Analysis.xaml.cs">
 	    <DependentUpon>Analysis.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Screens\BlitzScreen.xaml">
+	  <MauiXaml Update="Screens\BlitzScreen\BlitzScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Screens\Analysis.xaml">
+	  <MauiXaml Update="Screens\Analysis\Analysis.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="tools\pagetemplate\pagetemplate.xaml">
