@@ -25,13 +25,14 @@ public partial class BlitzScreen : ContentPage
 
     private string selectedword = "";
     private List<string> words = new();
-    private string backgroundPath = "";
+    private string backgroundPath = BackgroundsMapping.getBackgroundFilename(Config.backgroundConfig);
 
-    public  BlitzScreen()
+    public BlitzScreen()
 	{
         Task.Run(Loaddict).Wait();
         Task.Run(Loaddice).Wait();
         InitializeComponent();
+        blitzScreenBackgroundView.Source = backgroundPath;
 
         Dispatcher.Dispatch(() =>
         {// creates a unique one-to-one shuffle for the dice

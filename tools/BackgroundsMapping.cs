@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace WordBlitz.tools
 {
-    public class BackgroundsMapping
+    public static class BackgroundsMapping
     {
-        private Dictionary<string,string> backgroundToFilenameDict = new Dictionary<string, string>()
+        private static Dictionary<string,string> backgroundToFilenameDict = new Dictionary<string, string>()
         {
             {"Zen"                      , "wooden_study.png"        },
-            {"NOT Zen"                  , ""                        },
+            {"NOT Zen"                  , "not_zen.jpg"             },
             {"Darkmode"                 , ""                        },
             {"Anime"                    , ""                        },
             {"AHHH my eyes"             , ""                        },
@@ -23,7 +23,7 @@ namespace WordBlitz.tools
             //also update settings.xaml if there are changes to the key value of this dict
         };
 
-        public string getBackgroundFilename(string selectedBackgroundSetting)
+        public static string getBackgroundFilename(string selectedBackgroundSetting)
         {
             Console.WriteLine($"{backgroundToFilenameDict[selectedBackgroundSetting]} has been SUMMONNNNED, this message is brought to you by background mappings" );
             return backgroundToFilenameDict[selectedBackgroundSetting];

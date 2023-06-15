@@ -5,6 +5,7 @@
              Title="Blitz">
     <Grid>
         <Image
+            x:Name="blitzScreenBackgroundView"
             Source="wooden_study.png"
             Aspect="AspectFill"/>
         <ContentView

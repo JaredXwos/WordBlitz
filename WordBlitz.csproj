@@ -37,6 +37,7 @@
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiImage Include="Resources\Images\Backgrounds\not_zen.jpg" />
 		<MauiImage Include="Resources\Images\Backgrounds\wooden_study.png" />
 		<MauiImage Include="Resources\Images\Tile_Images\a_tile.png" />
 		<MauiImage Include="Resources\Images\Tile_Images\b_tile.png" />
@@ -82,6 +83,7 @@
 	<ItemGroup>
 	  <None Remove="Resources\Images\a.png" />
 	  <None Remove="Resources\Images\b.png" />
+	  <None Remove="Resources\Images\Backgrounds\not_zen.jpg" />
 	  <None Remove="Resources\Images\c.png" />
 	  <None Remove="Resources\Images\d.png" />
 	  <None Remove="Resources\Images\e.png" />
@@ -156,6 +158,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Screens\Analysis.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="tools\pagetemplate\pagetemplate.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
