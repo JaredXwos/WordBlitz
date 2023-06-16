@@ -36,26 +36,27 @@ Thus far component pages include
 - Config (Navigates back to MainPage)
 - Analysis (Navigates back to MainPage)
 
-## Immediate To-do
-- Fix the swipe in android which broke by adding a label to be swiped over at the top and bottom
-- Ensure the padding is enough to cover the rounded edges
-- Ensure the picture can be resized to fit the height of the screen automatically
-- Make a picker to allow users to choose timing for simulated boggle game <- JX working on this
+## Immediate To-do features
+- Check if a given word exists on the boggle board <- JX working on this
 - Make a picker to allow users to choose the number of pts for words of specific lengths
 - Create a field in config to save user configured scoring system and use that in score tabulation
-- Implement tap to crossout, tap again to undo in analysis
+- Implement tap to crossout, tap again to undo in analysis <- CY working on this
 - Reimplement counting of score in Analysis
-- Create a class for grid buttons
+- Make class for grid buttons initialisation static<- JX working on this
 
-### Less immediate To-do
-- Figure out how to detect swiping and fix that as a binding
+### Less immediate To-do features
+- Figure out how to detect swiping and fix that as a binding <- CY working on this
 - Create a function that can solve a boggle 4x4 given a dictionary
-- Formalise a way to store graphical settings like colours of buttons
+- Make background and tile styles in settings
 - Amend the menu buttons such that they show they are being pressed
-- Create a loading bar XAML
+- Create a loading bar XAML 
 - Figure out how to allow code to load a grid object
 - Make loading of dictionaries truly async
 
+### Bugs
+- Slider blitztime in settings minimum amount needs to be 0
+- Fix the swipe in android which broke by adding a label to be swiped over at the top and bottom <- CY working on this
+- Ensure the title.png can be resized to fit the height of the screen automatically <- CY working on this
 
 # How to get started
 1. Send me your Github username, then accept the request to collaborate

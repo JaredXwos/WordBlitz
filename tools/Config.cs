@@ -8,10 +8,11 @@ namespace WordBlitz.tools
 {
     public static class Config
     {
-        public static string dictionaryConfig = "CSW22.txt";
-        public static string diceTypeConfig = "DiceModern.txt";
-        public static string backgroundConfig = "Zen";
-        public static int    blitzTimeConfig = 60;
+        public static string dictionaryConfig = Preferences.Default.Get("dictionaryConfig","CSW22.txt");
+        public static string diceTypeConfig = Preferences.Default.Get("diceTypeConfig","DiceModern.txt");
+        public static string backgroundConfig = Preferences.Default.Get("backgroundConfig","Zen");
+        public static int    blitzTimeConfig = Int32.Parse(Preferences.Default.Get("blitzTimeConfig","180"));
+
 
         public static Random random = new(Guid.NewGuid().GetHashCode());
 

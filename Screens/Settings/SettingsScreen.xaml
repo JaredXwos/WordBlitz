@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WordBlitz.SettingsScreen"
              Title="Settings">
-    <VerticalStackLayout>
+    <VerticalStackLayout HorizontalOptions="Center" Spacing="25">
         <Label 
             Text="Settings"
             VerticalOptions="Center" 
@@ -52,19 +52,20 @@
             HorizontalTextAlignment="Center">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
-                    <x:String>Zen                     </x:String>
-                    <x:String>NOT Zen                 </x:String>
-                    <x:String>Darkmode                </x:String>
-                    <x:String>Anime                   </x:String>
-                    <x:String>AHHH my eyes            </x:String>
+                    <x:String>Zen</x:String>
+                    <x:String>NOT Zen</x:String>
+                    <x:String>Darkmode</x:String>
+                    <x:String>Anime</x:String>
+                    <x:String>AHHH my eyes</x:String>
                     <x:String>i dont want a background</x:String>
-                    <x:String>SuRpRiSe                </x:String>
-                    <x:String>Gigachads               </x:String>
-                    <x:String>Scrabble                </x:String>
-                    <!--update "tools/BackgroundMappings" if these names changed--> 
+                    <x:String>SuRpRiSe</x:String>
+                    <x:String>Gigachads</x:String>
+                    <x:String>Scrabble</x:String>
+                    <!--update "tools/BackgroundMappings" if these names changed-->
                 </x:Array>
             </Picker.ItemsSource>
         </Picker>
-
+        <Label x:Name ="DurationSliderLabel" Text="Set duration of blitz game" HorizontalOptions="Center" VerticalOptions="Center"/>
+        <Slider Maximum="600" Minimum="0" Value="80" ValueChanged="blitzDurationChanged" VerticalOptions="Center"/>
     </VerticalStackLayout>
 </ContentPage>
