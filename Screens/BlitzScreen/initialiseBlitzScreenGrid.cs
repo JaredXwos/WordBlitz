@@ -7,7 +7,7 @@ using WordBlitz.tools;
 
 namespace WordBlitz.Screens.BlitzScreen
 {
-    public class BlitzScreenGrid
+    public class initialiseBlitzScreenGrid
     {
         private int[] diceShuffleArray = Enumerable.Range(0, 16).OrderBy(lambda => Config.random.Next()).ToArray() /*Enumerable.Repeat(0, 16).ToArray();*/ ;
         private int[] diceOrientationArray = new int[16].Select(lambda => Config.random.Next() % 6).ToArray()/*Enumerable.Repeat(0, 16).ToArray();*/ ;
@@ -16,7 +16,7 @@ namespace WordBlitz.Screens.BlitzScreen
         short rowPointer;
         short colPointer;
         public static BlitzScreenGridButton[,] linkedButtons = new BlitzScreenGridButton[4, 4];
-        public BlitzScreenGrid(ref Grid boardGridParam)
+        public initialiseBlitzScreenGrid(ref Grid boardGridParam)
         {
             boardGrid = boardGridParam;
 

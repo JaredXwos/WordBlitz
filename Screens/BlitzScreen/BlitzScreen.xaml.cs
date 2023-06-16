@@ -35,7 +35,7 @@ public partial class BlitzScreen : ContentPage
         blitzScreenBackgroundView.Source = backgroundPath;
         Preferences.Default.Set("blitzTimeConfig", "180"); // temporarily disabled time slider config
 
-        new BlitzScreenGrid(ref boardGrid);
+        initialiseBlitzScreenGrid initialiseBlitzScreenGridinstance = new initialiseBlitzScreenGrid(ref boardGrid);
 
         IDispatcherTimer timer = Dispatcher.CreateTimer();
         timer.Interval = TimeSpan.FromSeconds(Config.blitzTimeConfig);
@@ -76,11 +76,16 @@ public partial class BlitzScreen : ContentPage
         words.Add(selectedword);
         Config.submittedWords.Add(selectedword);
         selectedword = string.Empty;
+        for (int i  = 0; i < 4; i++) for (int j = 0; j < 4; j++) 
+            {
+                initialiseBlitzScreenGrid.linkedButtons[i, j].unselectThisBlitzScreenGridButton();
+            }
         foreach (Button child in boardGrid.Children)
         {
             child.IsEnabled = true;
             child.BackgroundColor = Colors.Navy;
         }
+        
     }
 
     private void testbutton_Clicked(object sender, EventArgs e) => ((Button)sender).BackgroundColor = Colors.Red;

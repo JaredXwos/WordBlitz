@@ -9,8 +9,8 @@ namespace WordBlitz.Screens.BlitzScreen
 {
     public class BlitzScreenGridButton : Button
     {
-        readonly short rowPosition;
-        readonly short columnPosition;
+        readonly short rowPosition; //shows the row where this button is located
+        readonly short columnPosition; //shows the column where this button is located
         readonly string buttonDisplayLetterValue;
 
         bool isNotBeenSelected = true;
@@ -29,7 +29,7 @@ namespace WordBlitz.Screens.BlitzScreen
             parent = parentParam;
             this.FontSize = 40;
             this.Text = buttonDisplayLetterValue;
-            this.Pressed += (sender, args) => updateAllBlitzScreenGridButtons( rowPosition, columnPosition, ref BlitzScreenGrid.linkedButtons);
+            this.Pressed += (sender, args) => updateAllBlitzScreenGridButtons( rowPosition, columnPosition, ref initialiseBlitzScreenGrid.linkedButtons);
         }
 
         //track button activated

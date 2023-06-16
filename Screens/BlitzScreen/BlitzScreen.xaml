@@ -19,33 +19,15 @@
                 x:Name="gamescreen"
                 HorizontalOptions="Center"
                 VerticalOptions="Center">
-                <Frame
-                    BackgroundColor="Blue"
-                    CornerRadius="10"
-                    Padding="10"
-                    MinimumWidthRequest="320"
-                    MinimumHeightRequest="320"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center">
-                    <Frame
-                        BackgroundColor="SaddleBrown"
-                        CornerRadius="10"
-                        Padding="10"
-                        MinimumWidthRequest="300"
-                        MinimumHeightRequest="300"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center">
-                        <Grid
-                            x:Name="boardGrid"
-                            RowDefinitions="*, *, *, *"
-                            ColumnDefinitions="*, *, *, *"
-                            RowSpacing="5"
-                            ColumnSpacing="5"
-                            HorizontalOptions="Fill"
-                            VerticalOptions="Fill">
-                        </Grid>
-                    </Frame>
-                </Frame>
+                    <Grid
+                        x:Name="boardGrid"
+                        RowDefinitions="*, *, *, *"
+                        ColumnDefinitions="*, *, *, *"
+                        RowSpacing="5"
+                        ColumnSpacing="5"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Fill">
+                    </Grid>
                 <Label
                     x:Name="Submitted"
                     HorizontalOptions="Center"

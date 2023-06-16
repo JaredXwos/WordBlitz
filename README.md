@@ -55,6 +55,7 @@ Thus far component pages include
 
 ### Bugs
 - Slider blitztime in settings minimum amount needs to be 0
+- Slider is broken on android, remove temporary hotfix in bitzscreen.xaml.cs once fixed
 - Fix the swipe in android which broke by adding a label to be swiped over at the top and bottom <- CY working on this
 - Ensure the title.png can be resized to fit the height of the screen automatically <- CY working on this
 
