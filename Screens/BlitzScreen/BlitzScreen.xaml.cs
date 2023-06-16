@@ -23,28 +23,29 @@ public partial class BlitzScreen : ContentPage
         return Config.currentDice;
     }
 
-    private string selectedword = "";
+    public static string selectedword = "";
     private List<string> words = new();
     private string backgroundPath = BackgroundsMapping.getBackgroundFilename(Config.backgroundConfig);
 
-    public BlitzScreen()
+    public BlitzScreen() //contsructor
 	{
         Task.Run(Loaddict).Wait();
         Task.Run(Loaddice).Wait();
         InitializeComponent();
         blitzScreenBackgroundView.Source = backgroundPath;
+        new BlitzScreenGrid(ref boardGrid);
 
-        Dispatcher.Dispatch(() =>
+        /*Dispatcher.Dispatch(() =>
         {   // creates a unique one-to-one shuffle for the dice
-            int[] diceShuffleArray = Enumerable.Range(0, 16).OrderBy(lambda => Config.random.Next()).ToArray()/*Enumerable.Repeat(0, 16).ToArray();*/ ;
-            int[] diceOrientationArray = new int[16].Select(lambda => Config.random.Next() % 6).ToArray()/*Enumerable.Repeat(0, 16).ToArray();*/ ;
+            int[] diceShuffleArray = Enumerable.Range(0, 16).OrderBy(lambda => Config.random.Next()).ToArray()*//*Enumerable.Repeat(0, 16).ToArray();*//* ;
+            int[] diceOrientationArray = new int[16].Select(lambda => Config.random.Next() % 6).ToArray()*//*Enumerable.Repeat(0, 16).ToArray();*//* ;
             for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++)
             {
-                    Button button = new()
-                    {
-                        BackgroundColor = Colors.Navy,
-                        FontSize = 40,
-                        Text = Config.currentDice[diceShuffleArray[i * 4 + j]][diceOrientationArray[i * 4 + j]]
+                Button button = new()
+                {
+                    BackgroundColor = Colors.Navy,
+                    FontSize = 40,
+                    Text = Config.currentDice[diceShuffleArray[i * 4 + j]][diceOrientationArray[i * 4 + j]]
                 };
                 button.Pressed += (object sender, EventArgs e) =>
                 {
@@ -70,7 +71,7 @@ public partial class BlitzScreen : ContentPage
                 
                 boardGrid.Add(button, i, j);
             }
-        });
+        });*/
         IDispatcherTimer timer = Dispatcher.CreateTimer();
         timer.Interval = TimeSpan.FromSeconds(Config.blitzTimeConfig);
         timer.Tick += (object sender, EventArgs e) =>
