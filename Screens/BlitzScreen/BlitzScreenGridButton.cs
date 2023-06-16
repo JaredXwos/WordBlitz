@@ -37,6 +37,7 @@ namespace WordBlitz.Screens.BlitzScreen
         {
             isNotBeenSelected = false;
             updateThisBlitzScreenGridButton(rowPosition, columnPosition);
+            BlitzScreen.selectedword += buttonDisplayLetterValue;
         }
 
         //track button unactivated

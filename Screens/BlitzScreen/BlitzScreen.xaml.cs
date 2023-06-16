@@ -23,7 +23,7 @@ public partial class BlitzScreen : ContentPage
         return Config.currentDice;
     }
 
-    private string selectedword = "";
+    public static string selectedword = "";
     private List<string> words = new();
     private string backgroundPath = BackgroundsMapping.getBackgroundFilename(Config.backgroundConfig);
 
