@@ -1,4 +1,6 @@
-﻿namespace WordBlitz;
+﻿using WordBlitz.Screens.BlitzScreen;
+
+namespace WordBlitz;
 
 public partial class MainPage : ContentPage
 {
