@@ -38,9 +38,7 @@ Thus far component pages include
 
 ## Immediate To-do
 - Fix the swipe in android which broke by adding a label to be swiped over at the top and bottom
-- Ensure the padding is enough to cover the rounded edges
 - Ensure the picture can be resized to fit the height of the screen automatically
-- Make a picker to allow users to choose timing for simulated boggle game <- JX working on this
 - Make a picker to allow users to choose the number of pts for words of specific lengths
 - Create a field in config to save user configured scoring system and use that in score tabulation
 - Implement tap to crossout, tap again to undo in analysis

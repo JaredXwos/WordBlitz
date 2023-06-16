@@ -10,6 +10,10 @@ public partial class SettingsScreen : ContentPage
         dictPicker.SelectedItem       = Config.dictionaryConfig;
         dicePicker.SelectedItem       = Config.diceTypeConfig;
         backgroundPicker.SelectedItem = Config.backgroundConfig;
+        Dispatcher.Dispatch(new Action(() =>
+        {
+            DurationSliderLabel.Text = "Set duration of blitz game: " + Config.blitzTimeConfig.ToString();
+        }));
     }
     private void ConfigUpdate(object sender, EventArgs e)
     {
@@ -23,7 +27,12 @@ public partial class SettingsScreen : ContentPage
                 Config.diceTypeConfig = (string)picker.ItemsSource[selectedIndex]; break;
             case "backgroundPicker":
                 Config.backgroundConfig = (string)picker.ItemsSource[selectedIndex]; break;
-                default: break;
+            default: break;
         }
+    }
+    private void blitzDurationChanged(object sender, ValueChangedEventArgs e)
+    {
+        Config.blitzTimeConfig = (int)e.NewValue;
+        DurationSliderLabel.Text = "Set duration of blitz game: " + Config.blitzTimeConfig.ToString();
     }
 }

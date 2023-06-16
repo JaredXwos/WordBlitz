@@ -118,4 +118,6 @@ public partial class BlitzScreen : ContentPage
     }
 
     private void testbutton_Clicked(object sender, EventArgs e) => ((Button)sender).BackgroundColor = Colors.Red;
+
+    
 }
