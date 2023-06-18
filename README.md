@@ -42,6 +42,7 @@ Thus far component pages include
 - Implement tap to crossout, tap again to undo in analysis <- CY working on this
 - Reimplement counting of score in Analysis
 - Check if the new blitzgrid initialisation is satisfactory and delete redundant code <- CY check
+- Make loading of dictionaries truly async <- JX working on this
 
 ### Less immediate To-do features
 - Figure out how to detect swiping and fix that as a binding <- CY working on this
@@ -50,7 +51,6 @@ Thus far component pages include
 - Amend the menu buttons such that they show they are being pressed
 - Create a loading bar XAML 
 - Figure out how to allow code to load a grid object
-- Make loading of dictionaries truly async
 
 ### Bugs
 - Slider blitztime in settings minimum amount needs to be 0

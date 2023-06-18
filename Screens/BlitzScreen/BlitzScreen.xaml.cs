@@ -29,53 +29,19 @@ public partial class BlitzScreen : ContentPage
 
     public BlitzScreen() //contsructor
 	{
-        Task.Run(Loaddict).Wait();
-        Task.Run(Loaddice).Wait();
+        Task dictloading = Loaddict();
+        Task diceloading = Loaddice();
+
         InitializeComponent();
         blitzScreenBackgroundView.Source = backgroundPath;
+        diceloading.Wait();
         BlitzScreenGrid.InitialiseBoard(boardGrid);
 
-        /*Dispatcher.Dispatch(() =>
-        {   // creates a unique one-to-one shuffle for the dice
-            int[] diceShuffleArray = Enumerable.Range(0, 16).OrderBy(lambda => Config.random.Next()).ToArray()*//*Enumerable.Repeat(0, 16).ToArray();*//* ;
-            int[] diceOrientationArray = new int[16].Select(lambda => Config.random.Next() % 6).ToArray()*//*Enumerable.Repeat(0, 16).ToArray();*//* ;
-            for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++)
-            {
-                Button button = new()
-                {
-                    BackgroundColor = Colors.Navy,
-                    FontSize = 40,
-                    Text = Config.currentDice[diceShuffleArray[i * 4 + j]][diceOrientationArray[i * 4 + j]]
-                };
-                button.Pressed += (object sender, EventArgs e) =>
-                {
-                    Button button = (Button)sender;
-                    if (button.IsEnabled)
-                    {
-                        selectedword += button.Text;
-                        button.BackgroundColor = Colors.Black;
-                        foreach (Button child in boardGrid.Children) if(child.BackgroundColor != Colors.Black) child.IsEnabled = true;
-                        foreach (Button child in boardGrid.Children.Where(c => 
-                            boardGrid.GetRow(c) < boardGrid.GetRow(button) - 1 ||
-                            boardGrid.GetRow(c) > boardGrid.GetRow(button) + 1 ||
-                            boardGrid.GetColumn(c) < boardGrid.GetColumn(button) - 1 ||
-                            boardGrid.GetColumn(c) > boardGrid.GetColumn(button) + 1
-                        )) child.IsEnabled = false;
-                    }
-                };
-                button.Released += (object sender, EventArgs e) =>
-                {
-                    Button button = (Button)sender;
-                    if (selectedword != "") button.IsEnabled = false;
-                };
-                
-                boardGrid.Add(button, i, j);
-            }
-        });*/
         IDispatcherTimer timer = Dispatcher.CreateTimer();
         timer.Interval = TimeSpan.FromSeconds(Config.blitzTimeConfig);
         timer.Tick += (object sender, EventArgs e) =>
         {
+            dictloading.Wait();
             Navigation.PushAsync(new AnalysisScreen());
             Submitted.Text = string.Empty;
             foreach (Button child in boardGrid.Children)
