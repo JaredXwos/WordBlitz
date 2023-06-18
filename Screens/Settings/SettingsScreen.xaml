@@ -66,6 +66,6 @@
             </Picker.ItemsSource>
         </Picker>
         <Label x:Name ="DurationSliderLabel" Text="Set duration of blitz game" HorizontalOptions="Center" VerticalOptions="Center"/>
-        <Slider Maximum="600" Minimum="0" Value="80" ValueChanged="blitzDurationChanged" VerticalOptions="Center"/>
+        <Slider Maximum="600" Minimum="1" Value="80" ValueChanged="blitzDurationChanged" VerticalOptions="Center"/>
     </VerticalStackLayout>
 </ContentPage>
