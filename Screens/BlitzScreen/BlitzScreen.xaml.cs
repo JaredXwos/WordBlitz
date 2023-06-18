@@ -7,21 +7,7 @@ namespace WordBlitz.Screens.BlitzScreen;
 
 public partial class BlitzScreen : ContentPage
 {
-    private static async Task<HashSet<string>> Loaddict()
-    {
-        using var stream = await FileSystem.OpenAppPackageFileAsync(Config.dictionaryConfig);
-        using var reader = new StreamReader(stream);
-        Config.currentDict = new HashSet<string>(reader.ReadToEnd().Split('\n'));
-        return Config.currentDict;
-    }
-
-    private static async Task<string[][]> Loaddice()
-    {
-        using var stream = await FileSystem.OpenAppPackageFileAsync(Config.diceTypeConfig);
-        using var reader = new StreamReader(stream);
-        Config.currentDice = reader.ReadToEnd().Split('\n').Select(s=>s.Split(' ').Select(r=>r.Trim()).ToArray()).ToArray();
-        return Config.currentDice;
-    }
+    
 
     public static string selectedword = "";
     private List<string> words = new();
@@ -29,19 +15,16 @@ public partial class BlitzScreen : ContentPage
 
     public BlitzScreen() //contsructor
 	{
-        Task dictloading = Loaddict();
-        Task diceloading = Loaddice();
-
         InitializeComponent();
         blitzScreenBackgroundView.Source = backgroundPath;
-        diceloading.Wait();
+        Global.Diceloader.Wait();
         BlitzScreenGrid.InitialiseBoard(boardGrid);
 
         IDispatcherTimer timer = Dispatcher.CreateTimer();
         timer.Interval = TimeSpan.FromSeconds(Config.blitzTimeConfig);
         timer.Tick += (object sender, EventArgs e) =>
         {
-            dictloading.Wait();
+            Global.Dictloader.Wait();
             Navigation.PushAsync(new AnalysisScreen());
             Submitted.Text = string.Empty;
             foreach (Button child in boardGrid.Children)
@@ -51,7 +34,7 @@ public partial class BlitzScreen : ContentPage
             }
 
             int points = 0;
-            IEnumerable<string> validwords = Config.currentDict.Intersect(words).Where(c => c.Length > 2);
+            IEnumerable<string> validwords = Global.currentDict.Intersect(words).Where(c => c.Length > 2);
             foreach(string word in validwords)
             {
                 switch (word.Length)
@@ -75,7 +58,7 @@ public partial class BlitzScreen : ContentPage
     {
         Submitted.Text = selectedword;
         words.Add(selectedword);
-        Config.submittedWords.Add(selectedword);
+        Global.submittedWords.Add(selectedword);
         selectedword = string.Empty;
         foreach (Button child in boardGrid.Children)
         {

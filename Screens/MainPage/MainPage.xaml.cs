@@ -1,5 +1,5 @@
 ﻿using WordBlitz.Screens.BlitzScreen;
-
+using WordBlitz.tools;
 namespace WordBlitz;
 
 public partial class MainPage : ContentPage
@@ -7,6 +7,8 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
+        Global.Dictloader.Start();
+        Global.Diceloader.Start();
 	}
 
     private async void OnPlayButtonClicked(object sender, EventArgs e)

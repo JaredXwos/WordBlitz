@@ -9,8 +9,8 @@ namespace WordBlitz.Screens.BlitzScreen
 {
     public class BlitzScreenGrid
     {
-        private static readonly int[] diceShuffleArray = Enumerable.Range(0, 16).OrderBy(lambda => Config.random.Next()).ToArray();
-        private static readonly int[] diceOrientationArray = new int[16].Select(lambda => Config.random.Next() % 6).ToArray();
+        private static readonly int[] diceShuffleArray = Enumerable.Range(0, 16).OrderBy(lambda => Global.random.Next()).ToArray();
+        private static readonly int[] diceOrientationArray = new int[16].Select(lambda => Global.random.Next() % 6).ToArray();
         static internal void InitialiseBoard(Grid board)
         {
             for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++)
@@ -19,7 +19,7 @@ namespace WordBlitz.Screens.BlitzScreen
                 {
                     BackgroundColor = Colors.Navy,
                     FontSize = 40,
-                    Text = Config.currentDice[diceShuffleArray[i * 4 + j]][diceOrientationArray[i * 4 + j]]
+                    Text = Global.currentDice[diceShuffleArray[i * 4 + j]][diceOrientationArray[i * 4 + j]]
                 };
                 button.Pressed += OnButtonPressed;
                 button.Released += OnButtonReleased;
@@ -32,7 +32,7 @@ namespace WordBlitz.Screens.BlitzScreen
             if (button.IsEnabled)
             {
                 Grid board = (Grid) button.Parent;
-                Config.selectedWord += button.Text;
+                Global.selectedWord += button.Text;
                 button.BackgroundColor = Colors.Black;
                 foreach (Button child in board.Children) if (child.BackgroundColor != Colors.Black) child.IsEnabled = true;
                 foreach (Button child in board.Children.Where(c =>
@@ -47,7 +47,7 @@ namespace WordBlitz.Screens.BlitzScreen
         private static void OnButtonReleased(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            if (Config.selectedWord != "") button.IsEnabled = false;
+            if (Global.selectedWord != "") button.IsEnabled = false;
         }
     }
 

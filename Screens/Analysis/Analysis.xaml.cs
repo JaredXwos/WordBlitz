@@ -7,7 +7,7 @@ public partial class AnalysisScreen : ContentPage
     public AnalysisScreen()
 	{
         InitializeComponent();
-		Dispatcher.Dispatch(()=> { foreach (string word in Config.submittedWords) Display.Add(new Button { Text = word }); });
+		Dispatcher.Dispatch(()=> { foreach (string word in Global.submittedWords) Display.Add(new Button { Text = word }); });
 		
 	}
 }
