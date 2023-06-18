@@ -29,7 +29,7 @@ namespace WordBlitz.Screens.BlitzScreen
             parent = parentParam;
             this.FontSize = 40;
             this.Text = buttonDisplayLetterValue;
-            this.Pressed += (sender, args) => updateAllBlitzScreenGridButtons( rowPosition, columnPosition, ref BlitzScreenGrid.linkedButtons);
+            //this.Pressed += (sender, args) => updateAllBlitzScreenGridButtons( rowPosition, columnPosition, ref BlitzScreenGrid.linkedButtons);
         }
 
         //track button activated

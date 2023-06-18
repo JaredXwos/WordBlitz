@@ -33,7 +33,7 @@ public partial class BlitzScreen : ContentPage
         Task.Run(Loaddice).Wait();
         InitializeComponent();
         blitzScreenBackgroundView.Source = backgroundPath;
-        new BlitzScreenGrid(ref boardGrid);
+        BlitzScreenGrid.InitialiseBoard(boardGrid);
 
         /*Dispatcher.Dispatch(() =>
         {   // creates a unique one-to-one shuffle for the dice

@@ -46,7 +46,7 @@ public partial class SettingsScreen : ContentPage
     }
     private void blitzDurationChanged(object sender, ValueChangedEventArgs e)
     {
-        Config.blitzTimeConfig = (int)e.NewValue;
+        Config.blitzTimeConfig = (int) e.NewValue;
         Preferences.Default.Set("blitzTimeConfig", Config.blitzTimeConfig);
         DurationSliderLabel.Text = "Set duration of blitz game: " + Config.blitzTimeConfig.ToString();
     }
