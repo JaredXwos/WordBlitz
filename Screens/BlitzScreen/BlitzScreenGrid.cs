@@ -7,19 +7,19 @@ using WordBlitz.tools;
 
 namespace WordBlitz.Screens.BlitzScreen
 {
-    public class BlitzScreenGrid
+    public static class BlitzScreenGrid
     {
-        private static readonly int[] diceShuffleArray = Enumerable.Range(0, 16).OrderBy(lambda => Global.random.Next()).ToArray();
-        private static readonly int[] diceOrientationArray = new int[16].Select(lambda => Global.random.Next() % 6).ToArray();
         static internal void InitialiseBoard(Grid board)
         {
+            int[] diceShuffleArray = Enumerable.Range(0, 16).OrderBy(lambda => Global.random.Next()).ToArray();
+            int[] diceOrientationArray = new int[16].Select(lambda => Global.random.Next() % 6).ToArray();
             for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++)
             {
                 Button button = new()
                 {
                     BackgroundColor = Colors.Navy,
                     FontSize = 40,
-                    Text = Global.currentDice[diceShuffleArray[i * 4 + j]][diceOrientationArray[i * 4 + j]]
+                    Text = Global.Diceloader.dice[diceShuffleArray[i * 4 + j]][diceOrientationArray[i * 4 + j]]
                 };
                 button.Pressed += OnButtonPressed;
                 button.Released += OnButtonReleased;
@@ -43,7 +43,6 @@ namespace WordBlitz.Screens.BlitzScreen
                 )) child.IsEnabled = false;
             }
         }
-
         private static void OnButtonReleased(object sender, EventArgs e)
         {
             Button button = (Button)sender;

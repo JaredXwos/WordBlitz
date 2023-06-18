@@ -34,7 +34,7 @@ public partial class BlitzScreen : ContentPage
             }
 
             int points = 0;
-            IEnumerable<string> validwords = Global.currentDict.Intersect(words).Where(c => c.Length > 2);
+            IEnumerable<string> validwords = Global.Dictloader.dict.Intersect(words).Where(c => c.Length > 2);
             foreach(string word in validwords)
             {
                 switch (word.Length)

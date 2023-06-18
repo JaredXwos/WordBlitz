@@ -14,27 +14,26 @@ namespace WordBlitz.tools
         public static int    blitzTimeConfig = Preferences.Default.Get("blitzTimeConfig",180);
     }
 
-    public class Global
+    public static class Global
     {
         public readonly static Random random = new(Guid.NewGuid().GetHashCode());
-        public readonly static Dictloading Dictloader = new();
-        public readonly static Diceloading Diceloader = new();
+        public readonly static Dict Dictloader = new();
+        public readonly static Dice Diceloader = new();
 
-        public static HashSet<string> currentDict = new();
-        public static string[][] currentDice = new string[16][];
         public static string selectedWord = "";
         public static List<string> submittedWords = new();
     }
-    public class Dictloading
+    public class Dict
     {
         private Task<bool> task;
+        public HashSet<string> dict = new();
         public void Start()
         {
             task = new(() =>
             {
                 using var stream = FileSystem.OpenAppPackageFileAsync(Config.dictionaryConfig);
                 using var reader = new StreamReader(stream.Result);
-                Global.currentDict = new HashSet<string>(reader.ReadToEnd().Split('\n'));
+                dict = new HashSet<string>(reader.ReadToEnd().Split('\n'));
                 return true;
             });
             task.Start();
@@ -42,16 +41,17 @@ namespace WordBlitz.tools
         public void Wait() { task.Wait(); }
     }
 
-    public class Diceloading
+    public class Dice
     {
         private Task<bool> task;
+        public string[][] dice = new string[16][];
         public void Start()
         {
             task = new(() =>
             {
                 using var stream = FileSystem.OpenAppPackageFileAsync(Config.diceTypeConfig);
                 using var reader = new StreamReader(stream.Result);
-                Global.currentDice = reader.ReadToEnd().Split('\n').Select(s => s.Split(' ').Select(r => r.Trim()).ToArray()).ToArray();
+                dice = reader.ReadToEnd().Split('\n').Select(s => s.Split(' ').Select(r => r.Trim()).ToArray()).ToArray();
                 return true;
             });
             task.Start();
