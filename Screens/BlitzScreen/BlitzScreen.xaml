@@ -13,7 +13,6 @@
             VerticalOptions="Center">
             <ContentView.GestureRecognizers>
                 <SwipeGestureRecognizer Direction="Left,Right" Swiped="OnSwiped" Threshold="40"/>
-                <SwipeGestureRecognizer Direction="Up,Down" Swiped="OnSwiped" Threshold="40"/>
             </ContentView.GestureRecognizers>
             <VerticalStackLayout
                 x:Name="gamescreen"

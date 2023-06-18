@@ -56,14 +56,17 @@ public partial class BlitzScreen : ContentPage
 
     private void OnSwiped(object sender, SwipedEventArgs e)
     {
-        Submitted.Text = Global.selectedWord;
-        words.Add(Global.selectedWord);
-        Global.submittedWords.Add(Global.selectedWord);
-        Global.selectedWord = string.Empty;
-        foreach (Button child in boardGrid.Children)
+        if(Global.selectedWord != "")
         {
-            child.IsEnabled = true;
-            child.BackgroundColor = Colors.Navy;
+            Submitted.Text = Global.selectedWord;
+            words.Add(Global.selectedWord);
+            Global.submittedWords.Add(Global.selectedWord);
+            Global.selectedWord = string.Empty;
+            foreach (Button child in boardGrid.Children)
+            {
+                child.IsEnabled = true;
+                child.BackgroundColor = Colors.Navy;
+            }
         }
     }
     private void testbutton_Clicked(object sender, EventArgs e) => ((Button)sender).BackgroundColor = Colors.Red;
