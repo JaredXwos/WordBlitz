@@ -37,12 +37,11 @@ Thus far component pages include
 - Analysis (Navigates back to MainPage)
 
 ## Immediate To-do features
-- Check if a given word exists on the boggle board <- JX working on this
 - Make a picker to allow users to choose the number of pts for words of specific lengths
 - Create a field in config to save user configured scoring system and use that in score tabulation
 - Implement tap to crossout, tap again to undo in analysis <- CY working on this
 - Reimplement counting of score in Analysis
-- Make class for grid buttons initialisation static<- JX working on this
+- Check if the new blitzgrid initialisation is satisfactory and delete redundant code <- CY check
 
 ### Less immediate To-do features
 - Figure out how to detect swiping and fix that as a binding <- CY working on this

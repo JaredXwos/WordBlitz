@@ -14,7 +14,7 @@ namespace WordBlitz.tools
         public static int    blitzTimeConfig = Preferences.Default.Get("blitzTimeConfig",180);
 
 
-        public static Random random = new(Guid.NewGuid().GetHashCode());
+        public static readonly Random random = new(Guid.NewGuid().GetHashCode());
 
         public static HashSet<string> currentDict = new();
         public static string[][] currentDice = new string[16][];
