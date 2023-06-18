@@ -42,13 +42,12 @@ Thus far component pages include
 - Implement tap to crossout, tap again to undo in analysis <- CY working on this
 - Reimplement counting of score in Analysis
 - Check if the new blitzgrid initialisation is satisfactory and delete redundant code <- CY check
-- Make loading of dictionaries truly async <- JX working on this
 
 ### Less immediate To-do features
 - Figure out how to detect swiping and fix that as a binding <- CY working on this
 - Create a function that can solve a boggle 4x4 given a dictionary
 - Make background and tile styles in settings
-- Amend the menu buttons such that they show they are being pressed
+- Enable button backtracking
 - Create a loading bar XAML 
 - Figure out how to allow code to load a grid object
 

@@ -8,8 +8,6 @@ namespace WordBlitz.Screens.BlitzScreen;
 public partial class BlitzScreen : ContentPage
 {
     
-
-    public static string selectedword = "";
     private List<string> words = new();
     private string backgroundPath = BackgroundsMapping.getBackgroundFilename(Config.backgroundConfig);
 
@@ -18,13 +16,15 @@ public partial class BlitzScreen : ContentPage
         InitializeComponent();
         blitzScreenBackgroundView.Source = backgroundPath;
         Global.Diceloader.Wait();
-        BlitzScreenGrid.InitialiseBoard(boardGrid);
+        //BlitzScreenGrid.InitialiseBoard(boardGrid);
+        Dispatcher.Dispatch(() => BlitzScreenGrid.InitialiseBoard(boardGrid));
 
         IDispatcherTimer timer = Dispatcher.CreateTimer();
         timer.Interval = TimeSpan.FromSeconds(Config.blitzTimeConfig);
         timer.Tick += (object sender, EventArgs e) =>
         {
             Global.Dictloader.Wait();
+            Global.selectedWord = "";
             Navigation.PushAsync(new AnalysisScreen());
             Submitted.Text = string.Empty;
             foreach (Button child in boardGrid.Children)
@@ -34,7 +34,7 @@ public partial class BlitzScreen : ContentPage
             }
 
             int points = 0;
-            IEnumerable<string> validwords = Global.Dictloader.dict.Intersect(words).Where(c => c.Length > 2);
+            IEnumerable<string> validwords = Global.Dictloader.dict.Intersect(Global.submittedWords).Where(c => c.Length > 2);
             foreach(string word in validwords)
             {
                 switch (word.Length)
@@ -56,17 +56,16 @@ public partial class BlitzScreen : ContentPage
 
     private void OnSwiped(object sender, SwipedEventArgs e)
     {
-        Submitted.Text = selectedword;
-        words.Add(selectedword);
-        Global.submittedWords.Add(selectedword);
-        selectedword = string.Empty;
+        Submitted.Text = Global.selectedWord;
+        words.Add(Global.selectedWord);
+        Global.submittedWords.Add(Global.selectedWord);
+        Global.selectedWord = string.Empty;
         foreach (Button child in boardGrid.Children)
         {
             child.IsEnabled = true;
             child.BackgroundColor = Colors.Navy;
         }
     }
-
     private void testbutton_Clicked(object sender, EventArgs e) => ((Button)sender).BackgroundColor = Colors.Red;
 
     
