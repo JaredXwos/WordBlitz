@@ -26,12 +26,16 @@ public partial class SettingsScreen : ContentPage
             {
                 Config.dictionaryConfig = (string)picker.ItemsSource[selectedIndex];
                 Preferences.Default.Set("dictionaryConfig", Config.dictionaryConfig);
+                Dispatcher.Dispatch(Dict.Wait);
+                Dict.Start();
                 break;
             }
             case "dicePicker":
             {
                 Config.diceTypeConfig = (string)picker.ItemsSource[selectedIndex];
                 Preferences.Default.Set("diceTypeConfig", Config.diceTypeConfig);
+                Dispatcher.Dispatch(Dice.Wait);
+                Dice.Start();
                 break;
             }
                 

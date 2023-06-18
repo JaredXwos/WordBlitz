@@ -19,7 +19,7 @@ namespace WordBlitz.Screens.BlitzScreen
                 {
                     BackgroundColor = Colors.Navy,
                     FontSize = 40,
-                    Text = Global.Diceloader.dice[diceShuffleArray[i * 4 + j]][diceOrientationArray[i * 4 + j]]
+                    Text = Dice.dice[diceShuffleArray[i * 4 + j]][diceOrientationArray[i * 4 + j]]
                 };
                 button.Pressed += OnButtonPressed;
                 button.Released += OnButtonReleased;

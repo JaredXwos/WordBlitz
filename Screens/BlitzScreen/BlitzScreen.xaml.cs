@@ -7,15 +7,13 @@ namespace WordBlitz.Screens.BlitzScreen;
 
 public partial class BlitzScreen : ContentPage
 {
-    
-    private List<string> words = new();
     private string backgroundPath = BackgroundsMapping.getBackgroundFilename(Config.backgroundConfig);
 
     public BlitzScreen() //contsructor
 	{
         InitializeComponent();
         blitzScreenBackgroundView.Source = backgroundPath;
-        Global.Diceloader.Wait();
+        Dice.Wait();
         //BlitzScreenGrid.InitialiseBoard(boardGrid);
         Dispatcher.Dispatch(() => BlitzScreenGrid.InitialiseBoard(boardGrid));
 
@@ -23,7 +21,7 @@ public partial class BlitzScreen : ContentPage
         timer.Interval = TimeSpan.FromSeconds(Config.blitzTimeConfig);
         timer.Tick += (object sender, EventArgs e) =>
         {
-            Global.Dictloader.Wait();
+            Dict.Wait();
             Global.selectedWord = "";
             Navigation.PushAsync(new AnalysisScreen());
             Submitted.Text = string.Empty;
@@ -34,7 +32,7 @@ public partial class BlitzScreen : ContentPage
             }
 
             int points = 0;
-            IEnumerable<string> validwords = Global.Dictloader.dict.Intersect(Global.submittedWords).Where(c => c.Length > 2);
+            IEnumerable<string> validwords = Dict.dict.Intersect(Global.submittedWords).Where(c => c.Length > 2);
             foreach(string word in validwords)
             {
                 switch (word.Length)
@@ -49,7 +47,7 @@ public partial class BlitzScreen : ContentPage
                 Submitted.Text += word;
                 Submitted.Text += ' ';
             }
-            testbutton.Text = (points - words.Count + validwords.Count()).ToString();
+            testbutton.Text = (points - Global.submittedWords.Count + validwords.Count()).ToString();
         };
         timer.Start();
     }
@@ -59,7 +57,6 @@ public partial class BlitzScreen : ContentPage
         if(Global.selectedWord != "")
         {
             Submitted.Text = Global.selectedWord;
-            words.Add(Global.selectedWord);
             Global.submittedWords.Add(Global.selectedWord);
             Global.selectedWord = string.Empty;
             foreach (Button child in boardGrid.Children)

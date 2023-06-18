@@ -17,17 +17,14 @@ namespace WordBlitz.tools
     public static class Global
     {
         public readonly static Random random = new(Guid.NewGuid().GetHashCode());
-        public readonly static Dict Dictloader = new();
-        public readonly static Dice Diceloader = new();
-
         public static string selectedWord = "";
         public static List<string> submittedWords = new();
     }
-    public class Dict
+    public static class Dict
     {
-        private Task<bool> task;
-        public HashSet<string> dict = new();
-        public void Start()
+        private static Task<bool> task;
+        public static HashSet<string> dict = new();
+        public static void Start()
         {
             task = new(() =>
             {
@@ -38,14 +35,14 @@ namespace WordBlitz.tools
             });
             task.Start();
         }
-        public void Wait() { task.Wait(); }
+        public static void Wait() { task.Wait(); }
     }
 
-    public class Dice
+    public static class Dice
     {
-        private Task<bool> task;
-        public string[][] dice = new string[16][];
-        public void Start()
+        private static Task<bool> task;
+        public static string[][] dice = new string[16][];
+        public static void Start()
         {
             task = new(() =>
             {
@@ -56,6 +53,6 @@ namespace WordBlitz.tools
             });
             task.Start();
         }
-        public void Wait() { task.Wait(); }
+        public static void Wait() { task.Wait(); }
     }
 }

@@ -7,8 +7,8 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
-        Global.Dictloader.Start();
-        Global.Diceloader.Start();
+        Dict.Start();
+        Dice.Start();
 	}
 
     private async void OnPlayButtonClicked(object sender, EventArgs e)
