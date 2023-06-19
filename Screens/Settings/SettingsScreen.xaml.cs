@@ -26,12 +26,16 @@ public partial class SettingsScreen : ContentPage
             {
                 Config.dictionaryConfig = (string)picker.ItemsSource[selectedIndex];
                 Preferences.Default.Set("dictionaryConfig", Config.dictionaryConfig);
+                Dispatcher.Dispatch(Dict.Wait);
+                Dict.Start();
                 break;
             }
             case "dicePicker":
             {
                 Config.diceTypeConfig = (string)picker.ItemsSource[selectedIndex];
                 Preferences.Default.Set("diceTypeConfig", Config.diceTypeConfig);
+                Dispatcher.Dispatch(Dice.Wait);
+                Dice.Start();
                 break;
             }
                 
@@ -46,7 +50,7 @@ public partial class SettingsScreen : ContentPage
     }
     private void blitzDurationChanged(object sender, ValueChangedEventArgs e)
     {
-        Config.blitzTimeConfig = (int)e.NewValue;
+        Config.blitzTimeConfig = (int) e.NewValue;
         Preferences.Default.Set("blitzTimeConfig", Config.blitzTimeConfig);
         DurationSliderLabel.Text = "Set duration of blitz game: " + Config.blitzTimeConfig.ToString();
     }

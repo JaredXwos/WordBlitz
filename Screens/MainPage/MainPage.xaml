@@ -3,50 +3,54 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WordBlitz.MainPage"
              Shell.NavBarIsVisible="False">
-
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
-
+    <FlexLayout Direction="Column">
+        <Grid RowDefinitions="*,auto" Padding="50">
             <Image
+                Grid.Row="0"
+                VerticalOptions="Center"
+                Aspect="AspectFit"
+                MaximumHeightRequest="400"
                 Source="title_screen_image.png"
                 SemanticProperties.Description="partially transparent image of a boggle board."
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Word Blitz"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-
-            <Button
-                x:Name="blitzScreenNavButton"
-                Text="Play"
-                FontSize="20"
-                SemanticProperties.Hint="Starts the game"
-                Clicked="OnPlayButtonClicked"
-                HorizontalOptions="Center" />
-
-            <Button
-                x:Name="analysisScreenNavButton"
-                Text="Analysis"
-                FontSize="20"
-                SemanticProperties.Hint="Starts the Analysis"
-                Clicked="OnAnalysisButtonClicked"
                 HorizontalOptions="Center"/>
 
-            <Button
-                x:Name="settingsScreenNavButton"
-                Text="Settings"
-                FontSize="20"
-                SemanticProperties.Hint="Navigates to settings page"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
+            <VerticalStackLayout 
+                Grid.Row="1"
+                Spacing="25"
+                Padding="30,0"
+                VerticalOptions="Center">
 
-        </VerticalStackLayout>
-    </ScrollView>
+                <Label
+                    Text="Word Blitz"
+                    SemanticProperties.HeadingLevel="Level1"
+                    FontSize="32"
+                    HorizontalOptions="Center" />
 
+                <Button
+                    x:Name="blitzScreenNavButton"
+                    Text="Play"
+                    FontSize="20"
+                    SemanticProperties.Hint="Starts the game"
+                    Clicked="OnPlayButtonClicked"
+                    HorizontalOptions="Center" />
+
+                <Button
+                    x:Name="analysisScreenNavButton"
+                    Text="Analysis"
+                    FontSize="20"
+                    SemanticProperties.Hint="Starts the Analysis"
+                    Clicked="OnAnalysisButtonClicked"
+                    HorizontalOptions="Center"/>
+
+                <Button
+                    x:Name="settingsScreenNavButton"
+                    Text="Settings"
+                    FontSize="20"
+                    SemanticProperties.Hint="Navigates to settings page"
+                    Clicked="OnCounterClicked"
+                    HorizontalOptions="Center" />
+
+            </VerticalStackLayout>
+        </Grid>
+    </FlexLayout>
 </ContentPage>

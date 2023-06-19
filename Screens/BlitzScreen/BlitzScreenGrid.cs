@@ -7,40 +7,47 @@ using WordBlitz.tools;
 
 namespace WordBlitz.Screens.BlitzScreen
 {
-    public class BlitzScreenGrid
+    public static class BlitzScreenGrid
     {
-        private int[] diceShuffleArray = Enumerable.Range(0, 16).OrderBy(lambda => Config.random.Next()).ToArray() /*Enumerable.Repeat(0, 16).ToArray();*/ ;
-        private int[] diceOrientationArray = new int[16].Select(lambda => Config.random.Next() % 6).ToArray()/*Enumerable.Repeat(0, 16).ToArray();*/ ;
-
-        Grid boardGrid;
-        short rowPointer;
-        short colPointer;
-        public static BlitzScreenGridButton[,] linkedButtons = new BlitzScreenGridButton[4, 4];
-        public BlitzScreenGrid(ref Grid boardGridParam)
+        static internal void InitialiseBoard(Grid board)
         {
-            boardGrid = boardGridParam;
-
-            for (short i = 0; i < 4; i++) for (short j = 0; j < 4; j++)
+            int[] diceShuffleArray = Enumerable.Range(0, 16).OrderBy(lambda => Global.random.Next()).ToArray();
+            int[] diceOrientationArray = new int[16].Select(lambda => Global.random.Next() % 6).ToArray();
+            for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++)
+            {
+                Button button = new()
                 {
-                    string text = Config.currentDice[diceShuffleArray[i * 4 + j]][diceOrientationArray[i * 4 + j]];
-                    linkedButtons[i, j] = new BlitzScreenGridButton(i , j , text , ref linkedButtons);
-
-                    boardGrid.Add(linkedButtons[i,j], i, j);
-                }
-
-                    
+                    BackgroundColor = Colors.Navy,
+                    FontSize = 40,
+                    Text = Dice.dice[diceShuffleArray[i * 4 + j]][diceOrientationArray[i * 4 + j]]
+                };
+                button.Pressed += OnButtonPressed;
+                button.Released += OnButtonReleased;
+                board.Add(button, i, j);
+            }
         }
-
-        public void clickGridButton (short row, short col)
+        private static void OnButtonPressed(object sender, EventArgs e)
         {
-            linkedButtons[row, col].selectThisBlitzScreenGridButton();
-            for (short i = 0; i < 4; i++) for (short j = 0; j < 4; j++)
-                {
-                    linkedButtons[i,j].updateThisBlitzScreenGridButton(row, col); 
-                }
-            
+            Button button = (Button)sender;
+            if (button.IsEnabled)
+            {
+                Grid board = (Grid) button.Parent;
+                Global.selectedWord += button.Text;
+                button.BackgroundColor = Colors.Black;
+                foreach (Button child in board.Children) if (child.BackgroundColor != Colors.Black) child.IsEnabled = true;
+                foreach (Button child in board.Children.Where(c =>
+                    board.GetRow(c) < board.GetRow(button) - 1 ||
+                    board.GetRow(c) > board.GetRow(button) + 1 ||
+                    board.GetColumn(c) < board.GetColumn(button) - 1 ||
+                    board.GetColumn(c) > board.GetColumn(button) + 1
+                )) child.IsEnabled = false;
+            }
         }
-
+        private static void OnButtonReleased(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            if (Global.selectedWord != "") button.IsEnabled = false;
+        }
     }
 
 

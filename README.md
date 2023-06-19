@@ -37,21 +37,20 @@ Thus far component pages include
 - Analysis (Navigates back to MainPage)
 
 ## Immediate To-do features
-- Check if a given word exists on the boggle board <- JX working on this
 - Make a picker to allow users to choose the number of pts for words of specific lengths
 - Create a field in config to save user configured scoring system and use that in score tabulation
+- Detach blitz button disable/enable from button colour <- JX working on this
 - Implement tap to crossout, tap again to undo in analysis <- CY working on this
 - Reimplement counting of score in Analysis
-- Make class for grid buttons initialisation static<- JX working on this
 
 ### Less immediate To-do features
 - Figure out how to detect swiping and fix that as a binding <- CY working on this
+- Allow Dict and Dice tasks to be cancelled
 - Create a function that can solve a boggle 4x4 given a dictionary
 - Make background and tile styles in settings
-- Amend the menu buttons such that they show they are being pressed
+- Enable button backtracking
 - Create a loading bar XAML 
 - Figure out how to allow code to load a grid object
-- Make loading of dictionaries truly async
 
 ### Bugs
 - Slider blitztime in settings minimum amount needs to be 0

@@ -7,40 +7,22 @@ namespace WordBlitz.Screens.BlitzScreen;
 
 public partial class BlitzScreen : ContentPage
 {
-    private static async Task<HashSet<string>> Loaddict()
-    {
-        using var stream = await FileSystem.OpenAppPackageFileAsync(Config.dictionaryConfig);
-        using var reader = new StreamReader(stream);
-        Config.currentDict = new HashSet<string>(reader.ReadToEnd().Split('\n'));
-        return Config.currentDict;
-    }
-
-    private static async Task<string[][]> Loaddice()
-    {
-        using var stream = await FileSystem.OpenAppPackageFileAsync(Config.diceTypeConfig);
-        using var reader = new StreamReader(stream);
-        Config.currentDice = reader.ReadToEnd().Split('\n').Select(s=>s.Split(' ').Select(r=>r.Trim()).ToArray()).ToArray();
-        return Config.currentDice;
-    }
-
-    public static string selectedword = "";
-    private List<string> words = new();
     private string backgroundPath = BackgroundsMapping.getBackgroundFilename(Config.backgroundConfig);
 
     public BlitzScreen() //contsructor
 	{
-        Task.Run(Loaddict).Wait();
-        Task.Run(Loaddice).Wait();
         InitializeComponent();
         blitzScreenBackgroundView.Source = backgroundPath;
-        Preferences.Default.Set("blitzTimeConfig", "180"); // temporarily disabled time slider config
 
-        new BlitzScreenGrid(ref boardGrid);
+        Dice.Wait();
+        Dispatcher.Dispatch(() => BlitzScreenGrid.InitialiseBoard(boardGrid));
 
         IDispatcherTimer timer = Dispatcher.CreateTimer();
         timer.Interval = TimeSpan.FromSeconds(Config.blitzTimeConfig);
         timer.Tick += (object sender, EventArgs e) =>
         {
+            Dict.Wait();
+            Global.selectedWord = "";
             Navigation.PushAsync(new AnalysisScreen());
             Submitted.Text = string.Empty;
             foreach (Button child in boardGrid.Children)
@@ -50,7 +32,7 @@ public partial class BlitzScreen : ContentPage
             }
 
             int points = 0;
-            IEnumerable<string> validwords = Config.currentDict.Intersect(words).Where(c => c.Length > 2);
+            IEnumerable<string> validwords = Dict.dict.Intersect(Global.submittedWords).Where(c => c.Length > 2);
             foreach(string word in validwords)
             {
                 switch (word.Length)
@@ -65,24 +47,25 @@ public partial class BlitzScreen : ContentPage
                 Submitted.Text += word;
                 Submitted.Text += ' ';
             }
-            testbutton.Text = (points - words.Count + validwords.Count()).ToString();
+            testbutton.Text = (points - Global.submittedWords.Count + validwords.Count()).ToString();
         };
         timer.Start();
     }
 
     private void OnSwiped(object sender, SwipedEventArgs e)
     {
-        Submitted.Text = selectedword;
-        words.Add(selectedword);
-        Config.submittedWords.Add(selectedword);
-        selectedword = string.Empty;
-        foreach (Button child in boardGrid.Children)
+        if(Global.selectedWord != "")
         {
-            child.IsEnabled = true;
-            child.BackgroundColor = Colors.Navy;
+            Submitted.Text = Global.selectedWord;
+            Global.submittedWords.Add(Global.selectedWord);
+            Global.selectedWord = string.Empty;
+            foreach (Button child in boardGrid.Children)
+            {
+                child.IsEnabled = true;
+                child.BackgroundColor = Colors.Navy;
+            }
         }
     }
-
     private void testbutton_Clicked(object sender, EventArgs e) => ((Button)sender).BackgroundColor = Colors.Red;
 
     
