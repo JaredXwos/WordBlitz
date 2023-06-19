@@ -22,7 +22,7 @@ public partial class BlitzScreen : ContentPage
         timer.Tick += (object sender, EventArgs e) =>
         {
             Dict.Wait();
-            Navigation.PushAsync(new AnalysisScreen());
+            Navigation.PushAsync(new Analysis());
             Submitted.Text = string.Empty;
             foreach (Button child in boardGrid.Children)
             {

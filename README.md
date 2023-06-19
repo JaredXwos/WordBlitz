@@ -40,7 +40,6 @@ Thus far component pages include
 - Make a picker to allow users to choose the number of pts for words of specific lengths
 - Create a field in config to save user configured scoring system and use that in score tabulation
 - Create windows specific UI using pointer gesture <- JX working on this
-- Implement tap to crossout, tap again to undo in analysis <- CY working on this
 - Reimplement counting of score in Analysis
 
 ### Less immediate To-do features

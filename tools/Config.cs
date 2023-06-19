@@ -32,7 +32,7 @@ namespace WordBlitz.tools
             }
             return lastword;
         }
-        public static List<string> All() { List<string> returnlist = list.ToList() ; list.Clear();  return returnlist ; }
+        public static SortedSet<string> All() { SortedSet<string> returnlist = new(list) ; list.Clear();  return returnlist ; }
         public static void Letter(string letter, Tuple<int,int> position)
         {
             if (pos.Contains(position)) while (pos.Peek() != position) { pos.Pop(); word.Pop(); } //Keep popping until you're at that last position
