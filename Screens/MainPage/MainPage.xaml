@@ -49,7 +49,7 @@
                     SemanticProperties.Hint="Navigates to settings page"
                     Clicked="OnCounterClicked"
                     HorizontalOptions="Center" />
-
+                
             </VerticalStackLayout>
         </Grid>
     </FlexLayout>

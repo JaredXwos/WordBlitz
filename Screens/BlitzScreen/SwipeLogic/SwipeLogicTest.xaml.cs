@@ -1,0 +1,66 @@
+﻿using System;
+using System.Collections.Specialized;
+using System.Text;
+using WordBlitz.Screens.BlitzScreen.SwipeLogic;
+using WordBlitz.tools;
+using Color = Microsoft.Maui.Graphics.Color;
+
+namespace WordBlitz.Screens.BlitzScreen
+{
+    public partial class SwipeLogicTest : ContentPage
+    {
+        public static Button[,] labels = new Button[4,4]; // can be optimised to short
+        
+        public SwipeLogicTest()
+        {
+            InitializeComponent();
+
+            double gridHeight = testGrid.Height;
+            double gridWidth = testGrid.Width;
+
+
+            for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++)
+            {
+                    Button labelParam = new()
+                    {
+                        Text = $"{i},{j}",
+                        BackgroundColor = Colors.Red,
+/*                        TextColor = Colors.Transparent,*/
+                        HeightRequest = (testGrid.Height),
+                        WidthRequest = (testGrid.Width),
+                        Scale = 0.75,
+/*                        Opacity = 0.25,*/
+                        CornerRadius = (int)5000,
+                    };
+
+                    PanGestureRecognizer panGestureRecognizerParam = new();
+                    panGestureRecognizerParam.PanUpdated += (s, e) => PanGestureRecognizerParam_PanUpdated(s,e);
+
+                    labelParam.GestureRecognizers.Add(panGestureRecognizerParam);
+
+                    labels[i,j] = labelParam;
+
+                    testGrid.Add(labelParam,i,j);
+
+
+                Console.WriteLine($"grid height is {gridHeight}, actual gridh is {testGrid.Height}");
+            }
+
+
+        }
+
+        private void PanGestureRecognizerParam_PanUpdated(object sender, PanUpdatedEventArgs e)
+        {
+            var tappedbuton = (Button)sender;
+            var boardgrid = (Grid)tappedbuton.Parent;
+            var x = e.TotalX;
+            var y = e.TotalY;
+            Console.WriteLine($"hee haw{sender.ToString}, {e.StatusType}, {boardgrid.Height * 0.55} , (x= {x}, y= {y})");
+
+            if (SwipeCoordinatesLogic.GetGridCoordinates(sender, e, boardgrid) != null) 
+            {
+                Console.WriteLine(string.Join(",", SwipeCoordinatesLogic.GetGridCoordinates(sender, e, boardgrid)));
+            };
+        }
+    }
+}

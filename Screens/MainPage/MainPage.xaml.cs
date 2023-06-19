@@ -21,7 +21,7 @@ public partial class MainPage : ContentPage
     private async void OnAnalysisButtonClicked(object sender, EventArgs e)
     {
         analysisScreenNavButton.IsEnabled = false;
-        await Navigation.PushAsync(new AnalysisScreen());
+        await Navigation.PushAsync(new SwipeLogicTest());//rerouted for testing
         analysisScreenNavButton.IsEnabled = true;
     }
 
