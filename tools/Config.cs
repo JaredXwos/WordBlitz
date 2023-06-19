@@ -21,7 +21,7 @@ namespace WordBlitz.tools
     }
     public static class Submit
     {
-        private static Stack<Tuple<int, int>>  pos  = new();  //Tuple specifically stores an immutable pair
+        private static volatile Stack<Tuple<int, int>>  pos  = new();  //Tuple specifically stores an immutable pair
         private static Stack<string>           word = new();
         private static SortedSet<string>       list = new(); //Sorted in number of letters/alphabetical order
         public static string Word() {
@@ -35,12 +35,14 @@ namespace WordBlitz.tools
         public static SortedSet<string> All() { SortedSet<string> returnlist = new(list) ; list.Clear();  return returnlist ; }
         public static void Letter(string letter, Tuple<int,int> position)
         {
-            if (pos.Contains(position)) while (pos.Peek() != position) { pos.Pop(); word.Pop(); } //Keep popping until you're at that last position
-            else{ //letter yet to be pressed
-                if(pos.Count==0) { word.Push(letter); pos.Push(position); return; } //First letter of word
-                (int lasti, int lastj)  = pos.Peek();
-                (int i,     int j)      = position;
-                if(Math.Abs(lasti - i) <= 1 && Math.Abs(lastj - j) <= 1) { word.Push(letter); pos.Push(position); }
+            Console.WriteLine("POS COUNT: "+ pos.Count.ToString());
+            if (pos.Count == 0) { word.Push(letter); pos.Push(position); return; } //First letter of word
+            if(pos.Contains(position)) while (pos.Contains(position) && pos.Peek() != position) { pos.Pop(); word.Pop(); }  //Keep popping until you're at that last position
+            else
+            { //letter yet to be pressed
+                (int lasti, int lastj) = pos.Peek();
+                (int i, int j) = position;
+                if (Math.Abs(lasti - i) <= 1 && Math.Abs(lastj - j) <= 1) { word.Push(letter); pos.Push(position); }
             }
         }
         public static Tuple<int,int> Lastpos() { return pos.Peek(); } //Forgot if we need this, delete if necessary
