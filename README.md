@@ -37,21 +37,22 @@ Thus far component pages include
 - Analysis (Navigates back to MainPage)
 
 ## Immediate To-do features
-- Make a picker to allow users to choose the number of pts for words of specific lengths
-- Create a field in config to save user configured scoring system and use that in score tabulation
+- Hardcode the scoring system and use that in score tabulation
 - Create windows specific UI using pointer gesture <- JX working on this
 - Reimplement counting of score in Analysis
 
 ### Less immediate To-do features
-- Figure out how to detect swiping and fix that as a binding
+- Figure out how to detect swiping and fix that as a binding <- CY working on this, android works , windows in progress
 - Allow Dict and Dice tasks to be cancelled
 - Create a function that can solve a boggle 4x4 given a dictionary
 - Make background and tile styles in settings
 - Enable button backtracking
-- Create a loading bar XAML 
+- Create a loading bar XAML
+- Allow for scoring system to be configured, Make a picker to allow users to choose the number of pts for words of specific lengths
 
 ### Bugs
 - Fix the swipe in android which broke by adding a label to be swiped over at the top and bottom
+- Submit.letters unale to be called with high frequency
 
 # How to get started
 1. Send me your Github username, then accept the request to collaborate
