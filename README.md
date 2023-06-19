@@ -39,7 +39,7 @@ Thus far component pages include
 ## Immediate To-do features
 - Make a picker to allow users to choose the number of pts for words of specific lengths
 - Create a field in config to save user configured scoring system and use that in score tabulation
-- Detach blitz button disable/enable from button colour <- JX working on this
+- Create windows specific UI using pointer gesture <- JX working on this
 - Implement tap to crossout, tap again to undo in analysis <- CY working on this
 - Reimplement counting of score in Analysis
 
