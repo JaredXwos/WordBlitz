@@ -30,8 +30,8 @@ namespace WordBlitz.Screens.BlitzScreen.SwipeLogic
                 if (offset < 0) { isNotNegative = -1;}
                 double absoffset = offset * isNotNegative;
                 while (absoffset >= GRID_BOX_SIZE) { absoffset -= GRID_BOX_SIZE; spaces++; }
-                double[] output = new double[] { spaces * isNotNegative, absoffset };
-                return output;
+                double[] loopOutput = new double[] { spaces * isNotNegative, absoffset };
+                return loopOutput;
             }
 
             int startRow = (int)getCharacteristicOffset(initial_X)[0];

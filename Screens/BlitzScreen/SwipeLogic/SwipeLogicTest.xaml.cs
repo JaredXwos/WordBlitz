@@ -10,7 +10,7 @@ namespace WordBlitz.Screens.BlitzScreen
     public partial class SwipeLogicTest : ContentPage
     {
         public static Button[,] labels = new Button[4,4]; // can be optimised to short
-        
+        private static Tuple<int,int> lastpos = new(-1,-1);
         public SwipeLogicTest()
         {
             InitializeComponent();
@@ -30,7 +30,7 @@ namespace WordBlitz.Screens.BlitzScreen
                         WidthRequest = (testGrid.Width),
                         Scale = 0.75,
 /*                        Opacity = 0.25,*/
-                        CornerRadius = (int)5000,
+                        CornerRadius = (int)5000,// this is an arbitary large number
                     };
 
                     PanGestureRecognizer panGestureRecognizerParam = new();
@@ -55,11 +55,22 @@ namespace WordBlitz.Screens.BlitzScreen
             var boardgrid = (Grid)tappedbuton.Parent;
             var x = e.TotalX;
             var y = e.TotalY;
+            int[] coords = new int[2];
             Console.WriteLine($"hee haw{sender.ToString}, {e.StatusType}, {boardgrid.Height * 0.55} , (x= {x}, y= {y})");
 
             if (SwipeCoordinatesLogic.GetGridCoordinates(sender, e, boardgrid) != null) 
             {
                 Console.WriteLine(string.Join(",", SwipeCoordinatesLogic.GetGridCoordinates(sender, e, boardgrid)));
+                coords = SwipeCoordinatesLogic.GetGridCoordinates(sender, e, boardgrid);
+
+                Console.WriteLine($"{tappedbuton.Text} , {coords[0]} {coords[1]},");
+                Tuple<int, int> pos = new(coords[0], coords[1]);
+                if (pos != lastpos)
+                {
+                    lastpos = pos;
+                    //Submit.Letter(tappedbuton.Text, pos); // this line causes errors
+                }
+                
             };
         }
     }
