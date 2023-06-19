@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,30 @@ namespace WordBlitz.tools
         public static string selectedWord = "";
         public static List<string> submittedWords = new();
     }
+    public static class Selection
+    {
+        private static Stack<Tuple<int, int>>   pos = new();  //Tuple specifically stores an immutable pair
+        private static Stack<string>            word = new();
+        private static SortedSet<string>        list = new(); //Sorted in number of letters/alphabetical order
+        public static void Submitword() { 
+            if (word.Count != 0) list.Add(string.Join("", word.Reverse())); //its a stack, so reversed
+            word.Clear(); pos.Clear(); //For each Clear/Push/Pop, word and pos must be done together
+        }
+        public static List<string> Submitlist() { List<string> returnlist = list.ToList() ; list.Clear();  return returnlist ; }
+        public static void Submitletter(string letter, Tuple<int,int> position)
+        {
+            if (pos.Contains(position)) while (pos.Peek() != position) { pos.Pop(); word.Pop(); } //Keep popping until you're at that last position
+            else{ //letter is new
+                (int lasti, int lastj)  = pos.Peek();
+                (int i,     int j)      = position;
+                if(Math.Abs(lasti - i) <= 1 && Math.Abs(lastj - j) <= 1) { word.Push(letter); pos.Push(position); }
+            }
+        }
+        public static Tuple<int,int> Lastpos() { return pos.Peek(); } //Forgot if we need this, delete if necessary
+        public static List<string> Getlist() { return list.ToList(); } //Debug purposes only
+        public static List<string> Getword() { return word.ToList(); } //Debug purposes only
+    }
+
     public static class Dict
     {
         private static Task<bool> task;
