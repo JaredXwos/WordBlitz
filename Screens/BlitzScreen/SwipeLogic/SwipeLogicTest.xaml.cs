@@ -10,7 +10,7 @@ namespace WordBlitz.Screens.BlitzScreen
     public partial class SwipeLogicTest : ContentPage
     {
         public static Button[,] labels = new Button[4,4]; // can be optimised to short
-        
+        private static Tuple<int,int> lastpos = new(-1,-1);
         public SwipeLogicTest()
         {
             InitializeComponent();
@@ -64,8 +64,13 @@ namespace WordBlitz.Screens.BlitzScreen
                 coords = SwipeCoordinatesLogic.GetGridCoordinates(sender, e, boardgrid);
 
                 Console.WriteLine($"{tappedbuton.Text} , {coords[0]} {coords[1]},");
-
-                /*Submit.Letter(tappedbuton.Text, new Tuple<int, int>(coords[0], coords[1]));*/ // this line causes errors
+                Tuple<int, int> pos = new(coords[0], coords[1]);
+                if (pos != lastpos)
+                {
+                    lastpos = pos;
+                    //Submit.Letter(tappedbuton.Text, pos); // this line causes errors
+                }
+                
             };
         }
     }
