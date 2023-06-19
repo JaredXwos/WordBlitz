@@ -22,31 +22,14 @@ namespace WordBlitz.Screens.BlitzScreen
                     Text = Dice.dice[diceShuffleArray[i * 4 + j]][diceOrientationArray[i * 4 + j]]
                 };
                 button.Pressed += OnButtonPressed;
-                button.Released += OnButtonReleased;
                 board.Add(button, i, j);
             }
         }
         private static void OnButtonPressed(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
-            if (button.IsEnabled)
-            {
-                Grid board = (Grid) button.Parent;
-                Global.selectedWord += button.Text;
-                button.BackgroundColor = Colors.Black;
-                foreach (Button child in board.Children) if (child.BackgroundColor != Colors.Black) child.IsEnabled = true;
-                foreach (Button child in board.Children.Where(c =>
-                    board.GetRow(c) < board.GetRow(button) - 1 ||
-                    board.GetRow(c) > board.GetRow(button) + 1 ||
-                    board.GetColumn(c) < board.GetColumn(button) - 1 ||
-                    board.GetColumn(c) > board.GetColumn(button) + 1
-                )) child.IsEnabled = false;
-            }
-        }
-        private static void OnButtonReleased(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
-            if (Global.selectedWord != "") button.IsEnabled = false;
+            Button element = (Button)sender;
+            Grid board = (Grid)element.Parent;
+            Submit.Letter(element.Text, new Tuple<int, int> (board.GetRow(element), board.GetColumn(element)));
         }
     }
 

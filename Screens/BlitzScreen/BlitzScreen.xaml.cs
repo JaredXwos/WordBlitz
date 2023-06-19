@@ -22,7 +22,6 @@ public partial class BlitzScreen : ContentPage
         timer.Tick += (object sender, EventArgs e) =>
         {
             Dict.Wait();
-            Global.selectedWord = "";
             Navigation.PushAsync(new AnalysisScreen());
             Submitted.Text = string.Empty;
             foreach (Button child in boardGrid.Children)
@@ -32,7 +31,7 @@ public partial class BlitzScreen : ContentPage
             }
 
             int points = 0;
-            IEnumerable<string> validwords = Dict.dict.Intersect(Global.submittedWords).Where(c => c.Length > 2);
+            IEnumerable<string> validwords = Dict.dict.Intersect(Submit.Getlist()).Where(c => c.Length > 2);
             foreach(string word in validwords)
             {
                 switch (word.Length)
@@ -47,24 +46,14 @@ public partial class BlitzScreen : ContentPage
                 Submitted.Text += word;
                 Submitted.Text += ' ';
             }
-            testbutton.Text = (points - Global.submittedWords.Count + validwords.Count()).ToString();
+            testbutton.Text = (points - Submit.Getlist().Count + validwords.Count()).ToString();
         };
         timer.Start();
     }
 
     private void OnSwiped(object sender, SwipedEventArgs e)
     {
-        if(Global.selectedWord != "")
-        {
-            Submitted.Text = Global.selectedWord;
-            Global.submittedWords.Add(Global.selectedWord);
-            Global.selectedWord = string.Empty;
-            foreach (Button child in boardGrid.Children)
-            {
-                child.IsEnabled = true;
-                child.BackgroundColor = Colors.Navy;
-            }
-        }
+        Submitted.Text = Submit.Word();
     }
     private void testbutton_Clicked(object sender, EventArgs e) => ((Button)sender).BackgroundColor = Colors.Red;
 
