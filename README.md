@@ -52,7 +52,6 @@ Thus far component pages include
 
 ### Bugs
 - Fix the swipe in android which broke by adding a label to be swiped over at the top and bottom
-- Submit.letters unale to be called with high frequency
 - Implement queues for Config.Submit to prevent crash <- JX is almost done working on this
 - Fix analysis timing navigation loop 
 
