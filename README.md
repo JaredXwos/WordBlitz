@@ -38,12 +38,10 @@ Thus far component pages include
 
 ## Immediate To-do features
 - Hardcode the scoring system and use that in score tabulation
-- Create windows specific UI using pointer gesture <- JX working on this
-- Reimplement counting of score in Analysis
+- Reimplement counting of score in Analysis <CY working on this
 
 ### Less immediate To-do features
-- Figure out how to detect swiping and fix that as a binding <- CY working on this, android works , windows in progress
-- Allow Dict and Dice tasks to be cancelled
+- Create windows specific UI using pointerGesture <- JX working on this
 - Create a function that can solve a boggle 4x4 given a dictionary
 - Make background and tile styles in settings
 - Enable button backtracking
