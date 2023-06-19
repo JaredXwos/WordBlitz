@@ -10,9 +10,9 @@ namespace WordBlitz.tools
     public static class Config
     {
         public static string dictionaryConfig = Preferences.Default.Get("dictionaryConfig","CSW22.txt");
-        public static string diceTypeConfig = Preferences.Default.Get("diceTypeConfig","DiceModern.txt");
+        public static string diceTypeConfig   = Preferences.Default.Get("diceTypeConfig","DiceModern.txt");
         public static string backgroundConfig = Preferences.Default.Get("backgroundConfig","Zen");
-        public static int    blitzTimeConfig = Preferences.Default.Get("blitzTimeConfig",180);
+        public static int    blitzTimeConfig  = Preferences.Default.Get("blitzTimeConfig",180);
     }
 
     public static class Global
@@ -21,31 +21,31 @@ namespace WordBlitz.tools
     }
     public static class Submit
     {
-        private static Stack<Tuple<int, int>>   _pos = new();  //Tuple specifically stores an immutable pair
-        private static Stack<string>            _word = new();
-        private static SortedSet<string>        _list = new(); //Sorted in number of letters/alphabetical order
+        private static Stack<Tuple<int, int>>  pos  = new();  //Tuple specifically stores an immutable pair
+        private static Stack<string>           word = new();
+        private static SortedSet<string>       list = new(); //Sorted in number of letters/alphabetical order
         public static string Word() {
-            string word = string.Join("", _word.Reverse());
-            if (_word.Count != 0) {
-                _list.Add(word); //its a stack, so reversed
-                _word.Clear(); _pos.Clear(); //For each Clear/Push/Pop, word and pos must be done together
+            string lastword = string.Join("", word.Reverse());
+            if (word.Count != 0) {
+                list.Add(lastword); //its a stack, so reversed
+                word.Clear(); pos.Clear(); //For each Clear/Push/Pop, word and pos must be done together
             }
-            return word;
+            return lastword;
         }
-        public static List<string> All() { List<string> returnlist = _list.ToList() ; _list.Clear();  return returnlist ; }
+        public static List<string> All() { List<string> returnlist = list.ToList() ; list.Clear();  return returnlist ; }
         public static void Letter(string letter, Tuple<int,int> position)
         {
-            if (_pos.Contains(position)) while (_pos.Peek() != position) { _pos.Pop(); _word.Pop(); } //Keep popping until you're at that last position
-            else{ //letter is new
-                if(_pos.Count==0) { _word.Push(letter); _pos.Push(position); return; }
-                (int lasti, int lastj)  = _pos.Peek();
+            if (pos.Contains(position)) while (pos.Peek() != position) { pos.Pop(); word.Pop(); } //Keep popping until you're at that last position
+            else{ //letter yet to be pressed
+                if(pos.Count==0) { word.Push(letter); pos.Push(position); return; } //First letter of word
+                (int lasti, int lastj)  = pos.Peek();
                 (int i,     int j)      = position;
-                if(Math.Abs(lasti - i) <= 1 && Math.Abs(lastj - j) <= 1) { _word.Push(letter); _pos.Push(position); }
+                if(Math.Abs(lasti - i) <= 1 && Math.Abs(lastj - j) <= 1) { word.Push(letter); pos.Push(position); }
             }
         }
-        public static Tuple<int,int> Lastpos() { return _pos.Peek(); } //Forgot if we need this, delete if necessary
-        public static List<string> Getlist() { return _list.ToList(); } //Debug purposes only
-        public static List<string> Getword() { return _word.ToList(); } //Debug purposes only
+        public static Tuple<int,int> Lastpos() { return pos.Peek(); } //Forgot if we need this, delete if necessary
+        public static List<string> Getlist() { return list.ToList(); } //Debug purposes only
+        public static List<string> Getword() { return word.ToList(); } //Debug purposes only
     }
 
     public static class Dict

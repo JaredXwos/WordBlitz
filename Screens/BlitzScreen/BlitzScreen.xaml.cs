@@ -51,10 +51,7 @@ public partial class BlitzScreen : ContentPage
         timer.Start();
     }
 
-    private void OnSwiped(object sender, SwipedEventArgs e)
-    {
-        Submitted.Text = Submit.Word();
-    }
+    private void OnSwiped(object sender, SwipedEventArgs e) { Submitted.Text = Submit.Word(); }
     private void testbutton_Clicked(object sender, EventArgs e) => ((Button)sender).BackgroundColor = Colors.Red;
 
     
