@@ -44,18 +44,15 @@ Thus far component pages include
 - Reimplement counting of score in Analysis
 
 ### Less immediate To-do features
-- Figure out how to detect swiping and fix that as a binding <- CY working on this
+- Figure out how to detect swiping and fix that as a binding
 - Allow Dict and Dice tasks to be cancelled
 - Create a function that can solve a boggle 4x4 given a dictionary
 - Make background and tile styles in settings
 - Enable button backtracking
 - Create a loading bar XAML 
-- Figure out how to allow code to load a grid object
 
 ### Bugs
-- Slider blitztime in settings minimum amount needs to be 0
-- Fix the swipe in android which broke by adding a label to be swiped over at the top and bottom <- CY working on this
-- Ensure the title.png can be resized to fit the height of the screen automatically <- CY working on this
+- Fix the swipe in android which broke by adding a label to be swiped over at the top and bottom
 
 # How to get started
 1. Send me your Github username, then accept the request to collaborate
