@@ -37,20 +37,24 @@ Thus far component pages include
 - Analysis (Navigates back to MainPage)
 
 ## Immediate To-do features
-- Hardcode the scoring system and use that in score tabulation
-- Reimplement counting of score in Analysis <CY working on this
+- Reimplement counting of score in Analysis <- CY working on this
+- Add options to select Fun Mode/ Practice Mode in settings <- CY working on this
+- Bind Score to BlitzScreen to update live <- CY working on this
 
 ### Less immediate To-do features
 - Create windows specific UI using pointerGesture <- JX working on this
 - Create a function that can solve a boggle 4x4 given a dictionary
 - Make background and tile styles in settings
-- Enable button backtracking
+- Enable button backtracking <- JX working on this
 - Create a loading bar XAML
 - Allow for scoring system to be configured, Make a picker to allow users to choose the number of pts for words of specific lengths
+- implement score counter and check for bugs <- CY is working on this
 
 ### Bugs
 - Fix the swipe in android which broke by adding a label to be swiped over at the top and bottom
 - Submit.letters unale to be called with high frequency
+- Implement queues for Config.Submit to prevent crash <- JX is almost done working on this
+- Fix analysis timing navigation loop 
 
 # How to get started
 1. Send me your Github username, then accept the request to collaborate
