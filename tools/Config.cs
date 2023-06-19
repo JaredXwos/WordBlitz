@@ -35,15 +35,23 @@ namespace WordBlitz.tools
         public static SortedSet<string> All() { SortedSet<string> returnlist = new(list) ; list.Clear();  return returnlist ; }
         public static void Letter(string letter, Tuple<int,int> position)
         {
-            Console.WriteLine("POS COUNT: "+ pos.Count.ToString());
+            Console.Write("POS COUNT: "+ pos.Count.ToString());
             if (pos.Count == 0) { word.Push(letter); pos.Push(position); return; } //First letter of word
-            if(pos.Contains(position)) while (pos.Contains(position) && pos.Peek() != position) { pos.Pop(); word.Pop(); }  //Keep popping until you're at that last position
+            if (pos.Contains(position)) {
+                Console.Write(" CONTAINS ");
+                while (position.Item1 != pos.Peek().Item1 || position.Item2 != pos.Peek().Item2)
+                {
+                    pos.Pop(); word.Pop();//Keep popping until you're at that last position
+                }
+            } 
             else
             { //letter yet to be pressed
                 (int lasti, int lastj) = pos.Peek();
                 (int i, int j) = position;
                 if (Math.Abs(lasti - i) <= 1 && Math.Abs(lastj - j) <= 1) { word.Push(letter); pos.Push(position); }
             }
+            foreach (Tuple<int,int> item in pos.Reverse()) Console.Write(item.Item1.ToString() + item.Item2.ToString()+" ");
+            Console.Write('\n');
         }
         public static Tuple<int,int> Lastpos() { return pos.Peek(); } //Forgot if we need this, delete if necessary
         public static List<string> Getlist() { return list.ToList(); } //Debug purposes only

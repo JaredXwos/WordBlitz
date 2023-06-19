@@ -81,9 +81,9 @@ namespace WordBlitz.Screens.BlitzScreen
                 //Console.WriteLine(string.Join(",", SwipeCoordinatesLogic.GetGridCoordinates(sender, e, boardgrid)));
                 coords = SwipeCoordinatesLogic.GetGridCoordinates(sender, e, boardgrid);
 
-                //Console.WriteLine($"{tappedbuton.Text} , {coords[0]} {coords[1]},");
+                Console.Write($" {coords[0]} {coords[1]} ");
                 requestqueue.Enqueue(new Tuple<string, Tuple<int, int>>(tappedbuton.Text, new Tuple<int, int>(coords[0], coords[1])));
-                Console.WriteLine(requestqueue.Count.ToString());
+                //Console.WriteLine(requestqueue.Count.ToString());
             };
         }
     }
