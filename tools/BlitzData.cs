@@ -10,21 +10,21 @@ namespace WordBlitz.tools
     {
         private static SortedSet<string> submittedWordsList = new();
 
-        public static SortedSet<string>  getList => submittedWordsList;
+        public static SortedSet<string>  GetList => submittedWordsList;
 
-        public static bool submitWord(string word) 
+        public static bool SubmitWord(string word) 
         {
             bool isWordUniqueSubmission = submittedWordsList.Add(word); //adds word to list, while also checking if successful
             return isWordUniqueSubmission;
         }
 
-        public static bool removeWord(string word)
+        public static bool RemoveWord(string word)
         {
             bool isWordSuccessfullyRemoved = submittedWordsList.Remove(word);
             return isWordSuccessfullyRemoved;
         }
 
-        public static void reset(string word) { submittedWordsList = new(); }
+        public static void Reset(string word) { submittedWordsList = new(); }
 
     }
 }
