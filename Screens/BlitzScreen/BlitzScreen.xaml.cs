@@ -2,7 +2,6 @@ using System;
 using System.Collections.Specialized;
 using System.Text;
 using WordBlitz.tools;
-using static Android.App.ActionBar;
 
 namespace WordBlitz.Screens.BlitzScreen;
 
