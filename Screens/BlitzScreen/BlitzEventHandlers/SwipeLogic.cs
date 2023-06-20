@@ -5,14 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WordBlitz.Screens.BlitzScreen.SwipeLogic
+namespace WordBlitz.Screens.BlitzScreen
+#nullable enable
 {
-    public static class SwipeCoordinatesLogic
+    public static class SwipeLogic
 
     {
-        public static int[]? GetGridCoordinates(object sender, PanUpdatedEventArgs args, Grid boardGrid) //returns (grid row , grid column) if hovered over another button
+
+        public static int[]? GetGridCoordinates(object sender, PanUpdatedEventArgs args) //returns (grid row , grid column) if hovered over another button
         {
             var label = (Button)sender;//its a button for now
+            var boardGrid = (Grid)label.Parent;
             double initial_X = label.X;
             double initial_Y = label.Y;
             double relative_X = args.TotalX;

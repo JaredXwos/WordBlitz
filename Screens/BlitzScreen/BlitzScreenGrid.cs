@@ -29,7 +29,7 @@ namespace WordBlitz.Screens.BlitzScreen
         {
             Button element = (Button)sender;
             Grid board = (Grid)element.Parent;
-            Submit.Letter(element.Text, new Tuple<int, int> (board.GetRow(element), board.GetColumn(element)));
+            Submit.submitLetter(element.Text, new Tuple<int, int> (board.GetRow(element), board.GetColumn(element)));
         }
     }
 

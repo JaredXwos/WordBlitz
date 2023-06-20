@@ -18,6 +18,7 @@
                 x:Name="gamescreen"
                 HorizontalOptions="Center"
                 VerticalOptions="Center">
+                <Label x:Name="scoreLabel" Text="Score:"/>
                 <Frame
                     BackgroundColor="Blue"
                     CornerRadius="10"
@@ -45,7 +46,14 @@
                         </Grid>
                     </Frame>
                 </Frame>
-                <Label
+
+                <Label Text="Submit->"  WidthRequest="300" HeightRequest="50">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnSubmitButtonPressed"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <!--<Label
                     x:Name="Submitted"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
@@ -57,7 +65,7 @@
                     x:Name="testbutton"
                     BackgroundColor="Pink"
                     Clicked="testbutton_Clicked"
-                    WidthRequest="100"/>
+                    WidthRequest="100"/>-->
             </VerticalStackLayout>
         </ContentView>
     </Grid>

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Specialized;
 using System.Text;
 using WordBlitz.tools;
+using static Android.App.ActionBar;
 
 namespace WordBlitz.Screens.BlitzScreen;
 
@@ -11,15 +12,23 @@ public partial class BlitzScreen : ContentPage
 
     public BlitzScreen() //contsructor
 	{
+        //initialisation
         InitializeComponent();
         blitzScreenBackgroundView.Source = backgroundPath;
 
         Dice.Wait();
         Dispatcher.Dispatch(() => BlitzScreenGrid.InitialiseBoard(boardGrid));
 
+
         IDispatcherTimer timer = Dispatcher.CreateTimer();
         timer.Interval = TimeSpan.FromSeconds(Config.blitzTimeConfig);
-        timer.Tick += (object sender, EventArgs e) =>
+        //--------------------------
+
+
+
+
+
+        /*timer.Tick += (object sender, EventArgs e) =>
         {
             Dict.Wait();
             Navigation.PushAsync(new Analysis());
@@ -48,11 +57,32 @@ public partial class BlitzScreen : ContentPage
             }
             testbutton.Text = (points - Submit.Getlist().Count + validwords.Count()).ToString();
         };
-        timer.Start();
+        timer.Start();*/
+
+        
     }
 
+
+    //event handlers
+    private void OnGridButtonPanned(object sender, PanUpdatedEventArgs e)
+    {
+        BlitzEventHandlers.processPanInfomation(object sender, PanUpdatedEventArgs e);
+    }
+
+    private void OnGridButtonTap(object sender, TappedEventArgs e)
+    {
+        BlitzEventHandlers.addLetterHandler();
+    }
+
+    private async void OnSubmitButtonTapped(object sender, TappedEventArgs e)
+    {
+        var label = (Label)sender;
+        label.IsEnabled = false;
+        BlitzEventHandlers.submissionHandler();
+    }
+/*
     private void OnSwiped(object sender, SwipedEventArgs e) { Submitted.Text = Submit.Word(); }
-    private void testbutton_Clicked(object sender, EventArgs e) => ((Button)sender).BackgroundColor = Colors.Red;
+    private void testbutton_Clicked(object sender, EventArgs e) => ((Button)sender).BackgroundColor = Colors.Red;*/
 
     
 }

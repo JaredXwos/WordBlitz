@@ -14,13 +14,13 @@ namespace WordBlitz.tools
         string Text { get; set; }
     }
 
-    public interface IScoreCounter // this lists all the public functions we will access aside from constructors
+    public interface IScoreCounter //all the public functions we will (want to and able to access) aside from constructors is here
     {
         int getCurrentTotalScore { get; }
         void OnSubmission(string submittedWord);
 
-        //OnRemovedWord(string submittedWord) is available for practice mode score counter
-    }
+        //OnRemovedWord(string submittedWord) method is available for practice mode score counter
+    }   //FunScoreCounter(IViewText elementParam , Grid boardGridParam) , PracticeScoreCounter(Grid boardGridParam)
 
 
 

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Specialized;
 using System.Text;
-using WordBlitz.Screens.BlitzScreen.SwipeLogic;
 using WordBlitz.tools;
 using Color = Microsoft.Maui.Graphics.Color;
 
@@ -31,7 +30,7 @@ namespace WordBlitz.Screens.BlitzScreen
                         {
                             lastpos = requestpos;
                             //Console.WriteLine("CALLED");
-                            Submit.Letter(requesttext, requestpos);
+                            Submit.submitLetter(requesttext, requestpos);
                         }
                     }
                 }
@@ -76,10 +75,10 @@ namespace WordBlitz.Screens.BlitzScreen
             int[] coords = new int[2];
             //Console.WriteLine($"hee haw{sender.ToString}, {e.StatusType}, {boardgrid.Height * 0.55} , (x= {x}, y= {y})");
 
-            if (SwipeCoordinatesLogic.GetGridCoordinates(sender, e, boardgrid) != null) 
+            if (SwipeLogic.GetGridCoordinates(sender, e) != null) 
             {
                 //Console.WriteLine(string.Join(",", SwipeCoordinatesLogic.GetGridCoordinates(sender, e, boardgrid)));
-                coords = SwipeCoordinatesLogic.GetGridCoordinates(sender, e, boardgrid);
+                coords = SwipeLogic.GetGridCoordinates(sender, e);
 
                 Console.Write($" {coords[0]} {coords[1]} ");
                 requestqueue.Enqueue(new Tuple<string, Tuple<int, int>>(tappedbuton.Text, new Tuple<int, int>(coords[0], coords[1])));

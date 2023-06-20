@@ -19,44 +19,7 @@ namespace WordBlitz.tools
     {
         public readonly static Random random = new(Guid.NewGuid().GetHashCode());
     }
-    public static class Submit
-    {
-        private static volatile Stack<Tuple<int, int>>  pos  = new();  //Tuple specifically stores an immutable pair
-        private static Stack<string>           word = new();
-        private static SortedSet<string>       list = new(); //Sorted in number of letters/alphabetical order
-        public static string Word() {
-            string lastword = string.Join("", word.Reverse());
-            if (word.Count != 0) {
-                list.Add(lastword); //its a stack, so reversed
-                word.Clear(); pos.Clear(); //For each Clear/Push/Pop, word and pos must be done together
-            }
-            return lastword;
-        }
-        public static SortedSet<string> All() { SortedSet<string> returnlist = new(list) ; list.Clear();  return returnlist ; }
-        public static void Letter(string letter, Tuple<int,int> position)
-        {
-            Console.Write("POS COUNT: "+ pos.Count.ToString());
-            if (pos.Count == 0) { word.Push(letter); pos.Push(position); return; } //First letter of word
-            if (pos.Contains(position)) {
-                Console.Write(" CONTAINS ");
-                while (position.Item1 != pos.Peek().Item1 || position.Item2 != pos.Peek().Item2)
-                {
-                    pos.Pop(); word.Pop();//Keep popping until you're at that last position
-                }
-            } 
-            else
-            { //letter yet to be pressed
-                (int lasti, int lastj) = pos.Peek();
-                (int i, int j) = position;
-                if (Math.Abs(lasti - i) <= 1 && Math.Abs(lastj - j) <= 1) { word.Push(letter); pos.Push(position); }
-            }
-            foreach (Tuple<int,int> item in pos.Reverse()) Console.Write(item.Item1.ToString() + item.Item2.ToString()+" ");
-            Console.Write('\n');
-        }
-        public static Tuple<int,int> Lastpos() { return pos.Peek(); } //Forgot if we need this, delete if necessary
-        public static List<string> Getlist() { return list.ToList(); } //Debug purposes only
-        public static List<string> Getword() { return word.ToList(); } //Debug purposes only
-    }
+    
 
     public static class Dict
     {
