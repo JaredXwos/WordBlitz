@@ -36,6 +36,20 @@ Thus far component pages include
 - Config (Navigates back to MainPage)
 - Analysis (Navigates back to MainPage)
 
+## Errors specific to CYTest5
+### BlitzScreen.xaml.cs
+- OnGridButtonTap function not complete, add letter handler no arguments? No references to function, usage unclear.
+- OnGridButtonPanned function not complete, calls nonexistent function with parameters as variable declarations (illegal), usage unclear
+- Method names first letter should be caps as per C# guidelines to distinguish them from variables
+### Submit.cs
+- isPreviousTile does not check previous tile, it checks if 2 pairs of values are equal. Consider isPairEqual, or instead making PreviousTile check the previous tile
+- isSameTile literally does the exact same thing as IsPreviousTile, compares 2 pairs of ints. Consider removing it altogether or making it actually useful
+- Consider making 1 function for both of them
+- in submitLetter(), question why you used .Item1 .Item2 instead of just (int i, int j) = position; do you find it more readable?
+  this is more pythonic and imo more readable, if needed could declare int i,j,lasti,lastj; at the top then (i,j) = position;
+- should Blitzdata and Submit be the same class? why is there a need to separate the submit word from submit letter
+- once you are done settling that please fix the line in Analysis.xaml.cs to retrive the list
+
 ## Immediate To-do features
 - Reimplement counting of score in Analysis <- CY working on this
 - Add options to select Fun Mode/ Practice Mode in settings <- CY working on this

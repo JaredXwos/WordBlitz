@@ -17,7 +17,7 @@ namespace WordBlitz.Screens.BlitzScreen
             bool isSubmissionSuccessful = false;
             if (tileLettersStack.Count != 0 )
             {
-                isSubmissionSuccessful = BlitzData.submitWord(FormTheWord);
+                isSubmissionSuccessful = BlitzData.SubmitWord(FormTheWord);
             }
             clearLetterTileStack();
             return isSubmissionSuccessful;
