@@ -12,7 +12,7 @@
             HorizontalOptions="Center"
             VerticalOptions="Center">
             <ContentView.GestureRecognizers>
-                <SwipeGestureRecognizer Direction="Left,Right" Swiped="OnSwiped" Threshold="40"/>
+                <SwipeGestureRecognizer Direction="Left,Right" Swiped="OnSubmitButtonTapped" Threshold="40"/>
             </ContentView.GestureRecognizers>
             <VerticalStackLayout
                 x:Name="gamescreen"
@@ -23,33 +23,29 @@
                     BackgroundColor="Blue"
                     CornerRadius="10"
                     Padding="10"
-                    MinimumWidthRequest="320"
-                    MinimumHeightRequest="320"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center">
+                    WidthRequest="340"
+                    HeightRequest="340">
                     <Frame
                         BackgroundColor="SaddleBrown"
                         CornerRadius="10"
                         Padding="10"
-                        MinimumWidthRequest="300"
-                        MinimumHeightRequest="300"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center">
+                        WidthRequest="320"
+                        HeightRequest="320">
                         <Grid
                             x:Name="boardGrid"
+                            WidthRequest="300"
+                            HeightRequest="300"
                             RowDefinitions="*, *, *, *"
                             ColumnDefinitions="*, *, *, *"
                             RowSpacing="5"
-                            ColumnSpacing="5"
-                            HorizontalOptions="Fill"
-                            VerticalOptions="Fill">
+                            ColumnSpacing="5">
                         </Grid>
                     </Frame>
                 </Frame>
 
-                <Label Text="Submit->"  WidthRequest="300" HeightRequest="50">
+                <Label Text="Submit->"  WidthRequest="300" HeightRequest="50" BackgroundColor="White">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnSubmitButtonPressed"/>
+                        <TapGestureRecognizer Tapped="OnSubmitButtonTapped"/>
                     </Label.GestureRecognizers>
                 </Label>
 

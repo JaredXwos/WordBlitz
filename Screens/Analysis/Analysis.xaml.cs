@@ -7,7 +7,7 @@ namespace WordBlitz;
 
 public partial class Analysis : ContentPage
 {
-	private static SortedSet<string> submittedList = Submit.All();
+	private static SortedSet<string> submittedList = BlitzData.getList;
     public Analysis()
 	{
         InitializeComponent();

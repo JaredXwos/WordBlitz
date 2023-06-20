@@ -8,7 +8,7 @@ namespace WordBlitz.Screens.BlitzScreen
 {
     public partial class SwipeLogicTest : ContentPage
     {
-        public static Button[,] labels = new Button[4,4]; // can be optimised to short
+        /*public static Button[,] labels = new Button[4,4]; // can be optimised to short
         private static volatile Queue<Tuple<string,Tuple<int,int>>> requestqueue = new();
         private static bool active = false;
         public SwipeLogicTest()
@@ -45,11 +45,11 @@ namespace WordBlitz.Screens.BlitzScreen
                     {
                         Text = $"{i},{j}",
                         BackgroundColor = Colors.Red,
-/*                        TextColor = Colors.Transparent,*/
+                        TextColor = Colors.Transparent,
                         HeightRequest = (testGrid.Height),
                         WidthRequest = (testGrid.Width),
                         Scale = 0.75,
-/*                        Opacity = 0.25,*/
+                        Opacity = 0.25,
                         CornerRadius = (int)5000,// this is an arbitary large number
                     };
 
@@ -84,6 +84,6 @@ namespace WordBlitz.Screens.BlitzScreen
                 requestqueue.Enqueue(new Tuple<string, Tuple<int, int>>(tappedbuton.Text, new Tuple<int, int>(coords[0], coords[1])));
                 //Console.WriteLine(requestqueue.Count.ToString());
             };
-        }
+        }*/
     }
 }
