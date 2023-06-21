@@ -39,28 +39,15 @@ Thus far component pages include
 ## Errors specific to CYTest5
     
 ### Submit.cs
-- isPreviousTile does not check previous tile, it checks if 2 pairs of values are equal. Consider isPairEqual, or instead making PreviousTile check the previous tile
-    A: it seems to work as i intended doesnt seem to have a bug. [bug is with blitzeventhandler if ur refering to swipe mode]
-- isSameTile literally does the exact same thing as IsPreviousTile, compares 2 pairs of ints. Consider removing it altogether or making it actually useful
-    A: i made them unique to its more readable, it says what its doing.
-    its function is to prevent submission when the user clicks on the same tile twice.
-    R: Disagree. You aren't even comparing tiles in the first place, you're comparing coords.
-       And you aren't even comparing coords else it would take two Tuple<int,int> instead of 2 pairs of ints
-       Furthermore, the "IsPrevious" is meaningless cos you already insert the previous coordinates. I could call IsPrevious() on any pair of coordinates, not only previous
-       Consider a function that takes a stack, and a tuple, then checks if the tuple is at the top of the stack/the second to top of the stack
-       This will much better reflect the function (It checks if the given tuple is previous on the stack, or if you want to call the coordinates tiles, it checks if the given tile is previous)
-       This is much better than checking if two pairs of ints are the same or at most stretching it, if two pairs of coordinates are the same, i.e. IsSame()
-       Note the way you are using both functions in the code is as if both functions are IsSame()
-       You get top and current tile (cur) then IsSame(cur,top), you get previous and cur, then IsSame(prev, cur)
-- Consider making 1 function for both of them
-    A: it can be done, though i feel it is a trivial change.
-- in submitLetter(), question why you used .Item1 .Item2 instead of just (int i, int j) = position; do you find it more readable?
-  this is more pythonic and imo more readable, if needed could declare int i,j,lasti,lastj; at the top then (i,j) = position;
-    A: i dint know i can do that. changed to as you described.
+- S: functions removed, middlegrounds found: add comments to longer operations, stating the intention of comparisons, so i dont have to do mental gymnastics when i revisit the code next time
+     on hindsight i agree, making functions for specific operations does increase bloat
+
 - should Blitzdata and Submit be the same class? 
     A: i originally split it out cuz submit class does alot of things already, to make it more modular i split it.
     can be moved back if you want, my idea for blitzData is that it stores and deals with the *confirmed* list of words, whereas submit gatekeeps that by checking validity etc.
     R: Is there a reason why blitzData is in a separate namespace/file from Submit cos I feel they are related, everything else yea get it
+    A2: blitz uses submitletter and submitWord functions , analysis will use remove word function in blitzdata, although they act on the same list, their functions usage does not overlap,
+    when counting scores, i also do not need the variables tile letters stack and tile positions, out of sight out of mind, keeping only what is relevant makes it easier for counting scores.
 
 ->summary: initialise screen(blitzscreen) ->intialise board(boardinitialiser) -> button clicked/panned (blitzevent handler)[currently broken for swipest] -> (cont \n)
     ->check legal button press(submit.cs)[check word validity not yet implemented]-> stores words submitted list  (blitzdata)

@@ -36,41 +36,29 @@ namespace WordBlitz.Screens.BlitzScreen
 
         public static string FormTheWord { get { return string.Join("", tileLettersStack.Reverse()); ; } }//its a stack, so reversed
 
-        private static bool isLastTileInRange(int lasti ,int lastj , int i , int j)
-        {
-            return (Math.Abs(lasti - i) <= 1 && Math.Abs(lastj - j) <= 1);
-        }
-
-        private static bool isSameTile(int lasti, int lastj, int i, int j)
-        {
-            return ((lasti == i) && (lastj == j));
-        }
-        private static bool isPreviousTile(int secondlasti, int secondlastj, int i, int j)
-        {
-            return ((secondlasti == i) && (secondlastj == j));
-        }
-
 
         public static void submitLetter(string letter, Tuple<int, int> position)
         {
             if (tilePositions.Count == 0) { tileLettersStack.Push(letter); tilePositions.Push(position); Console.WriteLine($"set first letter{letter}"); return;  } //if empty, set it
             (int i, int j) = position;
 
-            if (tilePositions.Count >= 2) //backtrack to last letter if selected
+            if (tilePositions.Count >= 2) //to allow for backtracking
             {
                 Console.WriteLine("sumitletter is being called");
                 int secondlasti = tilePositions.ElementAt(1).Item1;
                 int secondlastj = tilePositions.ElementAt(1).Item2;
-                if (isPreviousTile(secondlasti, secondlastj, i, j))
+                if ((secondlasti == i) && (secondlastj == j)/*checks if previous tile is selected*/)
                 {
                     tilePositions.Pop(); tileLettersStack.Pop();//For each Clear/Push/Pop, word and pos must be done together
                     Console.WriteLine("returned to previous letter");
                     return;
                 }
             }
+            if (tilePositions.Contains(position)) { return; } //repeat presses on same button is ignored
             int lasti = tilePositions.ElementAt(0).Item1;
             int lastj = tilePositions.ElementAt(0).Item2;
-            if (isLastTileInRange(lasti, lastj, i, j) && !isSameTile(lasti, lastj, i, j))//checks if tile is valid selection
+            if ((Math.Abs(lasti - i) <= 1 && Math.Abs(lastj - j) <= 1) &&/*check if tiles are in range and*/
+                ((lasti == i) && (lastj == j)))  /*checks if the same tile submitted*/  //checks if tile is valid selection
             {
                 tileLettersStack.Push(letter); tilePositions.Push(position);
                 Console.WriteLine($"submitted letter {letter}");
