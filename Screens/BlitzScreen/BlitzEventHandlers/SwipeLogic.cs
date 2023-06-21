@@ -14,13 +14,13 @@ namespace WordBlitz.Screens.BlitzScreen
 
         public static int[]? GetGridCoordinates(object sender, PanUpdatedEventArgs args) //returns (grid row , grid column) if hovered over another button
         {
-            var label = (Button)sender;//its a button for now
+            var label = (Label)sender;//its a button for now
             var boardGrid = (Grid)label.Parent;
             double initial_X = label.X;
             double initial_Y = label.Y;
             double relative_X = args.TotalX;
             double relative_Y = args.TotalY;
-            double GRID_BOX_SIZE = boardGrid.Height / (double)4;
+            double GRID_BOX_SIZE = boardGrid.HeightRequest / (double)4;
             double DECIMAL_FRACTION_BOX_RADIUS = 0.75;
 
             /*int startRow = label.Text.ToList()[0]; // if putting info inside 

@@ -17,8 +17,6 @@ namespace WordBlitz.Screens.BlitzScreen
             int[] diceShuffleArray = Enumerable.Range(0, 16).OrderBy(lambda => Global.random.Next()).ToArray();
             int[] diceOrientationArray = new int[16].Select(lambda => Global.random.Next() % 6).ToArray();
 
-            Console.WriteLine($"{boardGrid.HeightRequest} height is this");
-
             for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++)
             {
                     string ijText = Dice.dice[diceShuffleArray[i * 4 + j]][diceOrientationArray[i * 4 + j]];
@@ -26,19 +24,24 @@ namespace WordBlitz.Screens.BlitzScreen
                     tapGestureRecognizer.Tapped += (s, e) =>
                     {
                         OnGridButtonTapped(s, e);
-                        Console.WriteLine("IVE BEEN TAPPED");
                     };
+                    /*PanGestureRecognizer panGestureRecognizer = new PanGestureRecognizer();
+                    panGestureRecognizer.PanUpdated += (s, e) =>
+                    {
+                        OnGridButtonPanned(s, e);
+                        Console.WriteLine("panned");
+                    };*/
 
                     //insert constructor for images here
 
                     Label labelButton = new Label()//will become invisible
                     {
                         Text = ijText,
-                        BackgroundColor = Colors.Red,
-                        TextColor = Colors.Transparent,
+                        BackgroundColor = Colors.White,
+                        TextColor = Colors.Black,
                         HeightRequest = (boardGrid.HeightRequest / 4),
                         WidthRequest = (boardGrid.WidthRequest / 4),
-                        Scale = 0.5,
+                        Scale = 1,
                         Opacity = 0.75,
                         GestureRecognizers = { tapGestureRecognizer }
                     };

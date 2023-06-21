@@ -38,17 +38,39 @@ Thus far component pages include
 
 ## Errors specific to CYTest5
 ### BlitzScreen.xaml.cs
-- OnGridButtonTap function not complete, add letter handler no arguments? No references to function, usage unclear.
+- OnGridButtonTap function not complete, add letter handler no arguments? No references to function, usage unclear.			
+    A: youre refering to the blitzscreen.xaml.cs, yeah it has no functionality(i forgot to delete that method sorry for the confusion).
+    no references means its not being used lol.
+    but theres a duplicate with fucntionality in boardInitialiser.cs because the buttons are being initialised there
 - OnGridButtonPanned function not complete, calls nonexistent function with parameters as variable declarations (illegal), usage unclear
+    A: OnGridButtonPanned only takes in panupdated evnent args, make sure you input the right variable, when using it. [currently eventHandler function for swipe mode fully completed yet]
 - Method names first letter should be caps as per C# guidelines to distinguish them from variables
+-   A:ok
+    
 ### Submit.cs
 - isPreviousTile does not check previous tile, it checks if 2 pairs of values are equal. Consider isPairEqual, or instead making PreviousTile check the previous tile
+    A: it seems to work as i intended doesnt seem to have a bug. [bug is with blitzeventhandler if ur refering to swipe mode]
 - isSameTile literally does the exact same thing as IsPreviousTile, compares 2 pairs of ints. Consider removing it altogether or making it actually useful
+    A: i made them unique to its more readable, it says what its doing.
+    its function is to prevent submission when the user clicks on the same tile twice.
 - Consider making 1 function for both of them
+    A: it can be done, though i feel it is a trivial change.
 - in submitLetter(), question why you used .Item1 .Item2 instead of just (int i, int j) = position; do you find it more readable?
   this is more pythonic and imo more readable, if needed could declare int i,j,lasti,lastj; at the top then (i,j) = position;
-- should Blitzdata and Submit be the same class? why is there a need to separate the submit word from submit letter
-- once you are done settling that please fix the line in Analysis.xaml.cs to retrive the list
+    A: i dint know i can do that. changed to as you described.
+- should Blitzdata and Submit be the same class? 
+    A: i originally split it out cuz submit class does alot of things already, to make it more modular i split it.
+    can be moved back if you want, my idea for blitzData is that it stores and deals with the *confirmed* list of words, whereas submit gatekeeps that by checking validity etc.
+- why is there a need to separate the submit word from submit letter
+    A: i am sure about this. its because they to completely different things.
+    example, i tap P-E-A tiles on the gridboard as a user, how would i know whether to submit this valid word "pea"? or does the user want to continue to get a 5 letter word P-E-A-C-E?
+    thus the user must indicate when they wish to submit, distict from their inputs to add an andditional letter.
+- once you are done settling that please fix the line in Analysis.xaml.cs to retrive the list.
+    A: i think you broke it by renaming blitzdata functions, next time try using (ctrl R , ctrl R) to rename things using the intellisense so it updates all references. fixed.
+
+->summary: initialise screen(blitzscreen) ->intialise board(boardinitialiser) -> button clicked/panned (blitzevent handler)[currently broken for swipest] -> (cont \n)
+    ->check legal button press(submit.cs)[check word validity not yet implemented]-> stores words submitted list  (blitzdata)
+  prepared demo with comments in this version for tap mode, swipe mode is broken still[eventhandler needs foxing for swipe mode and swipelogic]
 
 ## Immediate To-do features
 - Reimplement counting of score in Analysis <- CY working on this

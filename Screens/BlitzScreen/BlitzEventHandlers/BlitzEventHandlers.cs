@@ -15,8 +15,6 @@ namespace WordBlitz.Screens.BlitzScreen
             Submit.submitToList();
         }
 
-
-
         public static void addLetterHandler(object sender)//TODO hardcoded label text values into .Text
         {
             var label = (Label)sender;
@@ -32,6 +30,7 @@ namespace WordBlitz.Screens.BlitzScreen
             var label = (Label)sender;
             var gridBoard = (Grid)label.Parent;
             Tuple<int, int> position = Tuple.Create(i, j);
+
             string letter = label.Text;
             Submit.submitLetter(letter, position);
         }
@@ -43,7 +42,7 @@ namespace WordBlitz.Screens.BlitzScreen
             if (e.StatusType == GestureStatus.Completed) { submissionHandler(); }
 #nullable enable
             int[]? rowcolinfo = SwipeLogic.GetGridCoordinates(sender, e);
-            if (rowcolinfo != null) { addLetterHandler(sender); }
+            if (rowcolinfo != null) { addLetterHandler(sender , rowcolinfo[0] , rowcolinfo[1]); }
 #nullable disable
         }
         //eventHandlers end -----------------------------------------

@@ -15,12 +15,18 @@ namespace WordBlitz.Screens.BlitzScreen
         public static bool submitToList()//previously named Word()
         {
             bool isSubmissionSuccessful = false;
-            if (tileLettersStack.Count != 0 )
+            if (tileLettersStack.Count != 0)
             {
                 isSubmissionSuccessful = BlitzData.SubmitWord(FormTheWord);
+                if (isSubmissionSuccessful) { Console.WriteLine( $"SUBMITTED WORD {FormTheWord}"); }
+                clearLetterTileStack();
+                return isSubmissionSuccessful;
             }
-            clearLetterTileStack();
-            return isSubmissionSuccessful;
+            else
+            {
+                clearLetterTileStack();
+                return false;
+            }
         }
 
         public static void clearLetterTileStack()
@@ -47,17 +53,18 @@ namespace WordBlitz.Screens.BlitzScreen
 
         public static void submitLetter(string letter, Tuple<int, int> position)
         {
-            if (tilePositions.Count == 0) { tileLettersStack.Push(letter); tilePositions.Push(position); return; } //if empty, set it
-            int i = position.Item1;
-            int j = position.Item2;
+            if (tilePositions.Count == 0) { tileLettersStack.Push(letter); tilePositions.Push(position); Console.WriteLine($"set first letter{letter}"); return;  } //if empty, set it
+            (int i, int j) = position;
 
             if (tilePositions.Count >= 2) //backtrack to last letter if selected
             {
+                Console.WriteLine("sumitletter is being called");
                 int secondlasti = tilePositions.ElementAt(1).Item1;
                 int secondlastj = tilePositions.ElementAt(1).Item2;
                 if (isPreviousTile(secondlasti, secondlastj, i, j))
                 {
                     tilePositions.Pop(); tileLettersStack.Pop();//For each Clear/Push/Pop, word and pos must be done together
+                    Console.WriteLine("returned to previous letter");
                     return;
                 }
             }
@@ -66,6 +73,7 @@ namespace WordBlitz.Screens.BlitzScreen
             if (isLastTileInRange(lasti, lastj, i, j) && !isSameTile(lasti, lastj, i, j))//checks if tile is valid selection
             {
                 tileLettersStack.Push(letter); tilePositions.Push(position);
+                Console.WriteLine($"submitted letter {letter}");
                 return;
             }
         }
