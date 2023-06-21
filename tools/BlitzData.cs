@@ -24,7 +24,12 @@ namespace WordBlitz.tools
             return isWordSuccessfullyRemoved;
         }
 
-        public static void Reset(string word) { submittedWordsList = new(); }
+        public static SortedSet<string> RetrieveAndReset() 
+        {
+            SortedSet<string> returnList = submittedWordsList;
+            submittedWordsList.Clear();
+            return returnList;
+        }
 
     }
 }

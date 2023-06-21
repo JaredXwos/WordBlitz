@@ -16,7 +16,8 @@ public partial class BlitzScreen : ContentPage
         blitzScreenBackgroundView.Source = backgroundPath;
 
         Dice.Wait();
-        Dispatcher.Dispatch(() => BlitzScreenGrid.InitialiseBoard(boardGrid));
+        
+        Dispatcher.Dispatch( () => BoardInitialiser.InitialiseBoard(boardGrid));
 
 
         IDispatcherTimer timer = Dispatcher.CreateTimer();
@@ -26,12 +27,12 @@ public partial class BlitzScreen : ContentPage
 
 
 
-
-        /*timer.Tick += (object sender, EventArgs e) =>
+        //we gonna have to redo this part anyways
+        timer.Tick += (object sender, EventArgs e) =>
         {
             Dict.Wait();
             Navigation.PushAsync(new Analysis());
-            Submitted.Text = string.Empty;
+            /*Submitted.Text = string.Empty;
             foreach (Button child in boardGrid.Children)
             {
                 child.IsEnabled = false;
@@ -39,8 +40,8 @@ public partial class BlitzScreen : ContentPage
             }
 
             int points = 0;
-            IEnumerable<string> validwords = Dict.dict.Intersect(Submit.Getlist()).Where(c => c.Length > 2);
-            foreach(string word in validwords)
+            IEnumerable<string> validwords = Dict.dict.Intersect(BlitzData.getList).Where(c => c.Length > 2);
+            foreach (string word in validwords) // we will count score async in real time
             {
                 switch (word.Length)
                 {
@@ -54,34 +55,39 @@ public partial class BlitzScreen : ContentPage
                 Submitted.Text += word;
                 Submitted.Text += ' ';
             }
-            testbutton.Text = (points - Submit.Getlist().Count + validwords.Count()).ToString();
+            testbutton.Text = (points - Submit.Getlist().Count + validwords.Count()).ToString();*/
         };
-        timer.Start();*/
+        timer.Start();
 
-        
+
     }
 
 
     //event handlers
     private void OnGridButtonPanned(object sender, PanUpdatedEventArgs e)
     {
-        BlitzEventHandlers.processPanInfomation(object sender, PanUpdatedEventArgs e);
+        BlitzEventHandlers.processPanInfomationHandler(sender, e);
     }
 
-    private void OnGridButtonTap(object sender, TappedEventArgs e)
+    private void OnGridButtonTapped(object sender, TappedEventArgs e)
     {
-        BlitzEventHandlers.addLetterHandler();
+        var label = (Label)sender;
+        label.IsEnabled = false;
+        BlitzEventHandlers.addLetterHandler(sender);
+        label.IsEnabled = true;
     }
 
-    private async void OnSubmitButtonTapped(object sender, TappedEventArgs e)
+    private void OnSubmitButtonTapped(object sender, TappedEventArgs e)
     {
         var label = (Label)sender;
         label.IsEnabled = false;
         BlitzEventHandlers.submissionHandler();
+        label.IsEnabled = true;
+        Console.WriteLine("SUBMIT");
     }
-/*
-    private void OnSwiped(object sender, SwipedEventArgs e) { Submitted.Text = Submit.Word(); }
-    private void testbutton_Clicked(object sender, EventArgs e) => ((Button)sender).BackgroundColor = Colors.Red;*/
+}
 
     
-}
+/*
+    private void OnSwiped(object sender, SwipedEventArgs e) { Submitted.Text = Submit.Word(); }
+    private void testbutton_Clicked(object sender, EventArgs e) => ((Button)sender).BackgroundColor = Colors.Red;}*/

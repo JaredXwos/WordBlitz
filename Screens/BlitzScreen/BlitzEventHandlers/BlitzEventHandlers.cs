@@ -9,19 +9,13 @@ namespace WordBlitz.Screens.BlitzScreen
     //works with the submit class to submit words, acts as the bridge between (swipe and tap events) and (submission logic)
     public static class BlitzEventHandlers 
     {
-        static string wordFormed = "0";//TODO IMPLEMENT get word formed by all button presses
-
         //eventHandlers -----------------------------------------
         public static void submissionHandler() 
         {
-            if (isTileLengthLegal(wordFormed)) 
-            { Submit.submitToList(); }
+            Submit.submitToList();
         }
 
-
-
-
-        public static void addLetterHandler(object sender)
+        public static void addLetterHandler(object sender)//TODO hardcoded label text values into .Text
         {
             var label = (Label)sender;
             var gridBoard = (Grid)label.Parent;
@@ -36,10 +30,10 @@ namespace WordBlitz.Screens.BlitzScreen
             var label = (Label)sender;
             var gridBoard = (Grid)label.Parent;
             Tuple<int, int> position = Tuple.Create(i, j);
+
             string letter = label.Text;
             Submit.submitLetter(letter, position);
         }
-
 
 
 
@@ -48,21 +42,11 @@ namespace WordBlitz.Screens.BlitzScreen
             if (e.StatusType == GestureStatus.Completed) { submissionHandler(); }
 #nullable enable
             int[]? rowcolinfo = SwipeLogic.GetGridCoordinates(sender, e);
-            if (rowcolinfo != null) { addLetterHandler(sender); }
+            if (rowcolinfo != null) { addLetterHandler(sender , rowcolinfo[0] , rowcolinfo[1]); }
 #nullable disable
         }
-
         //eventHandlers end -----------------------------------------
-
-
-
         //helper functions
-        private static bool isTileLengthLegal(string wordFormed)//TODO make all letters lowercase in resources/raw
-        {
-            if      (wordFormed.Length > 3)                                 { return true;  }
-            else if (wordFormed.Length == 3 && !wordFormed.Contains('Q'))   { return true;  }
-            else                                                            { return false; }
-        }
 
         private static void resetGridBoard()
         {
