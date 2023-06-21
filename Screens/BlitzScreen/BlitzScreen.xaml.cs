@@ -64,12 +64,12 @@ public partial class BlitzScreen : ContentPage
 
 
     //event handlers
-    private void OnGridButtonPanned(object sender, PanUpdatedEventArgs e)
+    private static void OnGridButtonPanned(object sender, PanUpdatedEventArgs e)
     {
         BlitzEventHandlers.processPanInfomationHandler(sender, e);
     }
 
-    private void OnGridButtonTapped(object sender, TappedEventArgs e)
+    private static void OnGridButtonTapped(object sender, TappedEventArgs e)
     {
         var label = (Label)sender;
         label.IsEnabled = false;
@@ -77,7 +77,7 @@ public partial class BlitzScreen : ContentPage
         label.IsEnabled = true;
     }
 
-    private void OnSubmitButtonTapped(object sender, TappedEventArgs e)
+    private static void OnSubmitButtonTapped(object sender, TappedEventArgs e)
     {
         var label = (Label)sender;
         label.IsEnabled = false;
