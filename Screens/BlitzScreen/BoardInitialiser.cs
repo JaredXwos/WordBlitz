@@ -16,10 +16,12 @@ namespace WordBlitz.Screens.BlitzScreen
             Grid boardGrid = board;
             int[] diceShuffleArray = Enumerable.Range(0, 16).OrderBy(lambda => Global.random.Next()).ToArray();
             int[] diceOrientationArray = new int[16].Select(lambda => Global.random.Next() % 6).ToArray();
+            string[,] currentBoardLayout = new string[4, 4];
 
             for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++)
             {
-                    string ijText = Dice.dice[diceShuffleArray[i * 4 + j]][diceOrientationArray[i * 4 + j]];
+                    currentBoardLayout[i, j] = Dice.dice[diceShuffleArray[i * 4 + j]][diceOrientationArray[i * 4 + j]];
+                    string ijText = currentBoardLayout[i, j];
                     TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
                     tapGestureRecognizer.Tapped += (s, e) =>
                     {
@@ -60,6 +62,10 @@ namespace WordBlitz.Screens.BlitzScreen
             var label = (Label)sender;
             label.IsEnabled = false;
             BlitzEventHandlers.addLetterHandler(sender);
+            var gridBoard = (Grid)label.Parent;
+            int j = gridBoard.GetRow(label); //j is column
+            int i = gridBoard.GetColumn(label); 
+
             label.IsEnabled = true;
         }
 

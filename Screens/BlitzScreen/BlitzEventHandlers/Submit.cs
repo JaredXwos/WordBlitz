@@ -58,7 +58,7 @@ namespace WordBlitz.Screens.BlitzScreen
             int lasti = tilePositions.ElementAt(0).Item1;
             int lastj = tilePositions.ElementAt(0).Item2;
             if ((Math.Abs(lasti - i) <= 1 && Math.Abs(lastj - j) <= 1) &&/*check if tiles are in range and*/
-                ((lasti == i) && (lastj == j)))  /*checks if the same tile submitted*/  //checks if tile is valid selection
+                !((lasti == i) && (lastj == j)))  /*checks if the same tile submitted*/  //checks if tile is valid selection
             {
                 tileLettersStack.Push(letter); tilePositions.Push(position);
                 Console.WriteLine($"submitted letter {letter}");
