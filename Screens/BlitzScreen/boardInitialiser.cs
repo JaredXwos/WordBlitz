@@ -22,16 +22,17 @@ namespace WordBlitz.Screens.BlitzScreen
             {
                     gridLayout[j, i] = Dice.dice[diceShuffleArray[j * 4 + i]][diceOrientationArray[j * 4 + i]];
 
-                    Label label = new Label()
+                    Button label = new Button()
                     {
                         Text = /*$"{j},{i}"*/gridLayout[j, i],
                         TextColor = Colors.White,
                         BackgroundColor = Colors.Navy,
                         FontSize = 40,
-                        HorizontalTextAlignment = TextAlignment.Center,
-                        VerticalTextAlignment = TextAlignment.Center,
+                        CornerRadius = 4000,
                         WidthRequest = board.HeightRequest/4,
                         HeightRequest = board.HeightRequest/4,
+                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Center,
                         Scale = 1,
                         Opacity = 1,
                     };
@@ -44,15 +45,13 @@ namespace WordBlitz.Screens.BlitzScreen
 
                     Label touchLabel = new Label()  // invisible label
                     {
-                        TextColor = Colors.White,
                         BackgroundColor = Colors.Red,
-                        FontSize = 40,
-                        HorizontalTextAlignment =TextAlignment.Center,
-                        VerticalTextAlignment =TextAlignment.Center,
-                        WidthRequest = board.HeightRequest/4,
-                        HeightRequest = board.HeightRequest/4,
-                        Scale = 1,
-                        Opacity = 0.05,
+                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Center,
+                        WidthRequest = board.HeightRequest*0.02,
+                        HeightRequest = board.HeightRequest*0.02,
+                        Scale = 2,
+                        Opacity = 0.5,
                         GestureRecognizers = { panGestureRecognizer },
                     };
 
@@ -61,7 +60,7 @@ namespace WordBlitz.Screens.BlitzScreen
         }
         private static void OnButtonPressed(object sender, EventArgs e)
         {
-            var element = (Label)sender;
+            var element = (Label)sender;  // might cause type casting errors
             var boardgrid = (Grid)element.Parent;
             Console.WriteLine($"frontend sent{element.Text} , ({boardgrid.GetRow(element)},{boardgrid.GetColumn(element)})");
             Submit.Letter(element.Text, new Tuple<int, int> (boardgrid.GetRow(element), boardgrid.GetColumn(element)));
@@ -74,14 +73,47 @@ namespace WordBlitz.Screens.BlitzScreen
             if (SwipeLogic.GetPosition(sender, e) != null)
             {
                 Tuple<int, int> position = SwipeLogic.GetPosition(sender, e);
-                (int i, int j) = position;
-                Console.WriteLine($"submitted letter = {gridLayout[j,i]}");
-                Console.WriteLine($"(coords: {i} {j}, row={i} col={j}) from boardinitialiser, awaiting uncommenting");
-                /*Submit.Letter(gridLayout[j, i], position);*/
-/*
-                requestqueue.Enqueue(new Tuple<string, Tuple<int, int>>(gridLayout[j,i], position));*/
-                //Console.WriteLine(requestqueue.Count.ToString());
+                (int i, int j) = position; // completed function, will not have errors here
             };
+        }
+
+        private static Grid GenerateHitBoxes( double heightParam)
+        {
+            Grid board = new Grid()
+            { 
+                HeightRequest = heightParam,
+                RowDefinitions =
+                {
+                    new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
+                    new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
+                    new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
+                    new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
+                },
+                ColumnDefinitions =
+                {
+                    new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
+                    new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
+                    new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
+                    new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
+                }
+            };
+
+            Label[,] labels = new Label[4,4];
+
+            for (int i = 0; i < 3; i++) for (int j = 0; j < 3; j++)
+                {
+                    labels[i, j] = new Label()
+                    {
+                        BackgroundColor = Colors.Green,
+                        Opacity = 0.25,
+                        
+                    };
+
+                    board.Add(labels[i,j],i,j);
+                }
+            labels[1,1].BackgroundColor = Colors.Red;
+
+            return board;
         }
 
     }

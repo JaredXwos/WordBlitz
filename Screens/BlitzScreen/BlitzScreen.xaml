@@ -19,31 +19,20 @@
                 HorizontalOptions="Center"
                 VerticalOptions="Center">
                 <Label x:Name="scoreLabel" Text="Score:"/>
-                <Frame
-                    BackgroundColor="Blue"
-                    CornerRadius="10"
-                    Padding="10"
+                <Grid
+                    x:Name="boardGrid"
+                    BackgroundColor="AliceBlue"
                     WidthRequest="340"
-                    HeightRequest="340">
-                    <Frame
-                        BackgroundColor="SaddleBrown"
-                        CornerRadius="10"
-                        Padding="10"
-                        WidthRequest="320"
-                        HeightRequest="320">
-                        <Grid
-                            x:Name="boardGrid"
-                            WidthRequest="300"
-                            HeightRequest="300"
-                            RowDefinitions="*, *, *, *"
-                            ColumnDefinitions="*, *, *, *"
-                            RowSpacing="5"
-                            ColumnSpacing="5">
-                        </Grid>
-                    </Frame>
-                </Frame>
+                    HeightRequest="340"
+                    RowDefinitions="*, *, *, *"
+                    ColumnDefinitions="*, *, *, *"
+                    Margin="0"
+                    Padding="0"
+                    RowSpacing="10"
+                    ColumnSpacing="10">
+                </Grid>
 
-                <Label Text="Submit->"  WidthRequest="300" HeightRequest="50" BackgroundColor="White">
+                        <Label Text="Submit->"  WidthRequest="300" HeightRequest="50" BackgroundColor="White">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnSubmitButtonTapped"/>
                         <SwipeGestureRecognizer Direction="Left,Right" Swiped="OnSubmisButtonSwiped" Threshold="40"/>

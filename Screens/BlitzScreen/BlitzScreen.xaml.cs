@@ -17,7 +17,7 @@ public partial class BlitzScreen : ContentPage
         Dice.Wait();
         Dispatcher.Dispatch(() => boardInitialiser.InitialiseBoard(boardGrid));
 
-        IDispatcherTimer timer = Dispatcher.CreateTimer();
+        /*IDispatcherTimer timer = Dispatcher.CreateTimer();
         timer.Interval = TimeSpan.FromSeconds(Config.blitzTimeConfig);
         timer.Tick += (object sender, EventArgs e) =>
         {
@@ -43,7 +43,7 @@ public partial class BlitzScreen : ContentPage
 
 
         };
-        timer.Start();
+        timer.Start();*/
     }
 
     private void OnSubmitButtonTapped(object sender, TappedEventArgs e) { Console.WriteLine("Submit Was called from blitzScreen.xaml.cs,needs uncommenting");/*Submit.Word();*/ }
