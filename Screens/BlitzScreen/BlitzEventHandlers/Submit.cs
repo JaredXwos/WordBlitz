@@ -1,5 +1,4 @@
-﻿using Java.Util;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -51,7 +50,6 @@ namespace WordBlitz.Screens.BlitzScreen
             if (tilePositions.Count == 0) { tileLettersStack.Push(letter); tilePositions.Push(position); return; } //if empty, set it
             int i = position.Item1;
             int j = position.Item2;
-
             if (tilePositions.Count >= 2) //backtrack to last letter if selected
             {
                 int secondlasti = tilePositions.ElementAt(1).Item1;
