@@ -15,7 +15,7 @@ namespace WordBlitz.Screens.BlitzScreen
         public SwipeLogicTest()
         {
             InitializeComponent();
-            new Thread(() =>
+            /*new Thread(() =>
             {
                 Thread.CurrentThread.IsBackground = true;
                 //Console.WriteLine("HANDLED");
@@ -35,23 +35,21 @@ namespace WordBlitz.Screens.BlitzScreen
                         }
                     }
                 }
-            }).Start();
-            double gridHeight = testGrid.Height;
-            double gridWidth = testGrid.Width;
+            }).Start();*/
 
 
             for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++)
             {
                     Button labelParam = new()
                     {
-                        Text = $"col={j}, row={i}",
+                        Text = $"c{j},r{i}",
                         BackgroundColor = Colors.Red,
 /*                        TextColor = Colors.Transparent,*/
                         HeightRequest = (testGrid.Height),
                         WidthRequest = (testGrid.Width),
-                        Scale = 0.75,
+                        Scale = 1,
 /*                        Opacity = 0.25,*/
-                        CornerRadius = (int)5000,// this is an arbitary large number
+                        /*CornerRadius = (int)100,// this is an arbitary large number*/
                     };
 
                     PanGestureRecognizer panGestureRecognizerParam = new();
@@ -74,20 +72,20 @@ namespace WordBlitz.Screens.BlitzScreen
             var x = e.TotalX;
             var y = e.TotalY;
             int[] coords = new int[2];
-            //Console.WriteLine($"hee haw{sender.ToString}, {e.StatusType}, {boardgrid.Height * 0.55} , (x= {x}, y= {y})");
+            Console.WriteLine($"hee haw{sender.ToString}, {e.StatusType}, {boardgrid.Height * 0.55} , (x= {x}, y= {y})");
 
-            if (SwipeCoordinatesLogic.GetGridCoordinates(sender, e, boardgrid) != null) 
+            if (SwipeCoordinatesLogic.GetPosition(sender, e) != null) 
             {
                 //Console.WriteLine(string.Join(",", SwipeCoordinatesLogic.GetGridCoordinates(sender, e, boardgrid)));
-                coords = SwipeCoordinatesLogic.GetGridCoordinates(sender, e, boardgrid);
+                (int i , int j) = SwipeCoordinatesLogic.GetPosition(sender, e);
 
                 var button = (Button)sender;
                 var gridBoard = (Grid)button.Parent;
-                int row = gridBoard.GetRow(button);
-                int col = gridBoard.GetColumn(button);
+                int intialRow = gridBoard.GetRow(button);
+                int intialCol = gridBoard.GetColumn(button);
 
                 Console.WriteLine();
-                Console.WriteLine($"(coords: {coords[0]} {coords[1]}, row={row} col={col})");
+                Console.WriteLine($"(coords: {j} {i}, row={intialRow} col={intialCol})");
                 /*requestqueue.Enqueue(new Tuple<string, Tuple<int, int>>(tappedbuton.Text, new Tuple<int, int>(coords[0], coords[1])));*/
                 //Console.WriteLine(requestqueue.Count.ToString());
             };
