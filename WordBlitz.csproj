@@ -145,7 +145,7 @@
 	  <Compile Update="Screens\BlitzScreen\BlitzScreen.xaml.cs">
 	    <DependentUpon>BlitzScreen.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Screens\BlitzScreen\SwipeLogic\SwipeLogicTest.xaml.cs">
+	  <Compile Update="Screens\BlitzScreen\SwipeLogicOld\SwipeLogicTest.xaml.cs">
 	    <DependentUpon>SwipeLogicTest.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Screens\Settings\SettingsScreen.xaml.cs">
@@ -163,7 +163,7 @@
 	  <MauiXaml Update="Screens\Analysis\Analysis.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Screens\BlitzScreen\SwipeLogic\SwipeLogicTest.xaml">
+	  <MauiXaml Update="Screens\BlitzScreen\SwipeLogicOld\SwipeLogicTest.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="tools\pagetemplate\pagetemplate.xaml">

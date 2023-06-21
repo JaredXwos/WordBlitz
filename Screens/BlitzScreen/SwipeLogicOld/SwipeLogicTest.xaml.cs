@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Specialized;
 using System.Text;
-using WordBlitz.Screens.BlitzScreen.SwipeLogic;
+using WordBlitz.Screens.BlitzScreen.SwipeLogicOld;
 using WordBlitz.tools;
 using Color = Microsoft.Maui.Graphics.Color;
 
@@ -44,7 +44,7 @@ namespace WordBlitz.Screens.BlitzScreen
             {
                     Button labelParam = new()
                     {
-                        Text = $"{i},{j}",
+                        Text = $"col={j}, row={i}",
                         BackgroundColor = Colors.Red,
 /*                        TextColor = Colors.Transparent,*/
                         HeightRequest = (testGrid.Height),
@@ -59,9 +59,9 @@ namespace WordBlitz.Screens.BlitzScreen
 
                     labelParam.GestureRecognizers.Add(panGestureRecognizerParam);
 
-                    labels[i,j] = labelParam;
+                    labels[j,i] = labelParam;
 
-                    testGrid.Add(labelParam,i,j);
+                    testGrid.Add(labelParam,j,i);
 
 
                 //Console.WriteLine($"grid height is {gridHeight}, actual gridh is {testGrid.Height}");
@@ -81,8 +81,14 @@ namespace WordBlitz.Screens.BlitzScreen
                 //Console.WriteLine(string.Join(",", SwipeCoordinatesLogic.GetGridCoordinates(sender, e, boardgrid)));
                 coords = SwipeCoordinatesLogic.GetGridCoordinates(sender, e, boardgrid);
 
-                Console.Write($" {coords[0]} {coords[1]} ");
-                requestqueue.Enqueue(new Tuple<string, Tuple<int, int>>(tappedbuton.Text, new Tuple<int, int>(coords[0], coords[1])));
+                var button = (Button)sender;
+                var gridBoard = (Grid)button.Parent;
+                int row = gridBoard.GetRow(button);
+                int col = gridBoard.GetColumn(button);
+
+                Console.WriteLine();
+                Console.WriteLine($"(coords: {coords[0]} {coords[1]}, row={row} col={col})");
+                /*requestqueue.Enqueue(new Tuple<string, Tuple<int, int>>(tappedbuton.Text, new Tuple<int, int>(coords[0], coords[1])));*/
                 //Console.WriteLine(requestqueue.Count.ToString());
             };
         }

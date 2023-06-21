@@ -24,12 +24,6 @@ public partial class BlitzScreen : ContentPage
             Dict.Wait();
             Navigation.PushAsync(new Analysis());
 
-            foreach (Button child in boardGrid.Children)
-            {
-                child.IsEnabled = false;
-                child.BackgroundColor = Colors.Navy;
-            }
-
             int points = 0;
             IEnumerable<string> validwords = Dict.dict.Intersect(Submit.Getlist()).Where(c => c.Length > 2);
             foreach (string word in validwords)

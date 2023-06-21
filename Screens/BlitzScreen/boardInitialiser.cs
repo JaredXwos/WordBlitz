@@ -26,6 +26,7 @@ namespace WordBlitz.Screens.BlitzScreen
                     Label label = new Label()
                     {
                         Text = gridLayout[i, j],
+                        TextColor = Colors.White,
                         BackgroundColor = Colors.Navy,
                         FontSize = 40,
                         HorizontalTextAlignment =TextAlignment.Center,
@@ -34,6 +35,7 @@ namespace WordBlitz.Screens.BlitzScreen
                         HeightRequest = 75,
                         GestureRecognizers = { tapGestureRecognizer },
                     };
+
                 board.Add(label, j, i);
             }
         }
