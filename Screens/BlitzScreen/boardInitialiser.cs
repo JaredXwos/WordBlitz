@@ -7,30 +7,43 @@ using WordBlitz.tools;
 
 namespace WordBlitz.Screens.BlitzScreen
 {
-    public static class BlitzScreenGrid
+    public static class boardInitialiser
     {
         static internal void InitialiseBoard(Grid board)
         {
             int[] diceShuffleArray = Enumerable.Range(0, 16).OrderBy(lambda => Global.random.Next()).ToArray();
             int[] diceOrientationArray = new int[16].Select(lambda => Global.random.Next() % 6).ToArray();
+            string[,] gridLayout = new string[4, 4];
             for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++)
             {
-                Button button = new()
-                {
-                    BackgroundColor = Colors.Navy,
-                    FontSize = 40,
-                    Text = Dice.dice[diceShuffleArray[i * 4 + j]][diceOrientationArray[i * 4 + j]]
-                };
-                button.Pressed += OnButtonPressed;
-                board.Add(button, i, j);
+                    gridLayout[i, j] = Dice.dice[diceShuffleArray[i * 4 + j]][diceOrientationArray[i * 4 + j]];
+
+                    TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
+                    tapGestureRecognizer.Tapped += (s, e) =>{ OnButtonPressed(s, e); };
+                    /*PanGestureRecognizer panGestureRecognizer = new PanGestureRecognizer();
+                    panGestureRecognizer.PanUpdated += (s, e) => { OnButtonPressed(s, e); };*/
+
+                    Label label = new Label()
+                    {
+                        Text = gridLayout[i, j],
+                        BackgroundColor = Colors.Navy,
+                        FontSize = 40,
+                        HorizontalTextAlignment =TextAlignment.Center,
+                        VerticalTextAlignment =TextAlignment.Center,
+                        WidthRequest = 75,
+                        HeightRequest = 75,
+                        GestureRecognizers = { tapGestureRecognizer },
+                    };
+                board.Add(label, j, i);
             }
         }
         private static void OnButtonPressed(object sender, EventArgs e)
         {
-            Button element = (Button)sender;
+            Label element = (Label)sender;
             Grid board = (Grid)element.Parent;
             Submit.Letter(element.Text, new Tuple<int, int> (board.GetRow(element), board.GetColumn(element)));
         }
+
     }
 
 

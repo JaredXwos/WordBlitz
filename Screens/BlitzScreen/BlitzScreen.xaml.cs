@@ -15,7 +15,7 @@ public partial class BlitzScreen : ContentPage
         blitzScreenBackgroundView.Source = backgroundPath;
 
         Dice.Wait();
-        Dispatcher.Dispatch(() => BlitzScreenGrid.InitialiseBoard(boardGrid));
+        Dispatcher.Dispatch(() => boardInitialiser.InitialiseBoard(boardGrid));
 
         IDispatcherTimer timer = Dispatcher.CreateTimer();
         timer.Interval = TimeSpan.FromSeconds(Config.blitzTimeConfig);
@@ -23,7 +23,7 @@ public partial class BlitzScreen : ContentPage
         {
             Dict.Wait();
             Navigation.PushAsync(new Analysis());
-            Submitted.Text = string.Empty;
+
             foreach (Button child in boardGrid.Children)
             {
                 child.IsEnabled = false;
@@ -32,7 +32,7 @@ public partial class BlitzScreen : ContentPage
 
             int points = 0;
             IEnumerable<string> validwords = Dict.dict.Intersect(Submit.Getlist()).Where(c => c.Length > 2);
-            foreach(string word in validwords)
+            foreach (string word in validwords)
             {
                 switch (word.Length)
                 {
@@ -43,16 +43,16 @@ public partial class BlitzScreen : ContentPage
                     case 7: points += 5; break;
                     default: points += 11; break;
                 }
-                Submitted.Text += word;
-                Submitted.Text += ' ';
+
+
             }
-            testbutton.Text = (points - Submit.Getlist().Count + validwords.Count()).ToString();
+
+
         };
         timer.Start();
     }
 
-    private void OnSwiped(object sender, SwipedEventArgs e) { Submitted.Text = Submit.Word(); }
-    private void testbutton_Clicked(object sender, EventArgs e) => ((Button)sender).BackgroundColor = Colors.Red;
+    private void OnSubmitButtonTapped(object sender, TappedEventArgs e) { Console.WriteLine("Submit Was called from blitzScreen.xaml.cs");/*Submit.Word();*/ }
+    private void OnSubmisButtonSwiped(object sender, SwipedEventArgs e) { Console.WriteLine("Submit Was called from blitzScreen.xaml.cs");/*Submit.Word();*/  }
 
-    
 }
