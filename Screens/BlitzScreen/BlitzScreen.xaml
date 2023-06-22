@@ -42,26 +42,12 @@
                         </Grid>
                     </Grid>
                 </Frame>
-                <Label Text="Submit->"  WidthRequest="300" HeightRequest="50" BackgroundColor="White">
+                <Label x:Name="submitButton" Text="Submit->"  WidthRequest="300" HeightRequest="50" BackgroundColor="White">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnSubmitButtonTapped"/>
                         <SwipeGestureRecognizer Direction="Left,Right" Swiped="OnSubmisButtonSwiped" Threshold="40"/>
                     </Label.GestureRecognizers>
                 </Label>
-
-                <!--<Label
-                    x:Name="Submitted"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    LineBreakMode="WordWrap"
-                    BackgroundColor="White"
-                    TextColor="Black"
-                    />
-                <Button
-                    x:Name="testbutton"
-                    BackgroundColor="Pink"
-                    Clicked="testbutton_Clicked"
-                    WidthRequest="100"/>-->
             </VerticalStackLayout>
         </ContentView>
     </Grid>

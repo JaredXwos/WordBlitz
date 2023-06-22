@@ -14,6 +14,20 @@ public partial class BlitzScreen : ContentPage
         InitializeComponent();
         blitzScreenBackgroundView.Source = backgroundPath;
 
+
+        //load submitbutton for tap mode ---------------------
+        //Config.tileSelectionMode = 2; for testing purposes
+        if (Config.tileSelectionMode > (int)TileSelectionMode.SwipeTapManualSubmit){ submitButton.IsVisible = false; submitButton.IsEnabled = false; }
+        else { submitButton.IsVisible = true; submitButton.IsEnabled = true; }
+        //--------------------------------
+
+        //TODO Check Fun Mode to decide what to do with displaying score
+
+        //TODO Check isShakeBoard[currently does not exist yet] enabled and act accordingly
+
+
+
+
         Dice.Wait();
         Dispatcher.Dispatch(() => boardInitialiser.InitialiseBoard(boardGrid));
 

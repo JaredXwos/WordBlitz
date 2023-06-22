@@ -62,10 +62,12 @@ namespace WordBlitz.Screens.BlitzScreen
         }
         private static void OnButtonPressed(object sender, EventArgs e)
         {
-            var element = (Label)sender;  // might cause type casting errors
-            var boardgrid = (Grid)element.Parent;
-            Console.WriteLine($"frontend sent{element.Text} , ({boardgrid.GetRow(element)},{boardgrid.GetColumn(element)})");
-            Submit.Letter(element.Text, new Tuple<int, int> (boardgrid.GetRow(element), boardgrid.GetColumn(element)));
+            var hitboxLabel = (Label)sender;  // might cause type casting errors
+            var hitboxGrid = (Grid)hitboxLabel.Parent;
+            var boardGrid = (Grid)hitboxGrid.Parent;
+            (int i, int j) = (boardGrid.GetRow(hitboxGrid), boardGrid.GetColumn(hitboxGrid));
+            Console.WriteLine($"frontend sent {gridLayout[i, j]} , {(i,j)}");
+            Submit.Letter(gridLayout[i,j], new Tuple<int, int>(i,j) );
         }
 
         private static void OnGridButtonPanned(object sender, PanUpdatedEventArgs e)
@@ -75,7 +77,7 @@ namespace WordBlitz.Screens.BlitzScreen
             if (SwipeLogic.GetPosition(sender, e) != null)
             {
                 Tuple<int, int> position = SwipeLogic.GetPosition(sender, e);
-                (int i, int j) = position; // completed function, will not have errors here
+                (int i, int j) = position;
                 Console.WriteLine($"submitted letter = {gridLayout[j, i]}");
                 Console.WriteLine($"(coords: {i} {j}, row={i} col={j}) from boardinitialiser, awaiting uncommenting");
                 /*Submit.Letter(gridLayout[j, i], position);*/
@@ -108,19 +110,25 @@ namespace WordBlitz.Screens.BlitzScreen
 
             for (int i = 0; i < 3; i++) for (int j = 0; j < 3; j++)
                 {
-                    TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
-                    tapGestureRecognizer.Tapped += (s, e) => { OnButtonPressed(s, e); };
-                    PanGestureRecognizer panGestureRecognizer = new PanGestureRecognizer();
-                    panGestureRecognizer.PanUpdated += (s, e) => { OnGridButtonPanned(s, e); };
                     labels[i, j] = new Label()
                     {
                         BackgroundColor = Colors.Green,
                         Opacity = 0.25,
-                        GestureRecognizers = { panGestureRecognizer },
                     };
                     board.Add(labels[i,j],i,j);
                 }
             labels[1,1].BackgroundColor = Colors.Red;
+
+            for (int i = 0;i < 3;i++) for (int j = 0;j<3;j++)
+                {
+                    TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
+                    tapGestureRecognizer.Tapped += (s, e) => { OnButtonPressed(s, e); };
+                    PanGestureRecognizer panGestureRecognizer = new PanGestureRecognizer();
+                    panGestureRecognizer.PanUpdated += (s, e) => { OnGridButtonPanned(s, e); };
+                    if (Config.tileSelectionMode != (int)TileSelectionMode.SwipeOnly) { labels[i, j].GestureRecognizers.Add(tapGestureRecognizer); }
+                    if (Config.tileSelectionMode != (int)TileSelectionMode.TapOnly  ) { labels[i, j].GestureRecognizers.Add(panGestureRecognizer); }
+                }
+
 
             return board;
         }
