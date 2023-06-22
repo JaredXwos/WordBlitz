@@ -5,7 +5,7 @@
              Title="Analysis">
     <ScrollView>
         <VerticalStackLayout x:Name="Display">
-            <Label x:Name="Score" Text="TEST" HorizontalOptions="Center"/>
+            <Button x:Name="Score" Text="TEST" HorizontalOptions="FillAndExpand" Clicked="OnSubmit" FontSize="28"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

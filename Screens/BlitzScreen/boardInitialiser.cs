@@ -72,8 +72,8 @@ namespace WordBlitz.Screens.BlitzScreen
 
         private static void OnGridButtonPanned(object sender, PanUpdatedEventArgs e)
         {
-            if (e.StatusType == GestureStatus.Completed) { Console.WriteLine("Submitted word"+Submit.Word()); }
-            if (e.StatusType == GestureStatus.Started) { Console.WriteLine("swipe started"); return; }
+            if (e.StatusType == GestureStatus.Completed) { Console.WriteLine("Submitted word"+Submit.Word()); return; }
+            if (e.StatusType == GestureStatus.Started) { Console.WriteLine("swipe started"); Submit.Word();  return; }
             if (SwipeLogic.GetPosition(sender, e) != null)
             {
                 Tuple<int, int> position = SwipeLogic.GetPosition(sender, e);

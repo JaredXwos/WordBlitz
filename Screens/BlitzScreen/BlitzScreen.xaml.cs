@@ -14,53 +14,25 @@ public partial class BlitzScreen : ContentPage
         InitializeComponent();
         blitzScreenBackgroundView.Source = backgroundPath;
 
-
-        //load submitbutton for tap mode ---------------------
-        //Config.tileSelectionMode = 2; for testing purposes
-        if (Config.tileSelectionMode > (int)TileSelectionMode.SwipeTapManualSubmit){ submitButton.IsVisible = false; submitButton.IsEnabled = false; }
+        if (Config.tileSelectionMode > (int)TileSelectionMode.SwipeTapManualSubmit){ submitButton.IsVisible = true; submitButton.IsEnabled = false; }
         else { submitButton.IsVisible = true; submitButton.IsEnabled = true; }
-        //--------------------------------
 
-        //TODO Check Fun Mode to decide what to do with displaying score
-
-        //TODO Check isShakeBoard[currently does not exist yet] enabled and act accordingly
-
-
-
-
+        Submit.Bind(submitButton);
         Dice.Wait();
         Dispatcher.Dispatch(() => boardInitialiser.InitialiseBoard(boardGrid));
 
-        /*IDispatcherTimer timer = Dispatcher.CreateTimer();
+        IDispatcherTimer timer = Dispatcher.CreateTimer();
         timer.Interval = TimeSpan.FromSeconds(Config.blitzTimeConfig);
-        timer.Tick += (object sender, EventArgs e) =>
-        {
-            Dict.Wait();
-            Navigation.PushAsync(new Analysis());
-
-            int points = 0;
-            IEnumerable<string> validwords = Dict.dict.Intersect(Submit.Getlist()).Where(c => c.Length > 2);
-            foreach (string word in validwords)
-            {
-                switch (word.Length)
-                {
-                    case 3: points++; break;
-                    case 4: points++; break;
-                    case 5: points += 2; break;
-                    case 6: points += 3; break;
-                    case 7: points += 5; break;
-                    default: points += 11; break;
-                }
-
-
-            }
-
-
-        };
-        timer.Start();*/
+        timer.IsRepeating = false;
+        timer.Tick += OnTimeOut;
+        timer.Start();
     }
 
     private void OnSubmitButtonTapped(object sender, TappedEventArgs e) { Submit.Word(); }
     private void OnSubmisButtonSwiped(object sender, SwipedEventArgs e) { Submit.Word(); }
-
+    private void OnTimeOut(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new Analysis());
+        submitButton.Text = Submit.TotalUp().ToString();
+    }
 }
