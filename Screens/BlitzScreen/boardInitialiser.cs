@@ -80,7 +80,7 @@ namespace WordBlitz.Screens.BlitzScreen
                 (int i, int j) = position;
                 Console.WriteLine($"submitted letter = {gridLayout[j, i]}");
                 Console.WriteLine($"(coords: {i} {j}, row={i} col={j}) from boardinitialiser, awaiting uncommenting");
-                /*Submit.Letter(gridLayout[j, i], position);*/
+                Submit.Letter(gridLayout[j, i], position);
             };
         }
 

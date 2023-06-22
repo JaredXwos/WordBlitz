@@ -60,7 +60,7 @@ public partial class BlitzScreen : ContentPage
         timer.Start();*/
     }
 
-    private void OnSubmitButtonTapped(object sender, TappedEventArgs e) { Console.WriteLine("Submit Was called from blitzScreen.xaml.cs,needs uncommenting");/*Submit.Word();*/ }
-    private void OnSubmisButtonSwiped(object sender, SwipedEventArgs e) { Console.WriteLine("Submit Was called from blitzScreen.xaml.cs,needs uncommenting");/*Submit.Word();*/  }
+    private void OnSubmitButtonTapped(object sender, TappedEventArgs e) { Submit.Word(); }
+    private void OnSubmisButtonSwiped(object sender, SwipedEventArgs e) { Submit.Word(); }
 
 }
