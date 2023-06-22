@@ -12,11 +12,9 @@ public partial class SettingsScreen : ContentPage
         dictPicker.SelectedItem             = Config.dictionaryConfig;
         dicePicker.SelectedItem             = Config.diceTypeConfig;
         backgroundPicker.SelectedItem       = Config.backgroundConfig;
-        Dispatcher.Dispatch(new Action(() =>
-        {
-            DurationSliderLabel.Text = "Set duration of blitz game: " + Config.blitzTimeConfig.ToString();
-        }));
+        durationEntry.Text            = Config.blitzTimeConfig.ToString();
         tileSelectionPicker.SelectedIndex   = Config.tileSelectionMode;
+        gameModePicker.SelectedItem               = Config.gamemodeConfig;
     }
     private void ConfigUpdate(object sender, EventArgs e)
     {
@@ -49,24 +47,48 @@ public partial class SettingsScreen : ContentPage
             }
 
             case "tileSelectionPicker":
-                {
-                    Config.tileSelectionMode = picker.SelectedIndex;
-                    Preferences.Default.Set("TileSelectionMode", Config.tileSelectionMode);
-                    break;
-                }
-            case "gameMode":
-                {
-                    Config.gamemodeConfig = (string)picker.ItemsSource[selectedIndex];
-                    Preferences.Default.Set("gameMode", Config.gamemodeConfig);
-                    break;
-                }
+            {
+                Config.tileSelectionMode = picker.SelectedIndex;
+                Preferences.Default.Set("TileSelectionMode", Config.tileSelectionMode);
+                break;
+            }
+            case "gameModePicker":
+            {
+                Config.gamemodeConfig = (string)picker.ItemsSource[selectedIndex];
+                Preferences.Default.Set("gameModeConfig", Config.gamemodeConfig);
+                break;
+            }
             default: break;
         }
     }
-    private void blitzDurationChanged(object sender, ValueChangedEventArgs e)
+
+    private void SliderChanged(object sender, ValueChangedEventArgs e)
     {
-        Config.blitzTimeConfig = (int) e.NewValue;
-        Preferences.Default.Set("blitzTimeConfig", Config.blitzTimeConfig);
-        DurationSliderLabel.Text = "Set duration of blitz game: " + Config.blitzTimeConfig.ToString();
+        switch (((Slider)sender).StyleId)
+        {
+            case "durationSlider":
+            {
+                Config.blitzTimeConfig = (int)e.NewValue;
+                Preferences.Default.Set("blitzTimeConfig", Config.blitzTimeConfig);
+                durationEntry.Text = Config.blitzTimeConfig.ToString();
+                break;
+            }
+            default: break;
+        }
+    }
+
+    private void Entry_TextChanged(object sender, EventArgs e)
+    {
+        Entry entry = (Entry)sender;
+        switch (entry.StyleId)
+        {
+            case "durationEntry":
+            {
+                durationSlider.Value = Math.Max(1,Math.Min(600, Int32.Parse(entry.Text)));
+                durationEntry.Text = ((int) durationSlider.Value).ToString();
+                break;
+            }
+            default: break;
+        }
     }
 }

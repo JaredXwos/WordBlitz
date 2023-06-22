@@ -38,7 +38,7 @@ namespace WordBlitz.tools
 
     public static class Points
     {
-        private static Dictionary<int, int[]> _points;
+        private static Dictionary<int, int[]> _points = new();
         public static void Start()
         {
             string[][] data = Config.pointsConfig.Split('\n').Select(x => x.Split(' ').ToArray()).ToArray();

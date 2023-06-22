@@ -47,7 +47,7 @@
                     Text="Settings"
                     FontSize="20"
                     SemanticProperties.Hint="Navigates to settings page"
-                    Clicked="OnCounterClicked"
+                    Clicked="OnSettingsButtonClicked"
                     HorizontalOptions="Center" />
                 
             </VerticalStackLayout>

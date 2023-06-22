@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WordBlitz.Screens.BlitzScreen.SwipeLogicOld;
 using WordBlitz.tools;
 
 namespace WordBlitz.Screens.BlitzScreen

@@ -3,96 +3,154 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WordBlitz.SettingsScreen"
              Title="Settings">
-    <VerticalStackLayout HorizontalOptions="Center" Spacing="25">
+    <StackLayout HorizontalOptions="FillAndExpand" Spacing="25" Padding="0,25">
 
-        <Picker x:Name="dictPicker"
-            SelectedIndexChanged="ConfigUpdate"
-            Title="Set Dictionary"
-            VerticalOptions="Center"
-            VerticalTextAlignment="Center"
-            HorizontalOptions="Center"
-            HorizontalTextAlignment="Center">
-            <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>CSW22.txt</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="4,0" BackgroundColor="LightBlue">
+            <Label Text="Dictionary" 
+                   FontSize="Large" 
+                   VerticalTextAlignment="End" 
+                   HorizontalTextAlignment="Start"
+                   HorizontalOptions="StartAndExpand"
+                   VerticalOptions="Center"/>
+            <Picker x:Name="dictPicker"
+                    SelectedIndexChanged="ConfigUpdate"
+                    Title="Set Dictionary"
+                    VerticalTextAlignment="End"
+                    HorizontalOptions="End"
+                    HorizontalTextAlignment="End"
+                    FontSize="Large">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>CSW22.txt</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+        </StackLayout>
 
-        <Picker x:Name="dicePicker"
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="4,0" BackgroundColor="LightBlue">
+            <Label Text="Dice" 
+                   FontSize="Large" 
+                   VerticalTextAlignment="End" 
+                   HorizontalTextAlignment="Start"
+                   HorizontalOptions="StartAndExpand"
+                   VerticalOptions="Center"/>
+            <Picker x:Name="dicePicker"
             SelectedIndexChanged="ConfigUpdate"
             Title="Set Dice"
-            VerticalOptions="Center"
             VerticalTextAlignment="Center"
-            HorizontalOptions="Center"
-            HorizontalTextAlignment="Center">
-            <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>DiceModern.txt</x:String>
-                    <x:String>DiceClassic.txt</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
-
-        <Picker  x:Name="backgroundPicker"
+            HorizontalOptions="End"
+            HorizontalTextAlignment="End"
+            FontSize="Large">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>DiceModern.txt</x:String>
+                        <x:String>DiceClassic.txt</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="4,0" BackgroundColor="LightBlue">
+            <Label Text="Background" 
+                   FontSize="Large" 
+                   VerticalTextAlignment="End" 
+                   HorizontalTextAlignment="Start"
+                   HorizontalOptions="StartAndExpand"
+                   VerticalOptions="Center"/>
+            <Picker  x:Name="backgroundPicker"
             SelectedIndexChanged="ConfigUpdate"
             Title="Select Background"
-            VerticalOptions="Center"
             VerticalTextAlignment="Center"
-            HorizontalOptions="Center"
-            HorizontalTextAlignment="Center">
-            <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Zen</x:String>
-                    <x:String>NOT Zen</x:String>
-                    <x:String>Darkmode</x:String>
-                    <x:String>Anime</x:String>
-                    <x:String>AHHH my eyes</x:String>
-                    <x:String>i dont want a background</x:String>
-                    <x:String>SuRpRiSe</x:String>
-                    <x:String>Gigachads</x:String>
-                    <x:String>Scrabble</x:String>
-                    <!--update "tools/BackgroundMappings" if these names changed-->
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
+            HorizontalOptions="End"
+            HorizontalTextAlignment="End"
+            FontSize="Large">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Zen</x:String>
+                        <x:String>NOT Zen</x:String>
+                        <x:String>Darkmode</x:String>
+                        <x:String>Anime</x:String>
+                        <x:String>AHHH my eyes</x:String>
+                        <x:String>i dont want a background</x:String>
+                        <x:String>SuRpRiSe</x:String>
+                        <x:String>Gigachads</x:String>
+                        <x:String>Scrabble</x:String>
+                        <!--update "tools/BackgroundMappings" if these names changed-->
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+        </StackLayout>
 
-        <Picker x:Name="tileSelectionPicker"
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="4,0" BackgroundColor="LightBlue">
+            <Label Text="Blitz Input" 
+                   FontSize="Large" 
+                   VerticalTextAlignment="End" 
+                   HorizontalTextAlignment="Start"
+                   HorizontalOptions="StartAndExpand"
+                   VerticalOptions="Center"/>
+            <Picker x:Name="tileSelectionPicker"
             SelectedIndexChanged="ConfigUpdate"
             Title="Input mode"
-            VerticalOptions="Center"
             VerticalTextAlignment="Center"
-            HorizontalOptions="Center"
-            HorizontalTextAlignment="Center">
-            <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Taps Only</x:String>
-                    <x:String>Swipes and Taps with manual Submission</x:String>
-                    <x:String>Swipes and Taps with automatic Submission</x:String>
-                    <x:String>Swipes Only</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
+            HorizontalOptions="End"
+            HorizontalTextAlignment="End"
+            FontSize="Large">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Tap, Submit</x:String>
+                        <x:String>Tap/Swipe, Submit</x:String>
+                        <x:String>Tap/Swipe</x:String>
+                        <x:String>Swipe</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+        </StackLayout>
 
-        <Picker x:Name="gameMode"
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="4,0" BackgroundColor="LightBlue">
+            <Label Text="Game Mode" 
+                   FontSize="Large" 
+                   VerticalTextAlignment="End" 
+                   HorizontalTextAlignment="Start"
+                   HorizontalOptions="StartAndExpand"
+                   VerticalOptions="Center"/>
+            <Picker x:Name="gameModePicker"
             SelectedIndexChanged="ConfigUpdate"
             Title="Tile Selection Mode"
             VerticalOptions="Center"
             VerticalTextAlignment="Center"
-            HorizontalOptions="Center"
-            HorizontalTextAlignment="Center">
-            <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Realistic</x:String>
-                    <x:String>Instant</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
-
-        <Label x:Name ="DurationSliderLabel" Text="Set duration of blitz game" HorizontalOptions="Center" VerticalOptions="Center"/>
-        <Slider Maximum="600" Minimum="1" Value="80" ValueChanged="blitzDurationChanged" VerticalOptions="Center"/>
-
+            HorizontalOptions="End"
+            HorizontalTextAlignment="End"
+            FontSize="Large">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Realistic</x:String>
+                        <x:String>Instant</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+        </StackLayout>
         
-
-    </VerticalStackLayout>
+        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="4,0" BackgroundColor="LightBlue">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Label Text="Blitz Duration" 
+                           FontSize="Large" 
+                           VerticalTextAlignment="End" 
+                           HorizontalTextAlignment="Start"
+                           HorizontalOptions="StartAndExpand"
+                           VerticalOptions="Center"/>
+                <Entry
+                        x:Name ="durationEntry"
+                        Completed="Entry_TextChanged"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center"
+                        HorizontalOptions="End"
+                        HorizontalTextAlignment="End"
+                        FontSize="Large">
+                </Entry>
+            </StackLayout>
+            <Slider x:Name ="durationSlider"
+                        Maximum="600" Minimum="1" Value="80" 
+                        ValueChanged="SliderChanged" 
+                        VerticalOptions="Center"/>
+        </StackLayout>
+    </StackLayout>
 </ContentPage>

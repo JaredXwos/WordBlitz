@@ -17,14 +17,13 @@ public partial class MainPage : ContentPage
         blitzScreenNavButton.IsEnabled = true;
     }
 
-    private async void OnAnalysisButtonClicked(object sender, EventArgs e)
+    private void OnAnalysisButtonClicked(object sender, EventArgs e)
     {
         analysisScreenNavButton.IsEnabled = false;
-        await Navigation.PushAsync(new SwipeLogicTest());//rerouted for testing
         analysisScreenNavButton.IsEnabled = true;
     }
 
-    private async void OnCounterClicked(object sender, EventArgs e)
+    private async void OnSettingsButtonClicked(object sender, EventArgs e)
     {
         settingsScreenNavButton.IsEnabled = false;
         await Navigation.PushAsync(new SettingsScreen());
