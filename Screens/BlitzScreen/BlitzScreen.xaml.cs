@@ -14,10 +14,24 @@ public partial class BlitzScreen : ContentPage
         InitializeComponent();
         blitzScreenBackgroundView.Source = backgroundPath;
 
+
+        //load submitbutton for tap mode ---------------------
+        //Config.tileSelectionMode = 2; for testing purposes
+        if (Config.tileSelectionMode > (int)TileSelectionMode.SwipeTapManualSubmit){ submitButton.IsVisible = false; submitButton.IsEnabled = false; }
+        else { submitButton.IsVisible = true; submitButton.IsEnabled = true; }
+        //--------------------------------
+
+        //TODO Check Fun Mode to decide what to do with displaying score
+
+        //TODO Check isShakeBoard[currently does not exist yet] enabled and act accordingly
+
+
+
+
         Dice.Wait();
         Dispatcher.Dispatch(() => boardInitialiser.InitialiseBoard(boardGrid));
 
-        IDispatcherTimer timer = Dispatcher.CreateTimer();
+        /*IDispatcherTimer timer = Dispatcher.CreateTimer();
         timer.Interval = TimeSpan.FromSeconds(Config.blitzTimeConfig);
         timer.Tick += (object sender, EventArgs e) =>
         {
@@ -43,10 +57,10 @@ public partial class BlitzScreen : ContentPage
 
 
         };
-        timer.Start();
+        timer.Start();*/
     }
 
-    private void OnSubmitButtonTapped(object sender, TappedEventArgs e) { Console.WriteLine("Submit Was called from blitzScreen.xaml.cs");/*Submit.Word();*/ }
-    private void OnSubmisButtonSwiped(object sender, SwipedEventArgs e) { Console.WriteLine("Submit Was called from blitzScreen.xaml.cs");/*Submit.Word();*/  }
+    private void OnSubmitButtonTapped(object sender, TappedEventArgs e) { Console.WriteLine("Submit Was called from blitzScreen.xaml.cs,needs uncommenting");/*Submit.Word();*/ }
+    private void OnSubmisButtonSwiped(object sender, SwipedEventArgs e) { Console.WriteLine("Submit Was called from blitzScreen.xaml.cs,needs uncommenting");/*Submit.Word();*/  }
 
 }

@@ -8,49 +8,43 @@ using System.Threading.Tasks;
 namespace WordBlitz.Screens.BlitzScreen.SwipeLogicOld
 {
     public static class SwipeCoordinatesLogic
-
     {
-        public static int[]? GetGridCoordinates(object sender, PanUpdatedEventArgs args, Grid boardGrid) //returns (grid row , grid column) if hovered over another button
+#nullable enable    
+        public static Tuple<int, int>? GetPosition(object sender, PanUpdatedEventArgs args) //returns (grid row , grid column) if hovered over another button
         {
             var label = (Button)sender;//its a button for now
-            double initial_X = label.X;
-            double initial_Y = label.Y;
-            double relative_X = args.TotalX;
-            double relative_Y = args.TotalY;
+            var boardGrid = (Grid)label.Parent;
             double GRID_BOX_SIZE = boardGrid.Height / (double)4;
+            double approx_X = args.TotalX + label.X;
+            double approx_Y = args.TotalY + label.Y;
+/*            Console.WriteLine($"initial x is {label.X},intial y is {label.Y}");
+            Console.WriteLine($"approx x is {approx_X},approx y is {approx_Y}");*/
             double DECIMAL_FRACTION_BOX_RADIUS = 0.75;
 
-            /*int startRow = label.Text.ToList()[0]; // if putting info inside 
-            int startCol = label.Text.ToList()[1];*/
+            if ((approx_X < 0) || (approx_Y < 0)) { return null; }
 
-            double[] getCharacteristicOffset (double offset)//imagine resolving all positions relative to the top left square with tessellation
+            int getCharacteristicOffset(double offset)//imagine resolving all positions relative to the top left square with tessellation
             {
                 int spaces = 0;
-                double isNotNegative = 1;
-                if (offset < 0) { isNotNegative = -1;}
-                double absoffset = offset * isNotNegative;
-                while (absoffset >= GRID_BOX_SIZE) { absoffset -= GRID_BOX_SIZE; spaces++; }
-                double[] loopOutput = new double[] { spaces * isNotNegative, absoffset };
-                return loopOutput;
+                while (offset > GRID_BOX_SIZE) { offset -= GRID_BOX_SIZE; spaces++; }
+                return spaces;
             }
 
-            int startRow = (int)getCharacteristicOffset(initial_Y)[0];
-            int startCol = (int)getCharacteristicOffset(initial_X)[0];
-            int AdjustedRows = (int)getCharacteristicOffset(relative_Y)[0];
-            int AdjustedCols = (int)getCharacteristicOffset(relative_X)[0];
-            int finalRow = startRow + AdjustedRows;
-            int finalCol = startCol + AdjustedCols;
-            int[] output = new int[] { finalRow, finalCol };
+            int currentRow = (int)getCharacteristicOffset(approx_Y);
+            int currentCol = (int)getCharacteristicOffset(approx_X);
 
-            double X = (int)getCharacteristicOffset(relative_X)[1];
-            double Y = (int)getCharacteristicOffset(relative_Y)[1];
+            Tuple<int, int> output = new Tuple<int, int>(currentRow, currentCol);
 
-            bool isGridCellWithinBounds = (finalRow >= 0 && finalRow <4 && finalCol >= 0 && finalRow<4);
+            double X = (int)getCharacteristicOffset(approx_X);
+            double Y = (int)getCharacteristicOffset(approx_Y);
+
+            bool isGridCellWithinBounds = ((currentRow >= 0 && currentRow < 4) && (currentCol >= 0 && currentCol < 4));
+
+            //logic for circle hitbox
             bool isCoordinatesFitInShape = (Math.Sqrt(Math.Pow(X, 2) + Math.Pow(Y, 2)) < GRID_BOX_SIZE * DECIMAL_FRACTION_BOX_RADIUS);
 
-            //circle logic
-            if (isGridCellWithinBounds && isCoordinatesFitInShape){return output;} else{return null;}
-
+            //submit result
+            if (isGridCellWithinBounds && isCoordinatesFitInShape) { return output; } else { return null; }
         }
     }
 }

@@ -20,49 +20,34 @@
                 VerticalOptions="Center">
                 <Label x:Name="scoreLabel" Text="Score:"/>
                 <Frame
-                    BackgroundColor="Blue"
-                    CornerRadius="10"
-                    Padding="10"
-                    WidthRequest="340"
-                    HeightRequest="340">
-                    <Frame
-                        BackgroundColor="SaddleBrown"
-                        CornerRadius="10"
-                        Padding="10"
-                        WidthRequest="320"
-                        HeightRequest="320">
+                    HeightRequest="350"
+                    WidthRequest="350" 
+                    BackgroundColor="Black"
+                    Margin="10"> <!-- difference between this height request and the inner grid gives the border radius-->
+                    <Grid
+                        BackgroundColor="AliceBlue"
+                        HeightRequest="340"
+                        WidthRequest= "340"><!-- keep this value same as boardGrid's height + (margin * 2) + row/col spacings -->
                         <Grid
                             x:Name="boardGrid"
-                            WidthRequest="300"
-                            HeightRequest="300"
+                            BackgroundColor="AliceBlue"
+                            WidthRequest="280"
+                            HeightRequest="280"
                             RowDefinitions="*, *, *, *"
                             ColumnDefinitions="*, *, *, *"
-                            RowSpacing="5"
-                            ColumnSpacing="5">
+                            Margin="10"
+                            Padding="0"
+                            RowSpacing="40"
+                            ColumnSpacing="40">
                         </Grid>
-                    </Frame>
+                    </Grid>
                 </Frame>
-
-                <Label Text="Submit->"  WidthRequest="300" HeightRequest="50" BackgroundColor="White">
+                <Label x:Name="submitButton" Text="Submit->"  WidthRequest="300" HeightRequest="50" BackgroundColor="White">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnSubmitButtonTapped"/>
                         <SwipeGestureRecognizer Direction="Left,Right" Swiped="OnSubmisButtonSwiped" Threshold="40"/>
                     </Label.GestureRecognizers>
                 </Label>
-
-                <!--<Label
-                    x:Name="Submitted"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    LineBreakMode="WordWrap"
-                    BackgroundColor="White"
-                    TextColor="Black"
-                    />
-                <Button
-                    x:Name="testbutton"
-                    BackgroundColor="Pink"
-                    Clicked="testbutton_Clicked"
-                    WidthRequest="100"/>-->
             </VerticalStackLayout>
         </ContentView>
     </Grid>
