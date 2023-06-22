@@ -52,6 +52,9 @@ Thus far component pages include
 - Fix the swipe in android which broke by adding a label to be swiped over at the top and bottom
 - Implement queues for Config.Submit to prevent crash <- JX awaiting swipe
 
+### Minor Bugs
+- SwipeTap mode insta submits another letter at final location upon submission, is not intended <- CY working on this
+
 # How to get started
 1. Send me your Github username, then accept the request to collaborate
 2. Download visual studio installer if you haven't and install Visual Studio

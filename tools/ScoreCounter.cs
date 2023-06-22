@@ -1,5 +1,4 @@
-﻿using Java.Lang;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -21,10 +20,6 @@ namespace WordBlitz.tools
 
         //OnRemovedWord(string submittedWord) is available for practice mode score counter
     }
-
-
-
-
 
     //base scoreCounter class definintion---------------------
     public class ScoreCounter : IScoreCounter

@@ -25,7 +25,6 @@ namespace WordBlitz.tools
 
         public static string getBackgroundFilename(string selectedBackgroundSetting)
         {
-            Console.WriteLine($"{backgroundToFilenameDict[selectedBackgroundSetting]} has been SUMMONNNNED, this message is brought to you by background mappings" );
             return backgroundToFilenameDict[selectedBackgroundSetting];
         }
     }

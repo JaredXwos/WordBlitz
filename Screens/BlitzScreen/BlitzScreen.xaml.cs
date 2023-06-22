@@ -14,25 +14,33 @@ public partial class BlitzScreen : ContentPage
         InitializeComponent();
         blitzScreenBackgroundView.Source = backgroundPath;
 
-        Dice.Wait();
-        Dispatcher.Dispatch(() => BlitzScreenGrid.InitialiseBoard(boardGrid));
 
-        IDispatcherTimer timer = Dispatcher.CreateTimer();
+        //load submitbutton for tap mode ---------------------
+        //Config.tileSelectionMode = 2; for testing purposes
+        if (Config.tileSelectionMode > (int)TileSelectionMode.SwipeTapManualSubmit){ submitButton.IsVisible = false; submitButton.IsEnabled = false; }
+        else { submitButton.IsVisible = true; submitButton.IsEnabled = true; }
+        //--------------------------------
+
+        //TODO Check Fun Mode to decide what to do with displaying score
+
+        //TODO Check isShakeBoard[currently does not exist yet] enabled and act accordingly
+
+
+
+
+        Dice.Wait();
+        Dispatcher.Dispatch(() => boardInitialiser.InitialiseBoard(boardGrid));
+
+        /*IDispatcherTimer timer = Dispatcher.CreateTimer();
         timer.Interval = TimeSpan.FromSeconds(Config.blitzTimeConfig);
         timer.Tick += (object sender, EventArgs e) =>
         {
             Dict.Wait();
             Navigation.PushAsync(new Analysis());
-            Submitted.Text = string.Empty;
-            foreach (Button child in boardGrid.Children)
-            {
-                child.IsEnabled = false;
-                child.BackgroundColor = Colors.Navy;
-            }
 
             int points = 0;
             IEnumerable<string> validwords = Dict.dict.Intersect(Submit.Getlist()).Where(c => c.Length > 2);
-            foreach(string word in validwords)
+            foreach (string word in validwords)
             {
                 switch (word.Length)
                 {
@@ -43,16 +51,16 @@ public partial class BlitzScreen : ContentPage
                     case 7: points += 5; break;
                     default: points += 11; break;
                 }
-                Submitted.Text += word;
-                Submitted.Text += ' ';
+
+
             }
-            testbutton.Text = (points - Submit.Getlist().Count + validwords.Count()).ToString();
+
+
         };
-        timer.Start();
+        timer.Start();*/
     }
 
-    private void OnSwiped(object sender, SwipedEventArgs e) { Submitted.Text = Submit.Word(); }
-    private void testbutton_Clicked(object sender, EventArgs e) => ((Button)sender).BackgroundColor = Colors.Red;
+    private void OnSubmitButtonTapped(object sender, TappedEventArgs e) { Console.WriteLine("Submit Was called from blitzScreen.xaml.cs,needs uncommenting");/*Submit.Word();*/ }
+    private void OnSubmisButtonSwiped(object sender, SwipedEventArgs e) { Console.WriteLine("Submit Was called from blitzScreen.xaml.cs,needs uncommenting");/*Submit.Word();*/  }
 
-    
 }

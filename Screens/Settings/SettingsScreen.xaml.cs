@@ -1,4 +1,5 @@
 using WordBlitz.tools;
+using static Microsoft.Maui.ApplicationModel.Permissions;
 
 namespace WordBlitz;
 
@@ -8,13 +9,14 @@ public partial class SettingsScreen : ContentPage
 	public SettingsScreen()
 	{
 		InitializeComponent();
-        dictPicker.SelectedItem       = Config.dictionaryConfig;
-        dicePicker.SelectedItem       = Config.diceTypeConfig;
-        backgroundPicker.SelectedItem = Config.backgroundConfig;
+        dictPicker.SelectedItem             = Config.dictionaryConfig;
+        dicePicker.SelectedItem             = Config.diceTypeConfig;
+        backgroundPicker.SelectedItem       = Config.backgroundConfig;
         Dispatcher.Dispatch(new Action(() =>
         {
             DurationSliderLabel.Text = "Set duration of blitz game: " + Config.blitzTimeConfig.ToString();
         }));
+        tileSelectionPicker.SelectedIndex   = Config.tileSelectionMode;
     }
     private void ConfigUpdate(object sender, EventArgs e)
     {
@@ -45,6 +47,13 @@ public partial class SettingsScreen : ContentPage
                 Preferences.Default.Set("backgroundConfig", Config.backgroundConfig);
                 break;
             }
+
+            case "tileSelectionPicker":
+                {
+                    Config.tileSelectionMode = picker.SelectedIndex;
+                    Preferences.Default.Set("TileSelectionMode", Config.tileSelectionMode);
+                    break;
+                }
             default: break;
         }
     }

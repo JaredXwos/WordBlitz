@@ -4,8 +4,7 @@
              x:Class="WordBlitz.Screens.BlitzScreen.SwipeLogicTest"
              Title="you shouldnt be seeing this page in production"
              BackgroundColor="AliceBlue">
-    <VerticalStackLayout
-        Padding="30">
+    <VerticalStackLayout>
         <Grid 
             BackgroundColor="LightGreen"
             x:Name="testGrid" 
