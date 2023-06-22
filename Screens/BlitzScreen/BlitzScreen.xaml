@@ -19,20 +19,30 @@
                 HorizontalOptions="Center"
                 VerticalOptions="Center">
                 <Label x:Name="scoreLabel" Text="Score:"/>
-                <Grid
-                    x:Name="boardGrid"
-                    BackgroundColor="AliceBlue"
-                    WidthRequest="240"
-                    HeightRequest="240"
-                    RowDefinitions="*, *, *, *"
-                    ColumnDefinitions="*, *, *, *"
-                    Margin="40"
-                    Padding="0"
-                    RowSpacing="80"
-                    ColumnSpacing="80">
-                </Grid>
-
-                        <Label Text="Submit->"  WidthRequest="300" HeightRequest="50" BackgroundColor="White">
+                <Frame
+                    HeightRequest="350"
+                    WidthRequest="350" 
+                    BackgroundColor="Black"
+                    Margin="10"> <!-- difference between this height request and the inner grid gives the border radius-->
+                    <Grid
+                        BackgroundColor="AliceBlue"
+                        HeightRequest="340"
+                        WidthRequest= "340"><!-- keep this value same as boardGrid's height + (margin * 2) + row/col spacings -->
+                        <Grid
+                            x:Name="boardGrid"
+                            BackgroundColor="AliceBlue"
+                            WidthRequest="280"
+                            HeightRequest="280"
+                            RowDefinitions="*, *, *, *"
+                            ColumnDefinitions="*, *, *, *"
+                            Margin="10"
+                            Padding="0"
+                            RowSpacing="40"
+                            ColumnSpacing="40">
+                        </Grid>
+                    </Grid>
+                </Frame>
+                <Label Text="Submit->"  WidthRequest="300" HeightRequest="50" BackgroundColor="White">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnSubmitButtonTapped"/>
                         <SwipeGestureRecognizer Direction="Left,Right" Swiped="OnSubmisButtonSwiped" Threshold="40"/>

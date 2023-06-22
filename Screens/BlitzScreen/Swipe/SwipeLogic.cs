@@ -18,6 +18,7 @@
             //make sure row spacing = column spacing
 
             double GRID_CELL_SIZE = ( boardGrid.Height + boardGrid.RowSpacing - (boardGrid.Padding.Right / 2) ) / (double) 4;
+            double GRID_CELL_INNER_SIZE = hitboxGrid.Width;
             double innerBoxAdjustmentsX = hitboxLabel.Bounds.Center.X - hitboxGrid.Bounds.Width / 2;
             double innerBoxAdjustmentsY = hitboxLabel.Bounds.Center.Y - hitboxGrid.Bounds.Height / 2;
             //double distanceLabelBoundsToCellBounds = ( GRID_CELL_SIZE - label.Bounds.Width ) / 2;
@@ -31,7 +32,7 @@
             Console.WriteLine($"bounds -> {label.Bounds} , grid cell height -> {GRID_BOX_SIZE}");*/
 
             //Console.WriteLine($"hitbox x actual center{hitboxGrid.Bounds.Center.X}, hitbox y actual center = {hitboxGrid.Bounds.Center.Y} "); 
-            Console.WriteLine($"approx x {approx_X},approx y {approx_Y}");
+            //Console.WriteLine($"approx x {approx_X},approx y {approx_Y}");
             //Console.WriteLine($"padding {boardGrid.Padding.Right}, {"yolo"}");
             //Console.WriteLine($"adjustments = {hitboxLabel.Bounds.Center.X - hitboxGrid.Bounds.Width / 2}");
             
@@ -57,7 +58,7 @@
 
             double X = approx_X - currentCol * GRID_CELL_SIZE;
             double Y = approx_Y - currentRow * GRID_CELL_SIZE;
-            Console.WriteLine($"x is {X}, y is {Y}");
+            //Console.WriteLine($"x is {X}, y is {Y}");
 
 
             X = (X > GRID_CELL_SIZE / 2) ? GRID_CELL_SIZE / 2 - X : X - GRID_CELL_SIZE / 2;
@@ -67,8 +68,9 @@
 
             bool isGridCellWithinBounds = ((currentRow >= 0 && currentRow < 4) && (currentCol >= 0 && currentCol < 4));
 
+            
             //logic for circle hitbox
-            bool isCoordinatesFitInShape = (Math.Sqrt(Math.Pow(X, 2) + Math.Pow(Y, 2) ) < (GRID_CELL_SIZE / 2 * DECIMAL_FRACTION_BOX_RADIUS));
+            bool isCoordinatesFitInShape = (Math.Sqrt(Math.Pow(X, 2) + Math.Pow(Y, 2) ) < (GRID_CELL_INNER_SIZE / 2 * DECIMAL_FRACTION_BOX_RADIUS));
 
             //submit result
             if (isGridCellWithinBounds && isCoordinatesFitInShape) { return output; } else { return null; }

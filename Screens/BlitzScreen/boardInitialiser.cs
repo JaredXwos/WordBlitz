@@ -76,6 +76,9 @@ namespace WordBlitz.Screens.BlitzScreen
             {
                 Tuple<int, int> position = SwipeLogic.GetPosition(sender, e);
                 (int i, int j) = position; // completed function, will not have errors here
+                Console.WriteLine($"submitted letter = {gridLayout[j, i]}");
+                Console.WriteLine($"(coords: {i} {j}, row={i} col={j}) from boardinitialiser, awaiting uncommenting");
+                /*Submit.Letter(gridLayout[j, i], position);*/
             };
         }
 
