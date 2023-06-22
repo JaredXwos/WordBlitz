@@ -37,22 +37,20 @@ Thus far component pages include
 - Analysis (Navigates back to MainPage)
 
 ## Immediate To-do features
-- Reimplement counting of score in Analysis
-- Add options to select Fun Mode/ Practice Mode in settings
-- Bind Score to BlitzScreen to update live
+- Add options to select Fun Mode/ Practice Mode in settings <- CY working on this
+- Bind Score to BlitzScreen to update live <- JX working on this
+- Allow for scoring system to be configured, Make a picker to allow users to choose the number of pts for words of specific lengths
 
 ### Less immediate To-do features
-- Create windows specific UI using pointerGesture <- JX working on this
+- Create windows specific UI using pointerGesture
 - Create a function that can solve a boggle 4x4 given a dictionary
 - Make background and tile styles in settings
-- Enable button backtracking <- JX working on this
 - Create a loading bar XAML
-- Allow for scoring system to be configured, Make a picker to allow users to choose the number of pts for words of specific lengths
-- implement score counter and check for bugs
+
 
 ### Bugs
-- Implement queues for Config.Submit to prevent crash <- JX is almost done working on this
-- Fix analysis timing navigation loop 
+- Fix the swipe in android which broke by adding a label to be swiped over at the top and bottom
+- Implement queues for Config.Submit to prevent crash <- JX awaiting swipe
 
 ### Minor Bugs
 - SwipeTap mode insta submits another letter at final location upon submission, is not intended <- CY working on this
