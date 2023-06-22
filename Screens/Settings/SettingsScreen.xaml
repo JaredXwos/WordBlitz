@@ -67,5 +67,24 @@
         </Picker>
         <Label x:Name ="DurationSliderLabel" Text="Set duration of blitz game" HorizontalOptions="Center" VerticalOptions="Center"/>
         <Slider Maximum="600" Minimum="1" Value="80" ValueChanged="blitzDurationChanged" VerticalOptions="Center"/>
+
+        <Picker 
+            x:Name="tileSelectionPicker"
+            SelectedIndexChanged="ConfigUpdate"
+            Title="Tile Selection Mode"
+            VerticalOptions="Center"
+            VerticalTextAlignment="Center"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Taps Only</x:String>
+                    <x:String>Swipes and Taps with manual Submission</x:String>
+                    <x:String>Swipes and Taps with automatic Submission</x:String>
+                    <x:String>Swipes Only</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
     </VerticalStackLayout>
 </ContentPage>

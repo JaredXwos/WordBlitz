@@ -66,8 +66,8 @@ namespace WordBlitz.Screens.BlitzScreen
             var hitboxGrid = (Grid)hitboxLabel.Parent;
             var boardGrid = (Grid)hitboxGrid.Parent;
             (int i, int j) = (boardGrid.GetRow(hitboxGrid), boardGrid.GetColumn(hitboxGrid));
-            Console.WriteLine($"frontend sent {gridLayout[i, j]} , {(i,j)}");
-            Submit.Letter(gridLayout[i,j], new Tuple<int, int>(i,j) );
+            Console.WriteLine($"frontend sent {gridLayout[j, i]} , {(i,j)}");
+            Submit.Letter(gridLayout[j,i], new Tuple<int, int>(i,j) );
         }
 
         private static void OnGridButtonPanned(object sender, PanUpdatedEventArgs e)
