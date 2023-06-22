@@ -38,7 +38,7 @@ Thus far component pages include
 
 ## Immediate To-do features
 - Add options to select Fun Mode/ Practice Mode in settings <- CY working on this
-- Bind Score to BlitzScreen to update live <- JX working on this
+- Bind Score to BlitzScreen to update live <- JX awaiting the fun/practice config
 - Allow for scoring system to be configured, Make a picker to allow users to choose the number of pts for words of specific lengths
 
 ### Less immediate To-do features
@@ -46,11 +46,6 @@ Thus far component pages include
 - Create a function that can solve a boggle 4x4 given a dictionary
 - Make background and tile styles in settings
 - Create a loading bar XAML
-
-
-### Bugs
-- Fix the swipe in android which broke by adding a label to be swiped over at the top and bottom
-- Implement queues for Config.Submit to prevent crash <- JX awaiting swipe
 
 ### Minor Bugs
 - SwipeTap mode insta submits another letter at final location upon submission, is not intended <- CY working on this

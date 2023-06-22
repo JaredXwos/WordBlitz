@@ -14,7 +14,7 @@ namespace WordBlitz.tools
         public static string backgroundConfig  = Preferences.Default.Get("backgroundConfig","Zen");
         public static int    blitzTimeConfig   = Preferences.Default.Get("blitzTimeConfig",180);
         public static int    tileSelectionMode = Preferences.Default.Get("TileSelectionMode", 2); //see AllEnum.cs , TileSelectionMode
-        public static string pointsConfig = Preferences.Default.Get("pointsConfig",
+        public static string pointsConfig      = Preferences.Default.Get("pointsConfig",
             "3 1 1\n" +
             "4 1 1\n" +
             "5 2 1\n" +
