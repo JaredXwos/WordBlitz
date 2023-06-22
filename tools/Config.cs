@@ -14,6 +14,7 @@ namespace WordBlitz.tools
         public static string backgroundConfig  = Preferences.Default.Get("backgroundConfig","Zen");
         public static int    blitzTimeConfig   = Preferences.Default.Get("blitzTimeConfig",180);
         public static int    tileSelectionMode = Preferences.Default.Get("TileSelectionMode", 2); //see AllEnum.cs , TileSelectionMode
+        public static string gamemodeConfig    = Preferences.Default.Get("gameModeConfig", "Realistic");
         public static string pointsConfig      = Preferences.Default.Get("pointsConfig",
             "3 1 -1\n" +
             "4 1 -1\n" +
@@ -85,6 +86,7 @@ namespace WordBlitz.tools
                 word.Clear(); pos.Clear(); //For each Clear/Push/Pop, word and pos must be done together
             }
             label.Text = lastword;
+            if (Config.gamemodeConfig == "Instant") label.Text += " - " + TotalUp().ToString();
             return wordtuple ?? new Tuple<string, int>("", 0);
         }
         public static List<Tuple<string, int>> All()

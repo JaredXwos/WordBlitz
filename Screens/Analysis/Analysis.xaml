@@ -4,8 +4,14 @@
              x:Class="WordBlitz.Analysis"
              Title="Analysis">
     <ScrollView>
-        <VerticalStackLayout x:Name="Display">
-            <Button x:Name="Score" Text="TEST" HorizontalOptions="FillAndExpand" Clicked="OnSubmit" FontSize="28"/>
+        <VerticalStackLayout x:Name="Display" Spacing="2">
+            <Button x:Name="Score" 
+                    Text="Press to Submit"
+                    HorizontalOptions="FillAndExpand"
+                    Clicked="OnSubmit"
+                    FontSize="28"
+                    CornerRadius="0"
+                    BackgroundColor="Teal"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

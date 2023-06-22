@@ -4,14 +4,8 @@
              x:Class="WordBlitz.SettingsScreen"
              Title="Settings">
     <VerticalStackLayout HorizontalOptions="Center" Spacing="25">
-        <Label 
-            Text="Settings"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
 
-
-        <Picker 
-            x:Name="dictPicker"
+        <Picker x:Name="dictPicker"
             SelectedIndexChanged="ConfigUpdate"
             Title="Set Dictionary"
             VerticalOptions="Center"
@@ -24,10 +18,8 @@
                 </x:Array>
             </Picker.ItemsSource>
         </Picker>
-                
-            
-        <Picker 
-            x:Name="dicePicker"
+
+        <Picker x:Name="dicePicker"
             SelectedIndexChanged="ConfigUpdate"
             Title="Set Dice"
             VerticalOptions="Center"
@@ -42,8 +34,7 @@
             </Picker.ItemsSource>
         </Picker>
 
-        <Picker 
-            x:Name="backgroundPicker"
+        <Picker  x:Name="backgroundPicker"
             SelectedIndexChanged="ConfigUpdate"
             Title="Select Background"
             VerticalOptions="Center"
@@ -65,13 +56,10 @@
                 </x:Array>
             </Picker.ItemsSource>
         </Picker>
-        <Label x:Name ="DurationSliderLabel" Text="Set duration of blitz game" HorizontalOptions="Center" VerticalOptions="Center"/>
-        <Slider Maximum="600" Minimum="1" Value="80" ValueChanged="blitzDurationChanged" VerticalOptions="Center"/>
 
-        <Picker 
-            x:Name="tileSelectionPicker"
+        <Picker x:Name="tileSelectionPicker"
             SelectedIndexChanged="ConfigUpdate"
-            Title="Tile Selection Mode"
+            Title="Input mode"
             VerticalOptions="Center"
             VerticalTextAlignment="Center"
             HorizontalOptions="Center"
@@ -85,6 +73,26 @@
                 </x:Array>
             </Picker.ItemsSource>
         </Picker>
+
+        <Picker x:Name="gameMode"
+            SelectedIndexChanged="ConfigUpdate"
+            Title="Tile Selection Mode"
+            VerticalOptions="Center"
+            VerticalTextAlignment="Center"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Realistic</x:String>
+                    <x:String>Instant</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Label x:Name ="DurationSliderLabel" Text="Set duration of blitz game" HorizontalOptions="Center" VerticalOptions="Center"/>
+        <Slider Maximum="600" Minimum="1" Value="80" ValueChanged="blitzDurationChanged" VerticalOptions="Center"/>
+
+        
 
     </VerticalStackLayout>
 </ContentPage>

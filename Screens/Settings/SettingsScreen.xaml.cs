@@ -54,6 +54,12 @@ public partial class SettingsScreen : ContentPage
                     Preferences.Default.Set("TileSelectionMode", Config.tileSelectionMode);
                     break;
                 }
+            case "gameMode":
+                {
+                    Config.gamemodeConfig = (string)picker.ItemsSource[selectedIndex];
+                    Preferences.Default.Set("gameMode", Config.gamemodeConfig);
+                    break;
+                }
             default: break;
         }
     }
