@@ -15,42 +15,58 @@ namespace WordBlitz.tools
         public static int    blitzTimeConfig   = Preferences.Default.Get("blitzTimeConfig",180);
         public static int    tileSelectionMode = Preferences.Default.Get("TileSelectionMode", 2); //see AllEnum.cs , TileSelectionMode
         public static string pointsConfig      = Preferences.Default.Get("pointsConfig",
-            "3 1 1\n" +
-            "4 1 1\n" +
-            "5 2 1\n" +
-            "6 3 2\n" +
-            "7 5 3\n" +
-            "8 7 4"
+            "3 1 -1\n" +
+            "4 1 -1\n" +
+            "5 2 -1\n" +
+            "6 3 -2\n" +
+            "7 5 -3\n" +
+            "8 7 -4"
         );
     }
 
     public static class Global
     {
         public readonly static Random random = new(Guid.NewGuid().GetHashCode());
-        public static Dictionary<int, Tuple<int, int>> points
+        public static void Init()
         {
-            get
-            {
-                string[][] data = Config.pointsConfig.Split('\n').Select(x => x.Split(' ').ToArray()).ToArray();
-                Dictionary<int, Tuple<int, int>> _number = new();
-                foreach (string[] row in data)
-                {
-                    _number[Int32.Parse(row[0])] = new Tuple<int, int>(Int32.Parse(row[1]), Int32.Parse(row[2]));
-                }
-                return _number;
-            }
-            set
-            {
-                List<string> list = new();
-                foreach (KeyValuePair<int, Tuple<int, int>> pair in value)
-                {
-                    string[] arr = { pair.Key.ToString(), pair.Value.Item1.ToString(), pair.Value.Item2.ToString() };
-                    list.Add(string.Join(" ", arr));
-                }
-                Preferences.Default.Set("pointsConfig", string.Join('\n', list));
-            }
+            Points.Start();
+            Dict.Start();
+            Dice.Start();
         }
     }
+
+    public static class Points
+    {
+        private static Dictionary<int, int[]> _points;
+        public static void Start()
+        {
+            string[][] data = Config.pointsConfig.Split('\n').Select(x => x.Split(' ').ToArray()).ToArray();
+            Dictionary<int, Tuple<int, int>> number = new();
+            foreach (string[] row in data)
+                _points[Int32.Parse(row[0])] = new int[] { Int32.Parse(row[1]), Int32.Parse(row[2]) };
+        }
+        public static Dictionary<int, Tuple<int, int>> Get()
+        {
+            Dictionary<int, Tuple<int, int>> points = new();
+            foreach (KeyValuePair<int, int[]> pair in _points) 
+                points[pair.Key] = new Tuple<int, int>(pair.Value[0], pair.Value[1]);
+            return points;
+        }
+        public static void Set(int length, string category, int value)
+        {
+            if (length>2) switch(category)
+            {
+                case "reward": { _points[length][0] = value;  break; }
+                case "penalty": { _points[length][1] =  value; break; }
+                default: break;
+            }
+            List<string> list = new();
+            foreach (KeyValuePair<int, int[]> pair in _points)
+                list.Add(string.Join(" ", new string[] { pair.Key.ToString(), pair.Value[0].ToString(), pair.Value[1].ToString() }));
+            Preferences.Default.Set("pointsConfig", string.Join('\n', list));
+        }
+    }
+
     public static class Submit
     {
         private static Stack<Tuple<int, int>> pos = new();  //Tuple specifically stores an immutable pair
@@ -63,7 +79,7 @@ namespace WordBlitz.tools
             string lastword = string.Join("", word.Reverse());//its a stack, so reversed
             if (word.Count > 2)
             {
-                (int reward, int penalty) = list.Count > 0 && list.Select(x => x.Item1).Contains(lastword) ? new Tuple<int, int>(0, 0) : Global.points[word.Count];
+                (int reward, int penalty) = list.Count > 0 && list.Select(x => x.Item1).Contains(lastword) ? new Tuple<int, int>(0, 0) : Points.Get()[word.Count];
                 wordtuple = new(lastword, Dict.dict.Contains(lastword) ? reward : penalty);
                 list.Add(wordtuple);
                 word.Clear(); pos.Clear(); //For each Clear/Push/Pop, word and pos must be done together
