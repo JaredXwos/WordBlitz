@@ -18,11 +18,12 @@
             //make sure row spacing = column spacing
 
             double GRID_CELL_SIZE = ( boardGrid.Height + boardGrid.RowSpacing - (boardGrid.Padding.Right / 2) ) / (double) 4;
-            double innerBoxAdjustments = hitboxLabel.Bounds.Center.X - hitboxGrid.Bounds.Width / 2;
+            double innerBoxAdjustmentsX = hitboxLabel.Bounds.Center.X - hitboxGrid.Bounds.Width / 2;
+            double innerBoxAdjustmentsY = hitboxLabel.Bounds.Center.Y - hitboxGrid.Bounds.Height / 2;
             //double distanceLabelBoundsToCellBounds = ( GRID_CELL_SIZE - label.Bounds.Width ) / 2;
 
-            double approx_X = hitboxGrid.Bounds.Center.X + (boardGrid.ColumnSpacing * 0.5) - boardGrid.Padding.Right + innerBoxAdjustments + args.TotalX * hitboxLabel.Scale;
-            double approx_Y = hitboxGrid.Bounds.Center.Y + (boardGrid.RowSpacing * 0.5) - boardGrid.Padding.Bottom + innerBoxAdjustments + args.TotalY * hitboxLabel.Scale;
+            double approx_X = hitboxGrid.Bounds.Center.X + (boardGrid.ColumnSpacing * 0.5) - boardGrid.Padding.Right + innerBoxAdjustmentsX + args.TotalX * hitboxLabel.Scale;
+            double approx_Y = hitboxGrid.Bounds.Center.Y + (boardGrid.RowSpacing * 0.5) - boardGrid.Padding.Bottom + innerBoxAdjustmentsY + args.TotalY * hitboxLabel.Scale;
 
             // args total X( relative movement since swipe), label X(top left of grid cell), boardGrid X gives topleft of entire grid , label bounds.wid
             //Console.WriteLine($"hitbox center {hitboxGrid.Bounds.Center}");
