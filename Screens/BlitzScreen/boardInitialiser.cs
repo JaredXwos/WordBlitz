@@ -20,44 +20,26 @@ namespace WordBlitz.Screens.BlitzScreen
             int[] diceOrientationArray = new int[16].Select(lambda => Global.random.Next() % 6).ToArray();
             for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++)
             {
-                    gridLayout[j, i] = Dice.dice[diceShuffleArray[j * 4 + i]][diceOrientationArray[j * 4 + i]];
+                gridLayout[j, i] = Dice.dice[diceShuffleArray[j * 4 + i]][diceOrientationArray[j * 4 + i]];
 
-                    Button label = new Button()
-                    {
-                        Text = /*$"{j},{i}"*/gridLayout[j, i],
-                        TextColor = Colors.White,
-                        BackgroundColor = Colors.Navy,
-                        FontSize = 40,
-                        CornerRadius = 4000,
-                        WidthRequest = board.HeightRequest/4,
-                        HeightRequest = board.HeightRequest/4,
-                        HorizontalOptions = LayoutOptions.Center,
-                        VerticalOptions = LayoutOptions.Center,
-                        Scale = 1,
-                        Opacity = 1,
-                    };
-                    board.Add(label, j, i);
+                Button label = new()
+                {
+                    Text = gridLayout[j, i],
+                    TextColor = Colors.White,
+                    BackgroundColor = Colors.Navy,
+                    FontSize = 40,
+                    CornerRadius = 4000,
+                    WidthRequest = board.HeightRequest/4,
+                    HeightRequest = board.HeightRequest/4,
+                    HorizontalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.Center,
+                    Scale = 1,
+                    Opacity = 1,
+                };
+                board.Add(label, j, i);
 
-                    /*TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
-                    tapGestureRecognizer.Tapped += (s, e) => { OnButtonPressed(s, e); };
-                    PanGestureRecognizer panGestureRecognizer = new PanGestureRecognizer();
-                    panGestureRecognizer.PanUpdated += (s, e) => { OnGridButtonPanned(s, e); };
-                    Label touchLabel = new Label()  // invisible label
-                    {
-                        BackgroundColor = Colors.Red,
-                        HorizontalOptions = LayoutOptions.Center,
-                        VerticalOptions = LayoutOptions.Center,
-                        WidthRequest = board.HeightRequest*0.02,
-                        HeightRequest = board.HeightRequest*0.02,
-                        Scale = 2,
-                        Opacity = 0.5,
-                        GestureRecognizers = { panGestureRecognizer },
-                    };
-
-                    board.Add(touchLabel, j, i); //important: grid.add() is defined as grid.add(element,COL,row) and not vice versa, so for row=i , col =j its j,i here*/
-
-                    Grid hitboxGrid = GenerateHitBoxes(board.HeightRequest / 4);
-                    board.Add(hitboxGrid, j, i);
+                Grid hitboxGrid = GenerateHitBoxes(board.HeightRequest / 4);
+                board.Add(hitboxGrid, j, i);
             }
         }
         private static void OnButtonPressed(object sender, EventArgs e)
@@ -87,7 +69,7 @@ namespace WordBlitz.Screens.BlitzScreen
         private static Grid GenerateHitBoxes( double heightParam)
         {
             Console.WriteLine($"height param is {heightParam}");
-            Grid board = new Grid()
+            Grid board = new()
             { 
                 HeightRequest = heightParam,
                 WidthRequest = heightParam,
@@ -128,8 +110,6 @@ namespace WordBlitz.Screens.BlitzScreen
                     if (Config.tileSelectionMode != (int)TileSelectionMode.SwipeOnly) { labels[i, j].GestureRecognizers.Add(tapGestureRecognizer); }
                     if (Config.tileSelectionMode != (int)TileSelectionMode.TapOnly  ) { labels[i, j].GestureRecognizers.Add(panGestureRecognizer); }
                 }
-
-
             return board;
         }
 
