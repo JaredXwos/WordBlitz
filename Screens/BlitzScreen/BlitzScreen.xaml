@@ -22,14 +22,14 @@
                 <Grid
                     x:Name="boardGrid"
                     BackgroundColor="AliceBlue"
-                    WidthRequest="340"
-                    HeightRequest="340"
+                    WidthRequest="240"
+                    HeightRequest="240"
                     RowDefinitions="*, *, *, *"
                     ColumnDefinitions="*, *, *, *"
-                    Margin="0"
+                    Margin="40"
                     Padding="0"
-                    RowSpacing="10"
-                    ColumnSpacing="10">
+                    RowSpacing="80"
+                    ColumnSpacing="80">
                 </Grid>
 
                         <Label Text="Submit->"  WidthRequest="300" HeightRequest="50" BackgroundColor="White">

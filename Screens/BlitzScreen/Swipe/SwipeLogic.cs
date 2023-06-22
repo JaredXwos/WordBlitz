@@ -5,8 +5,9 @@
 #nullable enable    
         public static Tuple<int, int>? GetPosition(object sender, PanUpdatedEventArgs args) //returns (grid row , grid column) if hovered over another button
         {
-            var label = (Label)sender;//its a button for now
-            var boardGrid = (Grid)label.Parent;
+            var hitboxLabel = (Label)sender;
+            var hitboxGrid = (Grid)hitboxLabel.Parent;
+            var boardGrid = (Grid)hitboxGrid.Parent;
 
 
             //notes:
@@ -17,23 +18,25 @@
             //make sure row spacing = column spacing
 
             double GRID_CELL_SIZE = ( boardGrid.Height + boardGrid.RowSpacing - (boardGrid.Padding.Right / 2) ) / (double) 4;
+            double innerBoxAdjustments = hitboxLabel.Bounds.Center.X - hitboxGrid.Bounds.Width / 2;
             //double distanceLabelBoundsToCellBounds = ( GRID_CELL_SIZE - label.Bounds.Width ) / 2;
 
-            double approx_X = label.Bounds.Center.X + (boardGrid.ColumnSpacing * 0.5) - boardGrid.Padding.Right + args.TotalX * label.Scale;
-            double approx_Y = label.Bounds.Center.Y + (boardGrid.RowSpacing * 0.5) - boardGrid.Padding.Bottom + args.TotalY * label.Scale;
+            double approx_X = hitboxGrid.Bounds.Center.X + (boardGrid.ColumnSpacing * 0.5) - boardGrid.Padding.Right + innerBoxAdjustments + args.TotalX * hitboxLabel.Scale;
+            double approx_Y = hitboxGrid.Bounds.Center.Y + (boardGrid.RowSpacing * 0.5) - boardGrid.Padding.Bottom + innerBoxAdjustments + args.TotalY * hitboxLabel.Scale;
+
             // args total X( relative movement since swipe), label X(top left of grid cell), boardGrid X gives topleft of entire grid , label bounds.wid
-            /*Console.WriteLine($"margin is {}");*/
+            //Console.WriteLine($"hitbox center {hitboxGrid.Bounds.Center}");
             /*Console.WriteLine($"labels Y {label.Y}, X {label.X},{boardGrid.X} , {boardGrid.Y}");
             Console.WriteLine($"bounds -> {label.Bounds} , grid cell height -> {GRID_BOX_SIZE}");*/
 
-            Console.WriteLine($"x actual center{label.Bounds.Center.X}, y actual center = {label.Bounds.Center.Y} "); 
+            //Console.WriteLine($"hitbox x actual center{hitboxGrid.Bounds.Center.X}, hitbox y actual center = {hitboxGrid.Bounds.Center.Y} "); 
             Console.WriteLine($"approx x {approx_X},approx y {approx_Y}");
             //Console.WriteLine($"padding {boardGrid.Padding.Right}, {"yolo"}");
-            //Console.WriteLine($"label X {label.X}");
+            //Console.WriteLine($"adjustments = {hitboxLabel.Bounds.Center.X - hitboxGrid.Bounds.Width / 2}");
             
             /*Console.WriteLine($"gridwith - label * 4 : {boardGrid.Bounds.Width-label.Bounds.Width / hitboxProportion}");*/  //<constant
 
-            double DECIMAL_FRACTION_BOX_RADIUS = 0.75;
+            double DECIMAL_FRACTION_BOX_RADIUS = 1;
 
             if ((approx_X < 0) || (approx_Y < 0)) { return null; }
 

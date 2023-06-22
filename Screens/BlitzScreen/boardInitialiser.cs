@@ -38,11 +38,10 @@ namespace WordBlitz.Screens.BlitzScreen
                     };
                     board.Add(label, j, i);
 
-                    TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
+                    /*TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
                     tapGestureRecognizer.Tapped += (s, e) => { OnButtonPressed(s, e); };
                     PanGestureRecognizer panGestureRecognizer = new PanGestureRecognizer();
                     panGestureRecognizer.PanUpdated += (s, e) => { OnGridButtonPanned(s, e); };
-
                     Label touchLabel = new Label()  // invisible label
                     {
                         BackgroundColor = Colors.Red,
@@ -55,7 +54,10 @@ namespace WordBlitz.Screens.BlitzScreen
                         GestureRecognizers = { panGestureRecognizer },
                     };
 
-                    board.Add(touchLabel, j, i); //important: grid.add() is defined as grid.add(element,COL,row) and not vice versa, so for row=i , col =j its j,i here
+                    board.Add(touchLabel, j, i); //important: grid.add() is defined as grid.add(element,COL,row) and not vice versa, so for row=i , col =j its j,i here*/
+
+                    Grid hitboxGrid = GenerateHitBoxes(board.HeightRequest / 4);
+                    board.Add(hitboxGrid, j, i);
             }
         }
         private static void OnButtonPressed(object sender, EventArgs e)
@@ -79,12 +81,13 @@ namespace WordBlitz.Screens.BlitzScreen
 
         private static Grid GenerateHitBoxes( double heightParam)
         {
+            Console.WriteLine($"height param is {heightParam}");
             Grid board = new Grid()
             { 
                 HeightRequest = heightParam,
+                WidthRequest = heightParam,
                 RowDefinitions =
                 {
-                    new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
                     new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
                     new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
                     new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
@@ -94,21 +97,24 @@ namespace WordBlitz.Screens.BlitzScreen
                     new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
                     new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
                     new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
-                    new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
-                }
+                },
             };
+            
 
-            Label[,] labels = new Label[4,4];
+            Label[,] labels = new Label[3,3];
 
             for (int i = 0; i < 3; i++) for (int j = 0; j < 3; j++)
                 {
+                    TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
+                    tapGestureRecognizer.Tapped += (s, e) => { OnButtonPressed(s, e); };
+                    PanGestureRecognizer panGestureRecognizer = new PanGestureRecognizer();
+                    panGestureRecognizer.PanUpdated += (s, e) => { OnGridButtonPanned(s, e); };
                     labels[i, j] = new Label()
                     {
                         BackgroundColor = Colors.Green,
                         Opacity = 0.25,
-                        
+                        GestureRecognizers = { panGestureRecognizer },
                     };
-
                     board.Add(labels[i,j],i,j);
                 }
             labels[1,1].BackgroundColor = Colors.Red;
