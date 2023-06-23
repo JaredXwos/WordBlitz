@@ -38,7 +38,13 @@ namespace WordBlitz.tools
         }
     }
 
-    
+    public static class Load
+    {
+        private static bool loading = false;
+        public static bool Toggle() { loading = !loading; return loading; }
+        public static bool Get() => loading;
+    }
+
     public static class Settings
     {
         private readonly static ContentPage page = new SettingsScreen();

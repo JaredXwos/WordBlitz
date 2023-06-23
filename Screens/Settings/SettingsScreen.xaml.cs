@@ -9,6 +9,7 @@ public partial class SettingsScreen : ContentPage
 	public SettingsScreen()
 	{
 		InitializeComponent();
+        if (Load.Get()) { Navigation.PushAsync(new MainPage()); }
     }
     private void ConfigUpdate(object sender, EventArgs e)
     {

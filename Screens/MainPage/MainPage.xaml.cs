@@ -7,7 +7,15 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
-        Dispatcher.Dispatch(Global.Init);
+        Dispatcher.Dispatch(()=> {
+            Global.Init();
+            if (Load.Get())
+            {
+                Navigation.RemovePage(Blitz.Get());
+                Navigation.RemovePage(Settings.Get());
+            }
+            Load.Toggle();
+        });
     }
 
     private async void OnPlayButtonClicked(object sender, EventArgs e)
