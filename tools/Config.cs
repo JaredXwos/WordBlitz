@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using WordBlitz.Screens.BlitzScreen;
 
 namespace WordBlitz.tools
 {
@@ -52,6 +53,19 @@ namespace WordBlitz.tools
             ((Picker)((StackLayout)elements[4]).Children.ToArray()[1]).SelectedItem = Config.gamemodeConfig;
             ((Entry)((StackLayout)((StackLayout)elements[5]).Children.ToArray()[0])[1]).Text = Config.blitzTimeConfig.ToString();
             ((Slider)((StackLayout)elements[5]).Children.ToArray()[1]).Value = Config.blitzTimeConfig;
+            return page;
+        }
+        public static ContentPage Get() => page;
+    }
+
+    public static class Blitz
+    {
+        private readonly static ContentPage page = new BlitzScreen();
+        public static ContentPage Update()
+        {
+            IElement[] elements = 
+            ((Grid)((Grid)((Frame)((VerticalStackLayout)((Grid)page.Content).
+            Children[1]).Children[0]).Children[0]).Children[0]).Children.ToArray();
             return page;
         }
         public static ContentPage Get() => page;
