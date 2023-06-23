@@ -15,15 +15,10 @@ namespace WordBlitz.Screens.BlitzScreen
         private static volatile Queue<Tuple<string, Tuple<int, int>>> requestqueue = new();
         static internal void InitialiseBoard(Grid board)
         {
-            int[] diceShuffleArray = Enumerable.Range(0, 16).OrderBy(lambda => Global.random.Next()).ToArray();
-            int[] diceOrientationArray = new int[16].Select(lambda => Global.random.Next() % 6).ToArray();
             for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++)
             {
-                gridLayout[j, i] = Dice.dice[diceShuffleArray[j * 4 + i]][diceOrientationArray[j * 4 + i]];
-
                 Button label = new()
                 {
-                    Text = gridLayout[j, i],
                     TextColor = Colors.White,
                     BackgroundColor = Colors.Navy,
                     FontSize = 40,

@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using WordBlitz.Screens.BlitzScreen;
 
 namespace WordBlitz.tools
 {
@@ -36,6 +38,53 @@ namespace WordBlitz.tools
         }
     }
 
+    public static class Load
+    {
+        private static bool loading = false;
+        public static bool Toggle() { loading = !loading; return loading; }
+        public static bool Get() => loading;
+    }
+
+    public static class Settings
+    {
+        private readonly static ContentPage page = new SettingsScreen();
+        public static ContentPage Update()
+        {
+            IElement[] elements = ((StackLayout)page.Content).Children.ToArray();
+
+            ((Picker)((StackLayout)elements[0]).Children.ToArray()[1]).SelectedItem = Config.dictionaryConfig;
+            ((Picker)((StackLayout)elements[1]).Children.ToArray()[1]).SelectedItem = Config.diceTypeConfig;
+            ((Picker)((StackLayout)elements[2]).Children.ToArray()[1]).SelectedItem = Config.backgroundConfig;
+            ((Picker)((StackLayout)elements[3]).Children.ToArray()[1]).SelectedIndex = Config.tileSelectionMode;
+            ((Picker)((StackLayout)elements[4]).Children.ToArray()[1]).SelectedItem = Config.gamemodeConfig;
+            ((Entry)((StackLayout)((StackLayout)elements[5]).Children.ToArray()[0])[1]).Text = Config.blitzTimeConfig.ToString();
+            ((Slider)((StackLayout)elements[5]).Children.ToArray()[1]).Value = Config.blitzTimeConfig;
+            return page;
+        }
+        public static ContentPage Get() => page;
+    }
+
+    public static class Blitz
+    {
+        private volatile static ContentPage page = new BlitzScreen();
+        public static ContentPage Update()
+        {
+            Button button = new();
+            IElement[] elements = 
+                ((Grid)((Grid)((Frame)((VerticalStackLayout)((Grid)page.Content).
+                Children[1]).Children[0]).Children[0]).Children[0]).Children.Where(x=>x.GetType()==button.GetType()).ToArray();
+
+            int[] diceShuffleArray = Enumerable.Range(0, 16).OrderBy(lambda => Global.random.Next()).ToArray();
+            int[] diceOrientationArray = new int[16].Select(lambda => Global.random.Next() % 6).ToArray();
+            for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++)
+            {
+                boardInitialiser.gridLayout[j, i] = Dice.dice[diceShuffleArray[j * 4 + i]][diceOrientationArray[j * 4 + i]];
+                ((Button)elements[j * 4 + i]).Text = boardInitialiser.gridLayout[j, i];
+            }
+            return page;
+        }
+        public static ContentPage Get() => page;
+    }
     public static class Points
     {
         private static Dictionary<int, int[]> _points = new();
@@ -74,6 +123,18 @@ namespace WordBlitz.tools
         private static Stack<string> word = new();
         private static List<Tuple<string, int>> list = new(); //Sorted in points of letters/alphabetical order
         private static Label label;
+
+        public static void Letter(string letter, Tuple<int, int> position)
+        {
+            if (pos.Contains(position)) while (pos.Peek().ToString() != position.ToString()) { pos.Pop(); word.Pop(); } //Keep popping until you're at that last position
+            else
+            { //letter yet to be pressed
+                if (pos.Count == 0) { word.Push(letter); pos.Push(position); return; } //First letter of word
+                (int lasti, int lastj) = pos.Peek();
+                (int i, int j) = position;
+                if (Math.Abs(lasti - i) <= 1 && Math.Abs(lastj - j) <= 1) { word.Push(letter); pos.Push(position); }
+            }
+        }
         public static Tuple<string, int> Word()
         {
             Tuple<string, int> wordtuple = null;
@@ -94,17 +155,6 @@ namespace WordBlitz.tools
             List<Tuple<string, int>> returnlist = new(list);
             list.Clear();
             return returnlist;
-        }
-        public static void Letter(string letter, Tuple<int, int> position)
-        {
-            if (pos.Contains(position)) while (pos.Peek().ToString() != position.ToString()) { pos.Pop(); word.Pop(); } //Keep popping until you're at that last position
-            else
-            { //letter yet to be pressed
-                if (pos.Count == 0) { word.Push(letter); pos.Push(position); return; } //First letter of word
-                (int lasti, int lastj) = pos.Peek();
-                (int i, int j) = position;
-                if (Math.Abs(lasti - i) <= 1 && Math.Abs(lastj - j) <= 1) { word.Push(letter); pos.Push(position); }
-            }
         }
         public static int TotalUp(List<Tuple<string, int>> wordlist = null) { return (wordlist ?? list).Select(x => x.Item2).Sum(); }
         public static List<Tuple<string, int>> Getlist() { return list; } //Debug purposes only

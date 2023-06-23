@@ -21,11 +21,14 @@ public partial class BlitzScreen : ContentPage
         Dice.Wait();
         Dispatcher.Dispatch(() => boardInitialiser.InitialiseBoard(boardGrid));
 
-        IDispatcherTimer timer = Dispatcher.CreateTimer();
-        timer.Interval = TimeSpan.FromSeconds(Config.blitzTimeConfig);
-        timer.IsRepeating = false;
-        timer.Tick += OnTimeOut;
-        timer.Start();
+        if (Load.Get()) { Navigation.PushAsync(Settings.Get()); }
+        else { 
+            IDispatcherTimer timer = Dispatcher.CreateTimer();
+            timer.Interval = TimeSpan.FromSeconds(Config.blitzTimeConfig);
+            timer.IsRepeating = false;
+            timer.Tick += OnTimeOut;
+            timer.Start();
+        }
     }
 
     private void OnSubmitButtonTapped(object sender, TappedEventArgs e) { Submit.Word(); }

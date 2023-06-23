@@ -9,12 +9,7 @@ public partial class SettingsScreen : ContentPage
 	public SettingsScreen()
 	{
 		InitializeComponent();
-        dictPicker.SelectedItem             = Config.dictionaryConfig;
-        dicePicker.SelectedItem             = Config.diceTypeConfig;
-        backgroundPicker.SelectedItem       = Config.backgroundConfig;
-        durationEntry.Text            = Config.blitzTimeConfig.ToString();
-        tileSelectionPicker.SelectedIndex   = Config.tileSelectionMode;
-        gameModePicker.SelectedItem               = Config.gamemodeConfig;
+        if (Load.Get()) { Navigation.PushAsync(new MainPage()); }
     }
     private void ConfigUpdate(object sender, EventArgs e)
     {
