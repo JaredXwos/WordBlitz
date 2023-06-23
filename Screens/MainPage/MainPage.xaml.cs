@@ -7,8 +7,8 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
-        Global.Init();
-	}
+        Dispatcher.Dispatch(Global.Init);
+    }
 
     private async void OnPlayButtonClicked(object sender, EventArgs e)
     {
@@ -20,13 +20,14 @@ public partial class MainPage : ContentPage
     private void OnAnalysisButtonClicked(object sender, EventArgs e)
     {
         analysisScreenNavButton.IsEnabled = false;
+        Navigation.PushAsync(new SettingsScreen());
         analysisScreenNavButton.IsEnabled = true;
     }
 
-    private async void OnSettingsButtonClicked(object sender, EventArgs e)
+    private void OnSettingsButtonClicked(object sender, EventArgs e)
     {
         settingsScreenNavButton.IsEnabled = false;
-        await Navigation.PushAsync(new SettingsScreen());
+        Navigation.PushAsync(Settings.Update());
         settingsScreenNavButton.IsEnabled = true;
     }
 }
