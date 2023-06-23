@@ -13,14 +13,14 @@ public partial class MainPage : ContentPage
     private async void OnPlayButtonClicked(object sender, EventArgs e)
     {
         blitzScreenNavButton.IsEnabled = false;
-        await Navigation.PushAsync(new BlitzScreen());
+        await Navigation.PushAsync(Blitz.Update());
         blitzScreenNavButton.IsEnabled = true;
     }
 
     private void OnAnalysisButtonClicked(object sender, EventArgs e)
     {
         analysisScreenNavButton.IsEnabled = false;
-        Navigation.PushAsync(new SettingsScreen());
+        Navigation.PushAsync(new BlitzScreen());
         analysisScreenNavButton.IsEnabled = true;
     }
 

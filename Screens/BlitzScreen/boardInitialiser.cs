@@ -20,7 +20,6 @@ namespace WordBlitz.Screens.BlitzScreen
             for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++)
             {
                 gridLayout[j, i] = Dice.dice[diceShuffleArray[j * 4 + i]][diceOrientationArray[j * 4 + i]];
-
                 Button label = new()
                 {
                     Text = gridLayout[j, i],

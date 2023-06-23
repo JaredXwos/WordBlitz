@@ -60,12 +60,21 @@ namespace WordBlitz.tools
 
     public static class Blitz
     {
-        private readonly static ContentPage page = new BlitzScreen();
+        private volatile static ContentPage page = new BlitzScreen();
         public static ContentPage Update()
         {
+            Button button = new();
             IElement[] elements = 
-            ((Grid)((Grid)((Frame)((VerticalStackLayout)((Grid)page.Content).
-            Children[1]).Children[0]).Children[0]).Children[0]).Children.ToArray();
+                ((Grid)((Grid)((Frame)((VerticalStackLayout)((Grid)page.Content).
+                Children[1]).Children[0]).Children[0]).Children[0]).Children.Where(x=>x.GetType()==button.GetType()).ToArray();
+
+            int[] diceShuffleArray = Enumerable.Range(0, 16).OrderBy(lambda => Global.random.Next()).ToArray();
+            int[] diceOrientationArray = new int[16].Select(lambda => Global.random.Next() % 6).ToArray();
+            for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++)
+            {
+                boardInitialiser.gridLayout[j, i] = Dice.dice[diceShuffleArray[j * 4 + i]][diceOrientationArray[j * 4 + i]];
+                ((Button)elements[j * 4 + i]).Text = boardInitialiser.gridLayout[j, i];
+            }
             return page;
         }
         public static ContentPage Get() => page;
