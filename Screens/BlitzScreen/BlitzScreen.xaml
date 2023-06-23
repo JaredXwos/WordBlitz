@@ -51,12 +51,17 @@
                     FontSize="45"
                     BackgroundColor="Teal"
                     Padding="20">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnSubmitButtonTapped"/>
-                    <SwipeGestureRecognizer Direction="Left,Right" Swiped="OnSubmisButtonSwiped" Threshold="40"/>
-                </Label.GestureRecognizers>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnSubmitButtonTapped"/>
+                        <SwipeGestureRecognizer Direction="Left,Right" Swiped="OnSubmisButtonSwiped" Threshold="40"/>
+                    </Label.GestureRecognizers>
                 </Label>
             </Border>
+            <Button
+                x:Name="analysisDebugButton"
+                Text="For analysis debug use"
+                Pressed="navToAnalysis"
+                />
         </VerticalStackLayout>
     </Grid>
 </ContentPage>

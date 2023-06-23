@@ -35,4 +35,9 @@ public partial class BlitzScreen : ContentPage
         Navigation.PushAsync(new Analysis());
         submitButton.Text = Submit.TotalUp().ToString();
     }
+
+    private void navToAnalysis( object sender , EventArgs e)
+    {
+        Navigation.PushAsync(new Analysis());
+    }
 }
