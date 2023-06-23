@@ -9,31 +9,33 @@
             Source="wooden_study.png"
             Aspect="AspectFill"/>
         <VerticalStackLayout
-                x:Name="gamescreen"
-                HorizontalOptions="Center"
-                VerticalOptions="Fill">
+            x:Name="gamescreen"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
             <Frame
-                    HeightRequest="350"
-                    WidthRequest="350" 
-                    BackgroundColor="Black"
-                    Margin="10">
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                HeightRequest="350"
+                WidthRequest="350" 
+                BackgroundColor="Black"
+                Margin="10">
                 <!-- difference between this height request and the inner grid gives the border radius-->
                 <Grid
-                        BackgroundColor="AliceBlue"
-                        HeightRequest="340"
-                        WidthRequest= "340">
+                    BackgroundColor="AliceBlue"
+                    HeightRequest="340"
+                    WidthRequest= "340">
                     <!-- keep this value same as boardGrid's height + (margin * 2) + row/col spacings -->
                     <Grid
-                            x:Name="boardGrid"
-                            BackgroundColor="AliceBlue"
-                            WidthRequest="280"
-                            HeightRequest="280"
-                            RowDefinitions="*, *, *, *"
-                            ColumnDefinitions="*, *, *, *"
-                            Margin="10"
-                            Padding="0"
-                            RowSpacing="40"
-                            ColumnSpacing="40">
+                        x:Name="boardGrid"
+                        BackgroundColor="AliceBlue"
+                        WidthRequest="280"
+                        HeightRequest="280"
+                        RowDefinitions="*, *, *, *"
+                        ColumnDefinitions="*, *, *, *"
+                        Margin="10"
+                        Padding="0"
+                        RowSpacing="40"
+                        ColumnSpacing="40">
                     </Grid>
                 </Grid>
             </Frame>
@@ -41,13 +43,14 @@
                 <Border.StrokeShape>
                 <RoundRectangle CornerRadius="40,40,40,40" />
                 </Border.StrokeShape>
-                <Label x:Name="submitButton" 
-                       Text="Submit"  
-                       VerticalOptions="FillAndExpand"
-                       HorizontalTextAlignment="Center"
-                       FontSize="45"
-                       BackgroundColor="Teal"
-                       Padding="20">
+                <Label 
+                    x:Name="submitButton" 
+                    Text="Submit"  
+                    VerticalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    FontSize="45"
+                    BackgroundColor="Teal"
+                    Padding="20">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnSubmitButtonTapped"/>
                     <SwipeGestureRecognizer Direction="Left,Right" Swiped="OnSubmisButtonSwiped" Threshold="40"/>
