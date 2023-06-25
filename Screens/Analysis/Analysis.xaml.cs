@@ -24,6 +24,14 @@ public partial class Analysis : ContentPage
         generateCards(analysisList, dualView);
     }
 
+
+
+
+
+
+
+
+
     private void OnSubmit(object sender, EventArgs e)
     {
         foreach (Button[] buttons in allButtons)
@@ -34,11 +42,19 @@ public partial class Analysis : ContentPage
                 button.IsEnabled = false;
             }
         }
-        Button button1 = (Button)sender;
-        button1.IsEnabled = false;
+        Button submitButton = (Button)sender;
         Score.Text = "Score: " + SubmittedList.Total().ToString();
         Score.IsVisible = true;
+        submitButton.Text = "exit to main menu";
+        submitButton.Pressed += ExitToMainMenu;
     }
+
+    private async void ExitToMainMenu(object sender , EventArgs e)
+    {
+        await Navigation.PopAsync();
+        await Console.Out.WriteLineAsync("line 55 analysis.xaml.cs, add additional pop logic for after analysis screen");
+    }
+
 
     private void generateCards(List<string> list,DualView dualView)
     {
@@ -52,6 +68,8 @@ public partial class Analysis : ContentPage
             else { dualView.addToCol(new AnalysisCard(group , i) , 1); alternateLeftRight = true; }
         }
     }
+
+
     private class AnalysisCard : Border
     {
         public AnalysisCard(string[] wordsParam , int cardnumber)
@@ -88,7 +106,7 @@ public partial class Analysis : ContentPage
                     allButtons[cardnumber][itemNumber] = labelHitbox;
                     labelHitbox.Pressed +=  (s, e) => { tapToToggle(s, e); };
 
-                    wordGroup.Add(labelHitbox/*,0,itemNumber*/);
+                    wordGroup.Add(labelHitbox);
 
                     itemNumber ++;
                 }

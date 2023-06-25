@@ -11,7 +11,7 @@
                 </HorizontalStackLayout>
             </VerticalStackLayout>
         </ScrollView>
-        <VerticalStackLayout>
+        <VerticalStackLayout x:Name="overlayStack">
             <HorizontalStackLayout
                 HeightRequest="60"
                 VerticalOptions="StartAndExpand"
