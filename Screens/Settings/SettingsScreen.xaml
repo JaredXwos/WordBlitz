@@ -67,13 +67,13 @@
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Zen</x:String>
                         <x:String>NOT Zen</x:String>
-                        <x:String>Darkmode</x:String>
+                        <!--<x:String>Darkmode</x:String>
                         <x:String>Anime</x:String>
                         <x:String>AHHH my eyes</x:String>
                         <x:String>i dont want a background</x:String>
                         <x:String>SuRpRiSe</x:String>
                         <x:String>Gigachads</x:String>
-                        <x:String>Scrabble</x:String>
+                        <x:String>Scrabble</x:String>-->
                         <!--update "tools/BackgroundMappings" if these names changed-->
                     </x:Array>
                 </Picker.ItemsSource>

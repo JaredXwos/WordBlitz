@@ -13,23 +13,10 @@ public partial class Analysis : ContentPage
     public Analysis()
     {
         InitializeComponent();
-        Dispatcher.Dispatch(() =>
+        foreach ((string word, int points) in SubmittedList.list)
         {
-            
-            foreach ((string word, int points) in SubmittedList.list)
-            {
-                analysisList.Add(word);
-                Button button = new Button()
-                {
-                    Text = word,
-                    TextColor = Colors.White,
-                    BackgroundColor = Colors.Navy
-                };
-                /*button.Clicked += OnClick;*/
-                Display.Add(button);
-            }
-        });
-        /*makes a long list for testing*/analysisList = new List<string> { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50" };
+            analysisList.Add(word);
+        }
         DualView dualView = new DualView();
         Display.Add(dualView);
 
@@ -53,21 +40,12 @@ public partial class Analysis : ContentPage
     {
         public AnalysisCard(string[] wordsParam , int cardnumber)
         {
-            this.BackgroundColor = Colors.Black;
-            this.StrokeThickness = 5;
-            Grid wordGroup = new Grid()
+            this.StrokeThickness = 2;
+            this.Stroke = Colors.Black;
+            VerticalStackLayout wordGroup = new VerticalStackLayout() 
             {
-               Margin = 1,
-               RowSpacing = 0,
-               BackgroundColor = Colors.AliceBlue,
-               RowDefinitions = new RowDefinitionCollection()
-               {
-                   new RowDefinition { Height = new GridLength(2, GridUnitType.Star) },
-                   new RowDefinition { Height = new GridLength(2, GridUnitType.Star) },
-                   new RowDefinition { Height = new GridLength(2, GridUnitType.Star) },
-                   new RowDefinition { Height = new GridLength(2, GridUnitType.Star) },
-                   new RowDefinition { Height = new GridLength(2, GridUnitType.Star) },
-               },
+                Margin = 1,
+                BackgroundColor = Colors.AliceBlue,
             };
             this.Content = wordGroup;
             
@@ -78,34 +56,24 @@ public partial class Analysis : ContentPage
             {
                 if (word != null)
                 {
-                    Label textlabel = new Label()
-                    {
-                        HeightRequest = 30,
-                        VerticalOptions = LayoutOptions.Fill,
-                        BackgroundColor = Colors.Transparent,
-
-                        Text = word,
-                        FontSize = 15,
-                        VerticalTextAlignment = TextAlignment.Center,
-                        
-                    };
-                    labels[itemNumber] = textlabel;
-
                     Button labelHitbox = new Button()
                     {
-                        HeightRequest = 30,
+                        HeightRequest = 35,
                         VerticalOptions = LayoutOptions.Fill,
-                        BackgroundColor = Colors.Transparent,
+                        BackgroundColor = Color.FromRgba(90, 238, 90, 0),
 
-                        Opacity = 0.1,
+                        Text = word,
+                        TextColor = Colors.Black,
+                        FontSize = 12,
+                        
+                        Opacity = 1,
                         CornerRadius = 0,
                     };
+                    int itemIndex = itemNumber;
                     buttons[itemNumber] = labelHitbox;
-                    labelHitbox.Pressed +=  (s, e) => { tapToToggle(s, e); Console.WriteLine((cardnumber,itemNumber)); };
+                    labelHitbox.Pressed +=  (s, e) => { tapToToggle(s, e); };
 
-
-                    wordGroup.Add(textlabel,0,itemNumber);
-                    wordGroup.Add(labelHitbox,0,itemNumber);
+                    wordGroup.Add(labelHitbox/*,0,itemNumber*/);
 
                     itemNumber ++;
                 }
@@ -116,7 +84,9 @@ public partial class Analysis : ContentPage
         private void tapToToggle(object sender, EventArgs e)
         {
             var button = (Button)sender;
-            button.BackgroundColor = (button.BackgroundColor == Colors.Green) ? Colors.Red : Colors.Green;
+            Console.WriteLine(button.BackgroundColor.Green >= (float)0.30);
+            button.BackgroundColor = (button.BackgroundColor.Green >= (float)0.5) ? Color.FromRgba(0.93, 0.35, 0.35, 0.5) : Color.FromRgba(0.35, 0.93, 0.35, 0.5);
+            SubmittedList.Toggle(button.Text);
         }
 
     }

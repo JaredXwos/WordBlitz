@@ -207,7 +207,7 @@ namespace WordBlitz.tools
         public static bool Toggle(string word)
         {
             List<Tuple<string, int>> source = deleted, destination = _list;
-            if (_list.Select(x => x.Item1).Contains(word)) { source = _list; destination = deleted; Console.Write("REMOVE"); }
+            if (_list.Select(x => x.Item1).Contains(word)) { source = _list; destination = deleted; Console.WriteLine("REMOVE" + word); }
             Tuple<string, int> tuple = source.Where(x => x.Item1 == word).First();
             source.Remove(tuple); destination.Add(tuple);
             return source == deleted; //returns true for word added, false for word removed

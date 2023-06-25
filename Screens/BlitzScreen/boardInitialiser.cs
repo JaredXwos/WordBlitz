@@ -42,7 +42,7 @@ namespace WordBlitz.Screens.BlitzScreen
             var hitboxGrid = (Grid)hitboxLabel.Parent;
             var boardGrid = (Grid)hitboxGrid.Parent;
             (int i, int j) = (boardGrid.GetRow(hitboxGrid), boardGrid.GetColumn(hitboxGrid));
-            Console.WriteLine($"frontend sent {gridLayout[j, i]} , {(i,j)}");
+            Console.WriteLine(gridLayout[j,i] + "was tapped");
             Submit.Letter(gridLayout[j,i], new Tuple<int, int>(i,j) );
         }
 
@@ -53,7 +53,7 @@ namespace WordBlitz.Screens.BlitzScreen
             if (SwipeLogic.GetPosition(sender, e) != null)
             {
                 Tuple<int, int> position = SwipeLogic.GetPosition(sender, e);
-                (int i, int j) = position;
+                (int j, int i) = position;
                 Console.WriteLine($"submitted letter = {gridLayout[j, i]}");
                 Console.WriteLine($"(coords: {i} {j}, row={i} col={j}) from boardinitialiser, awaiting uncommenting");
                 Submit.Letter(gridLayout[j, i], position);
