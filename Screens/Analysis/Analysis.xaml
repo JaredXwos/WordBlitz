@@ -8,7 +8,6 @@
             <VerticalStackLayout x:Name="Display">
                 <HorizontalStackLayout
                     HeightRequest="60">
-                    <Label x:Name="Score" Text="TEST" HorizontalOptions="Center"/>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
         </ScrollView>
@@ -20,9 +19,11 @@
                 FlowDirection="RightToLeft"
                 >
                 <Button
+                    Pressed="OnSubmit"
                     VerticalOptions="Center"
                     Text="this is the submit button for analysis"
                     />
+                <Label x:Name="Score" Text="Score" HorizontalOptions="Center" FontSize="25" IsVisible="True" Margin="10" HeightRequest="45" WidthRequest="115" VerticalOptions="Center" BackgroundColor="AliceBlue" FlowDirection="LeftToRight"/>
             </HorizontalStackLayout>
         </VerticalStackLayout>
     </Grid>

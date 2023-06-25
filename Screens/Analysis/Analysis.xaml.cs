@@ -9,7 +9,8 @@ namespace WordBlitz;
 public partial class Analysis : ContentPage
 {
     public static List<string> analysisList = new List<string>(); //TODO README make this object reference the same list from blitzscreen.
-    
+    public static Button[][] allButtons;  //allButtons[cardnumber][itemNumber]
+
     public Analysis()
     {
         InitializeComponent();
@@ -23,11 +24,26 @@ public partial class Analysis : ContentPage
         generateCards(analysisList, dualView);
     }
 
-    private void OnSubmit(object sender, EventArgs e) { Score.Text = SubmittedList.Total().ToString(); }
+    private void OnSubmit(object sender, EventArgs e)
+    {
+        foreach (Button[] buttons in allButtons)
+        {
+            foreach (Button button in buttons)
+            {
+                button.BackgroundColor = (button.BackgroundColor.Green >= (float)0.5) ? Color.FromRgba(0.35, 0.93, 0.35, 0.5) : Color.FromRgba(0.93, 0.35, 0.35, 0.5);
+                button.IsEnabled = false;
+            }
+        }
+        Button button1 = (Button)sender;
+        button1.IsEnabled = false;
+        Score.Text = "Score: " + SubmittedList.Total().ToString();
+        Score.IsVisible = true;
+    }
 
     private void generateCards(List<string> list,DualView dualView)
     {
-        double groups = Math.Ceiling((double)list.Count / (double)5);
+        int groups = (int) Math.Ceiling((double)list.Count / (double)5);
+        allButtons = new Button[groups][];
         bool alternateLeftRight = true;
         for (int i =0; i<groups; i++)
         {
@@ -50,8 +66,7 @@ public partial class Analysis : ContentPage
             this.Content = wordGroup;
             
             int itemNumber = 0;
-            Button[] buttons = new Button[5];
-            Label[] labels = new Label[5];
+            allButtons[cardnumber] = new Button[wordsParam.Length];
             foreach (string word in wordsParam)
             {
                 if (word != null)
@@ -60,7 +75,7 @@ public partial class Analysis : ContentPage
                     {
                         HeightRequest = 35,
                         VerticalOptions = LayoutOptions.Fill,
-                        BackgroundColor = Color.FromRgba(90, 238, 90, 0),
+                        BackgroundColor = Color.FromRgba(90, 238, 90, 0.2),
 
                         Text = word,
                         TextColor = Colors.Black,
@@ -70,7 +85,7 @@ public partial class Analysis : ContentPage
                         CornerRadius = 0,
                     };
                     int itemIndex = itemNumber;
-                    buttons[itemNumber] = labelHitbox;
+                    allButtons[cardnumber][itemNumber] = labelHitbox;
                     labelHitbox.Pressed +=  (s, e) => { tapToToggle(s, e); };
 
                     wordGroup.Add(labelHitbox/*,0,itemNumber*/);
@@ -121,7 +136,6 @@ public partial class Analysis : ContentPage
             }
             else throw new Exception($"exception in analysis.xaml.cs column number in this class not expected");
         }
-
     }
 
 
