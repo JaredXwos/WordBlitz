@@ -4,6 +4,7 @@ using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using WordBlitz.Screens.BlitzScreen;
 
@@ -81,6 +82,11 @@ namespace WordBlitz.tools
                 boardInitialiser.gridLayout[j, i] = Dice.dice[diceShuffleArray[j * 4 + i]][diceOrientationArray[j * 4 + i]];
                 ((Button)elements[j * 4 + i]).Text = boardInitialiser.gridLayout[j, i];
             }
+            IDispatcherTimer timer = page.Dispatcher.CreateTimer();
+            timer.Interval = TimeSpan.FromSeconds(Config.blitzTimeConfig);
+            timer.IsRepeating = false;
+            timer.Tick += (object sender, EventArgs e) => { App.Current.MainPage.Navigation.PushAsync(new Analysis()); };
+            timer.Start();
             return page;
         }
         public static ContentPage Get() => page;
@@ -147,7 +153,7 @@ namespace WordBlitz.tools
                 word.Clear(); pos.Clear(); //For each Clear/Push/Pop, word and pos must be done together
             }
             label.Text = lastword;
-            if (Config.gamemodeConfig == "Instant") label.Text += " - " + TotalUp().ToString();
+            if (Config.gamemodeConfig == "Instant") label.Text += " " + TotalUp().ToString();
             return wordtuple ?? new Tuple<string, int>("", 0);
         }
         public static List<Tuple<string, int>> All()
@@ -156,7 +162,9 @@ namespace WordBlitz.tools
             list.Clear();
             return returnlist;
         }
-        public static int TotalUp(List<Tuple<string, int>> wordlist = null) { return (wordlist ?? list).Select(x => x.Item2).Sum(); }
+        public static int TotalUp(List<Tuple<string, int>> wordlist = null) { 
+            return (wordlist ?? list).Where(x=>x.Item2>0||Config.gamemodeConfig=="Realistic").Select(x => x.Item2).Sum(); 
+        }
         public static List<Tuple<string, int>> Getlist() { return list; } //Debug purposes only
         public static List<string> Getword() { return word.ToList(); } //Debug purposes only
         public static void Bind(Label newlabel) { label = newlabel; }
@@ -207,8 +215,13 @@ namespace WordBlitz.tools
         public static bool Toggle(string word)
         {
             List<Tuple<string, int>> source = deleted, destination = _list;
-            if (_list.Select(x => x.Item1).Contains(word)) { source = _list; destination = deleted; Console.WriteLine("REMOVE" + word); }
-            Tuple<string, int> tuple = source.Where(x => x.Item1 == word).First();
+            if (_list.Select(x => x.Item1).Contains(word)) { source = _list; destination = deleted;}
+
+            Tuple<string, int> tuple = source.Where(x => 
+                source.Where(x => x.Item1 == word).Count() > 1? //If there's more than one
+                x.Item1 == word && x.Item2 == 0: //Remove any with pts zero
+                x.Item1 == word //Else just remove any
+            ).First();
             source.Remove(tuple); destination.Add(tuple);
             return source == deleted; //returns true for word added, false for word removed
         }

@@ -9,7 +9,7 @@ namespace WordBlitz;
 public partial class Analysis : ContentPage
 {
     public static List<string> analysisList = new List<string>(); //TODO README make this object reference the same list from blitzscreen.
-    public static Button[][] allButtons;  //allButtons[cardnumber][itemNumber]
+    public static Label[][] allButtons;  //allButtons[cardnumber][itemNumber]
 
     public Analysis()
     {
@@ -24,24 +24,10 @@ public partial class Analysis : ContentPage
         generateCards(analysisList, dualView);
     }
 
-
-
-
-
-
-
-
-
     private void OnSubmit(object sender, EventArgs e)
     {
-        foreach (Button[] buttons in allButtons)
-        {
-            foreach (Button button in buttons)
-            {
-                button.BackgroundColor = (button.BackgroundColor.Green >= (float)0.5) ? Color.FromRgba(0.35, 0.93, 0.35, 0.5) : Color.FromRgba(0.93, 0.35, 0.35, 0.5);
-                button.IsEnabled = false;
-            }
-        }
+        foreach (Label[] buttons in allButtons) foreach (Label button in buttons) button.IsEnabled = false;
+
         Button submitButton = (Button)sender;
         Score.Text = "Score: " + SubmittedList.Total().ToString();
         Score.IsVisible = true;
@@ -51,6 +37,7 @@ public partial class Analysis : ContentPage
 
     private async void ExitToMainMenu(object sender , EventArgs e)
     {
+        Navigation.RemovePage(Blitz.Get());
         await Navigation.PopAsync();
         await Console.Out.WriteLineAsync("line 55 analysis.xaml.cs, add additional pop logic for after analysis screen");
     }
@@ -59,7 +46,7 @@ public partial class Analysis : ContentPage
     private void generateCards(List<string> list,DualView dualView)
     {
         int groups = (int) Math.Ceiling((double)list.Count / (double)5);
-        allButtons = new Button[groups][];
+        allButtons = new Label[groups][];
         bool alternateLeftRight = true;
         for (int i =0; i<groups; i++)
         {
@@ -76,35 +63,33 @@ public partial class Analysis : ContentPage
         {
             this.StrokeThickness = 2;
             this.Stroke = Colors.Black;
-            VerticalStackLayout wordGroup = new VerticalStackLayout() 
+            VerticalStackLayout wordGroup = new VerticalStackLayout()
             {
                 Margin = 1,
                 BackgroundColor = Colors.AliceBlue,
+                Padding = 8
             };
             this.Content = wordGroup;
-            
             int itemNumber = 0;
-            allButtons[cardnumber] = new Button[wordsParam.Length];
+            allButtons[cardnumber] = new Label[wordsParam.Length];
             foreach (string word in wordsParam)
             {
                 if (word != null)
                 {
-                    Button labelHitbox = new Button()
+                    Label labelHitbox = new()
                     {
-                        HeightRequest = 35,
                         VerticalOptions = LayoutOptions.Fill,
                         BackgroundColor = Color.FromRgba(90, 238, 90, 0.2),
-
                         Text = word,
                         TextColor = Colors.Black,
-                        FontSize = 12,
-                        
-                        Opacity = 1,
-                        CornerRadius = 0,
+                        FontSize = 16,
+                        Opacity = 1
                     };
                     int itemIndex = itemNumber;
                     allButtons[cardnumber][itemNumber] = labelHitbox;
-                    labelHitbox.Pressed +=  (s, e) => { tapToToggle(s, e); };
+                    TapGestureRecognizer OnTapped = new();
+                    OnTapped.Tapped += tapToToggle;
+                    labelHitbox.GestureRecognizers.Add(OnTapped);
 
                     wordGroup.Add(labelHitbox);
 
@@ -116,10 +101,8 @@ public partial class Analysis : ContentPage
 
         private void tapToToggle(object sender, EventArgs e)
         {
-            var button = (Button)sender;
-            Console.WriteLine(button.BackgroundColor.Green >= (float)0.30);
-            button.BackgroundColor = (button.BackgroundColor.Green >= (float)0.5) ? Color.FromRgba(0.93, 0.35, 0.35, 0.5) : Color.FromRgba(0.35, 0.93, 0.35, 0.5);
-            SubmittedList.Toggle(button.Text);
+            Label button = (Label)sender;
+            button.TextDecorations = SubmittedList.Toggle(button.Text) ? TextDecorations.None : TextDecorations.Strikethrough;
         }
 
     }

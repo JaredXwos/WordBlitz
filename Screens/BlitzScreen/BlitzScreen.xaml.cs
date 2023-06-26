@@ -21,23 +21,11 @@ public partial class BlitzScreen : ContentPage
         Dice.Wait();
         Dispatcher.Dispatch(() => boardInitialiser.InitialiseBoard(boardGrid));
 
-        if (Load.Get()) { Navigation.PushAsync(Settings.Get()); }
-        else { 
-            IDispatcherTimer timer = Dispatcher.CreateTimer();
-            timer.Interval = TimeSpan.FromSeconds(Config.blitzTimeConfig);
-            timer.IsRepeating = false;
-            timer.Tick += OnTimeOut;
-            timer.Start();
-        }
+        Navigation.PushAsync(Settings.Get());
     }
 
     private void OnSubmitButtonTapped(object sender, TappedEventArgs e) { Submit.Word(); }
     private void OnSubmisButtonSwiped(object sender, SwipedEventArgs e) { Submit.Word(); }
-    private void OnTimeOut(object sender, EventArgs e)
-    {
-        Navigation.PushAsync(new Analysis());
-        submitButton.Text = Submit.TotalUp().ToString();
-    }
 
     private void navToAnalysis( object sender , EventArgs e)
     {

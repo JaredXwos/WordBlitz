@@ -11,20 +11,37 @@
                 </HorizontalStackLayout>
             </VerticalStackLayout>
         </ScrollView>
-        <VerticalStackLayout x:Name="overlayStack">
-            <HorizontalStackLayout
+        <StackLayout
+                Orientation="Horizontal"
+                HorizontalOptions="Fill"
                 HeightRequest="60"
                 VerticalOptions="StartAndExpand"
                 BackgroundColor="Grey"
-                FlowDirection="RightToLeft"
                 >
-                <Button
-                    Pressed="OnSubmit"
-                    VerticalOptions="Center"
-                    Text="this is the submit button for analysis"
-                    />
-                <Label x:Name="Score" Text="Score" HorizontalOptions="Center" FontSize="25" IsVisible="True" Margin="10" HeightRequest="45" WidthRequest="115" VerticalOptions="Center" BackgroundColor="AliceBlue" FlowDirection="LeftToRight"/>
-            </HorizontalStackLayout>
-        </VerticalStackLayout>
+            <Border Margin="7" HorizontalOptions="StartAndExpand">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Label x:Name="Score" 
+                    Text="Score" 
+                    HorizontalOptions="StartAndExpand" 
+                    FontSize="25"
+                    HeightRequest="45" 
+                    WidthRequest="115" 
+                    VerticalOptions="Center" 
+                    BackgroundColor="AliceBlue"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"/>
+            </Border>
+            
+            <Button
+                Pressed="OnSubmit"
+                Margin="7"
+                FontSize="25"
+                HorizontalOptions="EndAndExpand"
+                VerticalOptions="Center"
+                Padding="4,8,4,8"
+                Text="Submit" />
+        </StackLayout>
     </Grid>
 </ContentPage>
