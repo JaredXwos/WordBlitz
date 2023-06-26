@@ -20,7 +20,7 @@
                 >
             <Border Margin="7" HorizontalOptions="StartAndExpand">
                 <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="10"/>
+                    <RoundRectangle CornerRadius="8"/>
                 </Border.StrokeShape>
                 <Label x:Name="Score" 
                     Text="Score" 
@@ -40,7 +40,7 @@
                 FontSize="25"
                 HorizontalOptions="EndAndExpand"
                 VerticalOptions="Center"
-                Padding="4,8,4,8"
+                Padding="15,7,15,8"
                 Text="Submit" />
         </StackLayout>
     </Grid>
