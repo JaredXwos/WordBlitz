@@ -43,7 +43,7 @@ namespace WordBlitz.Screens.BlitzScreen
             var boardGrid = (Grid)hitboxGrid.Parent;
             (int i, int j) = (boardGrid.GetRow(hitboxGrid), boardGrid.GetColumn(hitboxGrid));
             Console.WriteLine(gridLayout[j,i] + "was tapped");
-            Submit.Letter(gridLayout[j,i], new Tuple<int, int>(i,j) );
+            Submit.Letter(gridLayout[i,j], new Tuple<int, int>(j,i) );
         }
 
         private static void OnGridButtonPanned(object sender, PanUpdatedEventArgs e)
