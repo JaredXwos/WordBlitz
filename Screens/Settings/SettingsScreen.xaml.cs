@@ -59,7 +59,8 @@ public partial class SettingsScreen : ContentPage
 
     private void SliderChanged(object sender, ValueChangedEventArgs e)
     {
-        switch (((Slider)sender).StyleId)
+        if(((Slider)sender).StyleId.Contains("Letter")) PointSliderChanged(sender, e);
+        else switch (((Slider)sender).StyleId)
         {
             case "durationSlider":
             {
@@ -75,7 +76,8 @@ public partial class SettingsScreen : ContentPage
     private void Entry_TextChanged(object sender, EventArgs e)
     {
         Entry entry = (Entry)sender;
-        switch (entry.StyleId)
+        if (entry.StyleId.Contains("Letter")) PointEntryChanged(sender, e);
+        else switch (entry.StyleId)
         {
             case "durationEntry":
             {
@@ -85,5 +87,32 @@ public partial class SettingsScreen : ContentPage
             }
             default: break;
         }
+    }
+
+    private void PointSliderChanged(object sender, ValueChangedEventArgs e)
+    {
+        Slider id = (Slider)sender;
+        string[] full = id.StyleId.Split("Letter");
+        int letter = 0;
+        switch (full[0])
+        {
+            case "three": letter = 3; break;
+            case "four": letter = 4; break;
+            case "five": letter = 5; break;
+            case "six": letter = 6; break;
+            case "seven": letter = 7; break;
+            case "above": letter = 8; break;
+            default: break;
+        }
+        Points.Set(letter, full[1].Contains("Reward") ? "reward" : "penalty", (int)e.NewValue);
+        ((Entry)((StackLayout)id.Parent).Children[0]).Text = ((int)id.Value).ToString();
+    }
+
+    private void PointEntryChanged(object sender, EventArgs e)
+    {
+        Entry entry = (Entry)sender;
+        Slider slider = (Slider)((StackLayout)entry.Parent).Children[1];
+        slider.Value = Math.Max(slider.Minimum, Math.Min(slider.Maximum, Int32.Parse(entry.Text)));
+        entry.Text = ((int)slider.Value).ToString();
     }
 }

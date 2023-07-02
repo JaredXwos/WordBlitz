@@ -22,14 +22,8 @@ public partial class MainPage : ContentPage
     {
         blitzScreenNavButton.IsEnabled = false;
         await Navigation.PushAsync(Blitz.Update());
+        
         blitzScreenNavButton.IsEnabled = true;
-    }
-
-    private void OnAnalysisButtonClicked(object sender, EventArgs e)
-    {
-        analysisScreenNavButton.IsEnabled = false;
-        Navigation.PushAsync(new BlitzScreen());
-        analysisScreenNavButton.IsEnabled = true;
     }
 
     private void OnSettingsButtonClicked(object sender, EventArgs e)

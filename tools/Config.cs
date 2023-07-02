@@ -48,10 +48,10 @@ namespace WordBlitz.tools
 
     public static class Settings
     {
-        private readonly static ContentPage page = new SettingsScreen();
+        private volatile static ContentPage page = new SettingsScreen();
         public static ContentPage Update()
         {
-            IElement[] elements = ((StackLayout)page.Content).Children.ToArray();
+            IElement[] elements = ((StackLayout)((ScrollView)page.Content).Content).Children.ToArray();
 
             ((Picker)((StackLayout)elements[0]).Children.ToArray()[1]).SelectedItem = Config.dictionaryConfig;
             ((Picker)((StackLayout)elements[1]).Children.ToArray()[1]).SelectedItem = Config.diceTypeConfig;
@@ -60,6 +60,35 @@ namespace WordBlitz.tools
             ((Picker)((StackLayout)elements[4]).Children.ToArray()[1]).SelectedItem = Config.gamemodeConfig;
             ((Entry)((StackLayout)((StackLayout)elements[5]).Children.ToArray()[0])[1]).Text = Config.blitzTimeConfig.ToString();
             ((Slider)((StackLayout)elements[5]).Children.ToArray()[1]).Value = Config.blitzTimeConfig;
+
+            ((Entry)((StackLayout)((StackLayout)((StackLayout)elements[6]).Children[1]).Children[1]).Children.ToArray()[0]).Text = Points.Get()[3].Item1.ToString();
+            ((Entry)((StackLayout)((StackLayout)((StackLayout)elements[6]).Children[2]).Children[1]).Children.ToArray()[0]).Text = Points.Get()[4].Item1.ToString();
+            ((Entry)((StackLayout)((StackLayout)((StackLayout)elements[6]).Children[3]).Children[1]).Children.ToArray()[0]).Text = Points.Get()[5].Item1.ToString();
+            ((Entry)((StackLayout)((StackLayout)((StackLayout)elements[6]).Children[4]).Children[1]).Children.ToArray()[0]).Text = Points.Get()[6].Item1.ToString();
+            ((Entry)((StackLayout)((StackLayout)((StackLayout)elements[6]).Children[5]).Children[1]).Children.ToArray()[0]).Text = Points.Get()[7].Item1.ToString();
+            ((Entry)((StackLayout)((StackLayout)((StackLayout)elements[6]).Children[6]).Children[1]).Children.ToArray()[0]).Text = Points.Get()[8].Item1.ToString();
+
+            ((Slider)((StackLayout)((StackLayout)((StackLayout)elements[6]).Children[1]).Children[1]).Children.ToArray()[1]).Value = Points.Get()[3].Item1;
+            ((Slider)((StackLayout)((StackLayout)((StackLayout)elements[6]).Children[2]).Children[1]).Children.ToArray()[1]).Value = Points.Get()[4].Item1;
+            ((Slider)((StackLayout)((StackLayout)((StackLayout)elements[6]).Children[3]).Children[1]).Children.ToArray()[1]).Value = Points.Get()[5].Item1;
+            ((Slider)((StackLayout)((StackLayout)((StackLayout)elements[6]).Children[4]).Children[1]).Children.ToArray()[1]).Value = Points.Get()[6].Item1;
+            ((Slider)((StackLayout)((StackLayout)((StackLayout)elements[6]).Children[5]).Children[1]).Children.ToArray()[1]).Value = Points.Get()[7].Item1;
+            ((Slider)((StackLayout)((StackLayout)((StackLayout)elements[6]).Children[6]).Children[1]).Children.ToArray()[1]).Value = Points.Get()[8].Item1;
+
+            ((Entry)((StackLayout)((StackLayout)((StackLayout)elements[6]).Children[1]).Children[2]).Children.ToArray()[0]).Text = Points.Get()[3].Item2.ToString();
+            ((Entry)((StackLayout)((StackLayout)((StackLayout)elements[6]).Children[2]).Children[2]).Children.ToArray()[0]).Text = Points.Get()[4].Item2.ToString();
+            ((Entry)((StackLayout)((StackLayout)((StackLayout)elements[6]).Children[3]).Children[2]).Children.ToArray()[0]).Text = Points.Get()[5].Item2.ToString();
+            ((Entry)((StackLayout)((StackLayout)((StackLayout)elements[6]).Children[4]).Children[2]).Children.ToArray()[0]).Text = Points.Get()[6].Item2.ToString();
+            ((Entry)((StackLayout)((StackLayout)((StackLayout)elements[6]).Children[5]).Children[2]).Children.ToArray()[0]).Text = Points.Get()[7].Item2.ToString();
+            ((Entry)((StackLayout)((StackLayout)((StackLayout)elements[6]).Children[6]).Children[2]).Children.ToArray()[0]).Text = Points.Get()[8].Item2.ToString();
+
+            ((Slider)((StackLayout)((StackLayout)((StackLayout)elements[6]).Children[1]).Children[2]).Children.ToArray()[1]).Value = Points.Get()[3].Item2;
+            ((Slider)((StackLayout)((StackLayout)((StackLayout)elements[6]).Children[2]).Children[2]).Children.ToArray()[1]).Value = Points.Get()[4].Item2;
+            ((Slider)((StackLayout)((StackLayout)((StackLayout)elements[6]).Children[3]).Children[2]).Children.ToArray()[1]).Value = Points.Get()[5].Item2;
+            ((Slider)((StackLayout)((StackLayout)((StackLayout)elements[6]).Children[4]).Children[2]).Children.ToArray()[1]).Value = Points.Get()[6].Item2;
+            ((Slider)((StackLayout)((StackLayout)((StackLayout)elements[6]).Children[5]).Children[2]).Children.ToArray()[1]).Value = Points.Get()[7].Item2;
+            ((Slider)((StackLayout)((StackLayout)((StackLayout)elements[6]).Children[6]).Children[2]).Children.ToArray()[1]).Value = Points.Get()[8].Item2;
+
             return page;
         }
         public static ContentPage Get() => page;
@@ -85,12 +114,25 @@ namespace WordBlitz.tools
             IDispatcherTimer timer = page.Dispatcher.CreateTimer();
             timer.Interval = TimeSpan.FromSeconds(Config.blitzTimeConfig);
             timer.IsRepeating = false;
-            timer.Tick += (object sender, EventArgs e) => { App.Current.MainPage.Navigation.PushAsync(new Analysis()); };
+            timer.Tick += (object sender, EventArgs e) => { Application.Current.MainPage.Navigation.PushAsync(new AnalysisScreen()); };
             timer.Start();
             return page;
         }
         public static ContentPage Get() => page;
     }
+
+    public static class Analysis
+    {
+        private volatile static ContentPage page = new AnalysisScreen();
+        public static ContentPage Update()
+        {
+            page = new AnalysisScreen();
+            return page;
+        }
+        public static ContentPage Get() => page;
+
+    }
+    
     public static class Points
     {
         private static Dictionary<int, int[]> _points = new();
@@ -159,6 +201,8 @@ namespace WordBlitz.tools
         public static List<Tuple<string, int>> All()
         {
             List<Tuple<string, int>> returnlist = new(list);
+            label.Text = "";
+            word.Clear(); pos.Clear();
             list.Clear();
             return returnlist;
         }
@@ -225,6 +269,6 @@ namespace WordBlitz.tools
             source.Remove(tuple); destination.Add(tuple);
             return source == deleted; //returns true for word added, false for word removed
         }
-        public static int Total() { return Submit.TotalUp(_list); }
+        public static int Total() { int returnint = Submit.TotalUp(_list); return returnint;  }
     }
 }

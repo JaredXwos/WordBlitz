@@ -37,7 +37,7 @@ Thus far component pages include
 - Analysis (Navigates back to MainPage)
 
 ## Immediate To-do features
-- Add options to select Fun Mode/ Practice Mode in settings <- CY working on this
+- Add options to select Fun Mode/ Practice Mode in settings 
 - Bind Score to BlitzScreen to update live <- JX awaiting the fun/practice config
 - Allow for scoring system to be configured, Make a picker to allow users to choose the number of pts for words of specific lengths
 

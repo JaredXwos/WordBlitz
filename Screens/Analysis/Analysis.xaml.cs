@@ -6,28 +6,27 @@ using WordBlitz.tools;
 
 namespace WordBlitz;
 
-public partial class Analysis : ContentPage
+public partial class AnalysisScreen : ContentPage
 {
-    public static List<string> analysisList = new List<string>(); //TODO README make this object reference the same list from blitzscreen.
-    public static Label[][] allButtons;  //allButtons[cardnumber][itemNumber]
-
-    public Analysis()
+    private static List<string> analysisList = new(); //TODO README make this object reference the same list from blitzscreen.
+    private static Label[][] allButtons;  //allButtons[cardnumber][itemNumber]
+    private static DualView dualView = null;
+    public AnalysisScreen()
     {
         InitializeComponent();
         foreach ((string word, int points) in SubmittedList.list)
         {
             analysisList.Add(word);
         }
-        DualView dualView = new DualView();
+        dualView = new DualView();
         Display.Add(dualView);
-
         generateCards(analysisList, dualView);
     }
 
     private void OnSubmit(object sender, EventArgs e)
     {
         foreach (Label[] buttons in allButtons) foreach (Label button in buttons) button.IsEnabled = false;
-
+        Navigation.RemovePage(Blitz.Get());
         Button submitButton = (Button)sender;
         Score.Text = "Score: " + SubmittedList.Total().ToString();
         Score.IsVisible = true;
@@ -37,7 +36,9 @@ public partial class Analysis : ContentPage
 
     private async void ExitToMainMenu(object sender , EventArgs e)
     {
-        Navigation.RemovePage(Blitz.Get());
+        Display.Clear();
+        analysisList.Clear();
+        allButtons = null;
         await Navigation.PopAsync();
         await Console.Out.WriteLineAsync("line 55 analysis.xaml.cs, add additional pop logic for after analysis screen");
     }
@@ -101,6 +102,7 @@ public partial class Analysis : ContentPage
 
         private void tapToToggle(object sender, EventArgs e)
         {
+            Navigation.RemovePage(Blitz.Get());
             Label button = (Label)sender;
             button.TextDecorations = SubmittedList.Toggle(button.Text) ? TextDecorations.None : TextDecorations.Strikethrough;
         }

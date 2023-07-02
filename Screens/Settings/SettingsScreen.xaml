@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WordBlitz.SettingsScreen"
              Title="Settings">
+    <ScrollView HorizontalOptions="FillAndExpand">
     <StackLayout HorizontalOptions="FillAndExpand" Spacing="25" Padding="0,25">
 
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="4,0" BackgroundColor="LightBlue">
@@ -152,5 +153,236 @@
                         ValueChanged="SliderChanged" 
                         VerticalOptions="Center"/>
         </StackLayout>
+        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="4,0" BackgroundColor="LightBlue">
+            <Label Text="Points" 
+                FontSize="Large" 
+                VerticalTextAlignment="End" 
+                HorizontalTextAlignment="Start"
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="Center"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Label Text="3 Letters " 
+                    FontSize="18" 
+                    VerticalTextAlignment="End" 
+                    HorizontalTextAlignment="Start"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"/>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Entry x:Name ="threeLetterRewardEntry"
+                        Completed="Entry_TextChanged"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="End"
+                        FontSize="15">
+                    </Entry>
+                    <Slider x:Name ="threeLetterRewardSlider"
+                        Maximum="15" Minimum="0" Value="7" 
+                        ValueChanged="SliderChanged" 
+                        VerticalOptions="Center"
+                        HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Entry x:Name ="threeLetterPenaltyEntry"
+                        Completed="Entry_TextChanged"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="End"
+                        FontSize="15"/>
+                    <Slider x:Name ="threeLetterPenaltySlider"
+                        Maximum="0" Minimum="-15" Value="0" 
+                        ValueChanged="SliderChanged" 
+                        VerticalOptions="Center"
+                        HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Label Text="4 Letters " 
+                    FontSize="18" 
+                    VerticalTextAlignment="End" 
+                    HorizontalTextAlignment="Start"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"/>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Entry x:Name ="fourLetterRewardEntry"
+                        Completed="Entry_TextChanged"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="End"
+                        FontSize="15"/>
+                    <Slider x:Name ="fourLetterRewardSlider"
+                        Maximum="15" Minimum="0" Value="7" 
+                        ValueChanged="SliderChanged" 
+                        VerticalOptions="Center"
+                        HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Entry x:Name ="fourLetterPenaltyEntry"
+                        Completed="Entry_TextChanged"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="End"
+                        FontSize="15"/>
+                    <Slider x:Name ="fourLetterPenaltySlider"
+                        Maximum="0" Minimum="-15" Value="0" 
+                        ValueChanged="SliderChanged" 
+                        VerticalOptions="Center"
+                        HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Label Text="5 Letters " 
+                    FontSize="18" 
+                    VerticalTextAlignment="End" 
+                    HorizontalTextAlignment="Start"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"/>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Entry x:Name ="fiveLetterRewardEntry"
+                        Completed="Entry_TextChanged"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="End"
+                        FontSize="15"/>
+                    <Slider x:Name ="fiveLetterRewardSlider"
+                        Maximum="15" Minimum="0" Value="7" 
+                        ValueChanged="SliderChanged" 
+                        VerticalOptions="Center"
+                        HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Entry x:Name ="fiveLetterPenaltyEntry"
+                        Completed="Entry_TextChanged"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="End"
+                        FontSize="15"/>
+                    <Slider x:Name ="fiveLetterPenaltySlider"
+                        Maximum="0" Minimum="-15" Value="0" 
+                        ValueChanged="SliderChanged" 
+                        VerticalOptions="Center"
+                        HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Label Text="6 Letters " 
+                    FontSize="18" 
+                    VerticalTextAlignment="End" 
+                    HorizontalTextAlignment="Start"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"/>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Entry x:Name ="sixLetterRewardEntry"
+                        Completed="Entry_TextChanged"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="End"
+                        FontSize="15"/>
+                    <Slider x:Name ="sixLetterRewardSlider"
+                        Maximum="15" Minimum="0" Value="7" 
+                        ValueChanged="SliderChanged" 
+                        VerticalOptions="Center"
+                        HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Entry x:Name ="sixLetterPenaltyEntry"
+                        Completed="Entry_TextChanged"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="End"
+                        FontSize="15"/>
+                    <Slider x:Name ="sixLetterPenaltySlider"
+                        Maximum="0" Minimum="-15" Value="0" 
+                        ValueChanged="SliderChanged" 
+                        VerticalOptions="Center"
+                        HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Label Text="7 Letters " 
+                    FontSize="18" 
+                    VerticalTextAlignment="End" 
+                    HorizontalTextAlignment="Start"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"/>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Entry x:Name ="sevenLetterRewardEntry"
+                        Completed="Entry_TextChanged"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="End"
+                        FontSize="15"/>
+                    <Slider x:Name ="sevenLetterRewardSlider"
+                        Maximum="15" Minimum="0" Value="7" 
+                        ValueChanged="SliderChanged" 
+                        VerticalOptions="Center"
+                        HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Entry x:Name ="sevenLetterPenaltyEntry"
+                        Completed="Entry_TextChanged"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="End"
+                        FontSize="15"/>
+                    <Slider x:Name ="sevenLetterPenaltySlider"
+                        Maximum="0" Minimum="-15" Value="0" 
+                        ValueChanged="SliderChanged" 
+                        VerticalOptions="Center"
+                        HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Label Text="8> letters" 
+                    FontSize="18" 
+                    VerticalTextAlignment="End" 
+                    HorizontalTextAlignment="Start"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"/>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Entry x:Name ="aboveLetterRewardEntry"
+                        Completed="Entry_TextChanged"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="End"
+                        FontSize="15"/>
+                    <Slider x:Name ="aboveLetterRewardSlider"
+                        Maximum="15" Minimum="0" Value="7" 
+                        ValueChanged="SliderChanged" 
+                        VerticalOptions="Center"
+                        HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Entry x:Name ="aboveLetterPenaltyEntry"
+                        Completed="Entry_TextChanged"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="End"
+                        FontSize="15"/>
+                    <Slider x:Name ="aboveLetterPenaltySlider"
+                        Maximum="0" Minimum="-15" Value="0" 
+                        ValueChanged="SliderChanged" 
+                        VerticalOptions="Center"
+                        HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
     </StackLayout>
+    </ScrollView>
 </ContentPage>

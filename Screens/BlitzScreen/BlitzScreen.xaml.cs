@@ -29,6 +29,6 @@ public partial class BlitzScreen : ContentPage
 
     private void navToAnalysis( object sender , EventArgs e)
     {
-        Navigation.PushAsync(new Analysis());
+        Navigation.PushAsync(Analysis.Update());
     }
 }
