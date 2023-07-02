@@ -20,5 +20,6 @@ In addition, there will be a configuration page where the user can choose
 - graphical settings
 
 ### Bugs
-- font size issue for some phones
+- font size issue for some phones <- change all "large" to fontsize 25
+- Q/Qu bug
 - game mode only changes on restart
