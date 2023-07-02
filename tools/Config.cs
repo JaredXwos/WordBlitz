@@ -12,13 +12,13 @@ namespace WordBlitz.tools
 {
     public static class Config
     {
-        public static string dictionaryConfig  = Preferences.Default.Get("dictionaryConfig","CSW22.txt");
-        public static string diceTypeConfig    = Preferences.Default.Get("diceTypeConfig","DiceModern.txt");
-        public static string backgroundConfig  = Preferences.Default.Get("backgroundConfig","Zen");
-        public static int    blitzTimeConfig   = Preferences.Default.Get("blitzTimeConfig",180);
-        public static int    tileSelectionMode = Preferences.Default.Get("TileSelectionMode", 2); //see AllEnum.cs , TileSelectionMode
-        public static string gamemodeConfig    = Preferences.Default.Get("gameModeConfig", "Realistic");
-        public static string pointsConfig      = Preferences.Default.Get("pointsConfig",
+        public static volatile string dictionaryConfig  = Preferences.Default.Get("dictionaryConfig","CSW22.txt");
+        public static volatile string diceTypeConfig    = Preferences.Default.Get("diceTypeConfig","DiceModern.txt");
+        public static volatile string backgroundConfig  = Preferences.Default.Get("backgroundConfig","Zen");
+        public static volatile int    blitzTimeConfig   = Preferences.Default.Get("blitzTimeConfig",180);
+        public static volatile int    tileSelectionMode = Preferences.Default.Get("TileSelectionMode", 2); //see AllEnum.cs , TileSelectionMode
+        public static volatile string gamemodeConfig    = Preferences.Default.Get("gameModeConfig", "Realistic");
+        public static volatile string pointsConfig      = Preferences.Default.Get("pointsConfig",
             "3 1 -1\n" +
             "4 1 -1\n" +
             "5 2 -1\n" +
@@ -114,7 +114,7 @@ namespace WordBlitz.tools
             IDispatcherTimer timer = page.Dispatcher.CreateTimer();
             timer.Interval = TimeSpan.FromSeconds(Config.blitzTimeConfig);
             timer.IsRepeating = false;
-            timer.Tick += (object sender, EventArgs e) => { Application.Current.MainPage.Navigation.PushAsync(new AnalysisScreen()); };
+            timer.Tick += (object sender, EventArgs e) => { timer.Stop();  Application.Current.MainPage.Navigation.PushAsync(new AnalysisScreen()); };
             timer.Start();
             return page;
         }

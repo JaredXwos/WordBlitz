@@ -31,7 +31,8 @@
                     VerticalOptions="Center" 
                     BackgroundColor="AliceBlue"
                     HorizontalTextAlignment="Center"
-                    VerticalTextAlignment="Center"/>
+                    VerticalTextAlignment="Center"
+                    TextColor="Black"/>
             </Border>
             
             <Button

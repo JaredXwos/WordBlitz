@@ -26,9 +26,4 @@ public partial class BlitzScreen : ContentPage
 
     private void OnSubmitButtonTapped(object sender, TappedEventArgs e) { Submit.Word(); }
     private void OnSubmisButtonSwiped(object sender, SwipedEventArgs e) { Submit.Word(); }
-
-    private void navToAnalysis( object sender , EventArgs e)
-    {
-        Navigation.PushAsync(Analysis.Update());
-    }
 }

@@ -41,7 +41,7 @@
             </Frame>
             <Border>
                 <Border.StrokeShape>
-                <RoundRectangle CornerRadius="40,40,40,40" />
+                    <RoundRectangle CornerRadius="40,40,40,40" />
                 </Border.StrokeShape>
                 <Label 
                     x:Name="submitButton" 
@@ -57,11 +57,6 @@
                     </Label.GestureRecognizers>
                 </Label>
             </Border>
-            <Button
-                x:Name="analysisDebugButton"
-                Text="For analysis debug use"
-                Pressed="navToAnalysis"
-                />
         </VerticalStackLayout>
     </Grid>
 </ContentPage>

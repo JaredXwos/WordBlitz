@@ -12,14 +12,16 @@
                    VerticalTextAlignment="End" 
                    HorizontalTextAlignment="Start"
                    HorizontalOptions="StartAndExpand"
-                   VerticalOptions="Center"/>
+                   VerticalOptions="Center"
+                   TextColor="Black"/>
             <Picker x:Name="dictPicker"
-                    SelectedIndexChanged="ConfigUpdate"
-                    Title="Set Dictionary"
-                    VerticalTextAlignment="End"
-                    HorizontalOptions="End"
-                    HorizontalTextAlignment="End"
-                    FontSize="Large">
+                SelectedIndexChanged="ConfigUpdate"
+                Title="Set Dictionary"
+                VerticalTextAlignment="End"
+                HorizontalOptions="End"
+                HorizontalTextAlignment="End"
+                FontSize="Large"
+                TextColor="Black">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>CSW22.txt</x:String>
@@ -34,14 +36,16 @@
                    VerticalTextAlignment="End" 
                    HorizontalTextAlignment="Start"
                    HorizontalOptions="StartAndExpand"
-                   VerticalOptions="Center"/>
+                   VerticalOptions="Center"
+                   TextColor="Black"/>
             <Picker x:Name="dicePicker"
             SelectedIndexChanged="ConfigUpdate"
             Title="Set Dice"
             VerticalTextAlignment="Center"
             HorizontalOptions="End"
             HorizontalTextAlignment="End"
-            FontSize="Large">
+            FontSize="Large"
+            TextColor="Black">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>DiceModern.txt</x:String>
@@ -56,27 +60,21 @@
                    VerticalTextAlignment="End" 
                    HorizontalTextAlignment="Start"
                    HorizontalOptions="StartAndExpand"
-                   VerticalOptions="Center"/>
+                   VerticalOptions="Center"
+                   TextColor="Black"/>
             <Picker  x:Name="backgroundPicker"
             SelectedIndexChanged="ConfigUpdate"
             Title="Select Background"
             VerticalTextAlignment="Center"
             HorizontalOptions="End"
             HorizontalTextAlignment="End"
-            FontSize="Large">
+            FontSize="Large"
+            TextColor="Black">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Zen</x:String>
-                        <x:String>NOT Zen</x:String>
-                        <!--<x:String>Darkmode</x:String>
-                        <x:String>Anime</x:String>
-                        <x:String>AHHH my eyes</x:String>
-                        <x:String>i dont want a background</x:String>
-                        <x:String>SuRpRiSe</x:String>
-                        <x:String>Gigachads</x:String>
-                        <x:String>Scrabble</x:String>-->
-                        <!--update "tools/BackgroundMappings" if these names changed-->
-                    </x:Array>
+                            <x:String>NOT Zen</x:String>
+                        </x:Array>
                 </Picker.ItemsSource>
             </Picker>
         </StackLayout>
@@ -87,14 +85,16 @@
                    VerticalTextAlignment="End" 
                    HorizontalTextAlignment="Start"
                    HorizontalOptions="StartAndExpand"
-                   VerticalOptions="Center"/>
+                   VerticalOptions="Center"
+                   TextColor="Black"/>
             <Picker x:Name="tileSelectionPicker"
             SelectedIndexChanged="ConfigUpdate"
             Title="Input mode"
             VerticalTextAlignment="Center"
             HorizontalOptions="End"
             HorizontalTextAlignment="End"
-            FontSize="Large">
+            FontSize="Large"
+            TextColor="Black">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Tap, Submit</x:String>
@@ -112,7 +112,8 @@
                    VerticalTextAlignment="End" 
                    HorizontalTextAlignment="Start"
                    HorizontalOptions="StartAndExpand"
-                   VerticalOptions="Center"/>
+                   VerticalOptions="Center"
+                   TextColor="Black"/>
             <Picker x:Name="gameModePicker"
             SelectedIndexChanged="ConfigUpdate"
             Title="Tile Selection Mode"
@@ -120,7 +121,8 @@
             VerticalTextAlignment="Center"
             HorizontalOptions="End"
             HorizontalTextAlignment="End"
-            FontSize="Large">
+            FontSize="Large"
+            TextColor="Black">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Realistic</x:String>
@@ -133,19 +135,20 @@
         <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="4,0" BackgroundColor="LightBlue">
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                 <Label Text="Blitz Duration" 
-                           FontSize="Large" 
-                           VerticalTextAlignment="End" 
-                           HorizontalTextAlignment="Start"
-                           HorizontalOptions="StartAndExpand"
-                           VerticalOptions="Center"/>
-                <Entry
-                        x:Name ="durationEntry"
-                        Completed="Entry_TextChanged"
-                        VerticalOptions="Center"
-                        VerticalTextAlignment="Center"
-                        HorizontalOptions="End"
-                        HorizontalTextAlignment="End"
-                        FontSize="Large">
+                    FontSize="Large" 
+                    VerticalTextAlignment="End" 
+                    HorizontalTextAlignment="Start"
+                    HorizontalOptions="StartAndExpand"
+                    VerticalOptions="Center"
+                    TextColor="Black"/>
+                <Entry x:Name ="durationEntry"
+                    Completed="Entry_TextChanged"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center"
+                    HorizontalOptions="End"
+                    HorizontalTextAlignment="End"
+                    FontSize="Large"
+                    TextColor="Black">
                 </Entry>
             </StackLayout>
             <Slider x:Name ="durationSlider"
@@ -159,7 +162,8 @@
                 VerticalTextAlignment="End" 
                 HorizontalTextAlignment="Start"
                 HorizontalOptions="StartAndExpand"
-                VerticalOptions="Center"/>
+                VerticalOptions="Center"
+                TextColor="Black"/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                 <Label Text="3 Letters " 
                     FontSize="18" 
@@ -174,7 +178,8 @@
                         VerticalTextAlignment="Center"
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="End"
-                        FontSize="15">
+                        FontSize="15"
+                        TextColor="Black">
                     </Entry>
                     <Slider x:Name ="threeLetterRewardSlider"
                         Maximum="15" Minimum="0" Value="7" 
@@ -189,7 +194,8 @@
                         VerticalTextAlignment="Center"
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="End"
-                        FontSize="15"/>
+                        FontSize="15"
+                        TextColor="Black"/>
                     <Slider x:Name ="threeLetterPenaltySlider"
                         Maximum="0" Minimum="-15" Value="0" 
                         ValueChanged="SliderChanged" 
@@ -204,7 +210,8 @@
                     VerticalTextAlignment="End" 
                     HorizontalTextAlignment="Start"
                     HorizontalOptions="Start"
-                    VerticalOptions="Center"/>
+                    VerticalOptions="Center"
+                    TextColor="Black"/>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Entry x:Name ="fourLetterRewardEntry"
                         Completed="Entry_TextChanged"
@@ -212,7 +219,8 @@
                         VerticalTextAlignment="Center"
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="End"
-                        FontSize="15"/>
+                        FontSize="15"
+                        TextColor="Black"/>
                     <Slider x:Name ="fourLetterRewardSlider"
                         Maximum="15" Minimum="0" Value="7" 
                         ValueChanged="SliderChanged" 
@@ -226,7 +234,8 @@
                         VerticalTextAlignment="Center"
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="End"
-                        FontSize="15"/>
+                        FontSize="15"
+                        TextColor="Black"/>
                     <Slider x:Name ="fourLetterPenaltySlider"
                         Maximum="0" Minimum="-15" Value="0" 
                         ValueChanged="SliderChanged" 
@@ -241,7 +250,8 @@
                     VerticalTextAlignment="End" 
                     HorizontalTextAlignment="Start"
                     HorizontalOptions="Start"
-                    VerticalOptions="Center"/>
+                    VerticalOptions="Center"
+                    TextColor="Black"/>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Entry x:Name ="fiveLetterRewardEntry"
                         Completed="Entry_TextChanged"
@@ -249,7 +259,8 @@
                         VerticalTextAlignment="Center"
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="End"
-                        FontSize="15"/>
+                        FontSize="15"
+                        TextColor="Black"/>
                     <Slider x:Name ="fiveLetterRewardSlider"
                         Maximum="15" Minimum="0" Value="7" 
                         ValueChanged="SliderChanged" 
@@ -263,7 +274,8 @@
                         VerticalTextAlignment="Center"
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="End"
-                        FontSize="15"/>
+                        FontSize="15"
+                        TextColor="Black"/>
                     <Slider x:Name ="fiveLetterPenaltySlider"
                         Maximum="0" Minimum="-15" Value="0" 
                         ValueChanged="SliderChanged" 
@@ -278,7 +290,8 @@
                     VerticalTextAlignment="End" 
                     HorizontalTextAlignment="Start"
                     HorizontalOptions="Start"
-                    VerticalOptions="Center"/>
+                    VerticalOptions="Center"
+                    TextColor="Black"/>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Entry x:Name ="sixLetterRewardEntry"
                         Completed="Entry_TextChanged"
@@ -286,7 +299,8 @@
                         VerticalTextAlignment="Center"
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="End"
-                        FontSize="15"/>
+                        FontSize="15"
+                        TextColor="Black"/>
                     <Slider x:Name ="sixLetterRewardSlider"
                         Maximum="15" Minimum="0" Value="7" 
                         ValueChanged="SliderChanged" 
@@ -300,7 +314,8 @@
                         VerticalTextAlignment="Center"
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="End"
-                        FontSize="15"/>
+                        FontSize="15"
+                        TextColor="Black"/>
                     <Slider x:Name ="sixLetterPenaltySlider"
                         Maximum="0" Minimum="-15" Value="0" 
                         ValueChanged="SliderChanged" 
@@ -315,7 +330,8 @@
                     VerticalTextAlignment="End" 
                     HorizontalTextAlignment="Start"
                     HorizontalOptions="Start"
-                    VerticalOptions="Center"/>
+                    VerticalOptions="Center"
+                    TextColor="Black"/>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Entry x:Name ="sevenLetterRewardEntry"
                         Completed="Entry_TextChanged"
@@ -323,7 +339,8 @@
                         VerticalTextAlignment="Center"
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="End"
-                        FontSize="15"/>
+                        FontSize="15"
+                        TextColor="Black"/>
                     <Slider x:Name ="sevenLetterRewardSlider"
                         Maximum="15" Minimum="0" Value="7" 
                         ValueChanged="SliderChanged" 
@@ -337,7 +354,8 @@
                         VerticalTextAlignment="Center"
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="End"
-                        FontSize="15"/>
+                        FontSize="15"
+                        TextColor="Black"/>
                     <Slider x:Name ="sevenLetterPenaltySlider"
                         Maximum="0" Minimum="-15" Value="0" 
                         ValueChanged="SliderChanged" 
@@ -352,7 +370,8 @@
                     VerticalTextAlignment="End" 
                     HorizontalTextAlignment="Start"
                     HorizontalOptions="Start"
-                    VerticalOptions="Center"/>
+                    VerticalOptions="Center"
+                    TextColor="Black"/>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Entry x:Name ="aboveLetterRewardEntry"
                         Completed="Entry_TextChanged"
@@ -360,7 +379,8 @@
                         VerticalTextAlignment="Center"
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="End"
-                        FontSize="15"/>
+                        FontSize="15"
+                        TextColor="Black"/>
                     <Slider x:Name ="aboveLetterRewardSlider"
                         Maximum="15" Minimum="0" Value="7" 
                         ValueChanged="SliderChanged" 
@@ -374,7 +394,8 @@
                         VerticalTextAlignment="Center"
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="End"
-                        FontSize="15"/>
+                        FontSize="15"
+                        TextColor="Black"/>
                     <Slider x:Name ="aboveLetterPenaltySlider"
                         Maximum="0" Minimum="-15" Value="0" 
                         ValueChanged="SliderChanged" 

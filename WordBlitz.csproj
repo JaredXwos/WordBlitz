@@ -28,19 +28,32 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+		<Title>WordBlitz</Title>
+		<Description>Wordblitz game</Description>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android33.0|AnyCPU'">
 	  <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
 	  <EnableLLVM>False</EnableLLVM>
-	  <PublishTrimmed>False</PublishTrimmed>
+	  <PublishTrimmed>True</PublishTrimmed>
 	  <TrimMode>link</TrimMode>
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningKeyAlias>NTU Hall 6 Word Games</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>ILoveHallSix</AndroidSigningKeyPass>
+	  <AndroidSigningStorePass>FiftyEight</AndroidSigningStorePass>
+	  <RunAOTCompilation>True</RunAOTCompilation>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android33.0|AnyCPU'">
 	  <EnableLLVM>False</EnableLLVM>
 	  <TrimMode>link</TrimMode>
-	  <PublishTrimmed>False</PublishTrimmed>
+	  <PublishTrimmed>True</PublishTrimmed>
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningKeyAlias>NTU Hall 6 Word Games</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>ILoveHallSix</AndroidSigningKeyPass>
+	  <AndroidSigningStorePass>FiftyEight</AndroidSigningStorePass>
+	  <DebugSymbols>True</DebugSymbols>
+	  <AndroidPackageFormat>apk</AndroidPackageFormat>
 	</PropertyGroup>
 
 	<ItemGroup>

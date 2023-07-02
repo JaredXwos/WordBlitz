@@ -19,3 +19,7 @@ In addition, there will be a configuration page where the user can choose
 - grading settings used to assess performance
 - graphical settings
 
+### Bugs
+- x/y coordinates swapped for tap
+- font size issue for some phones
+- game mode only changes on restart

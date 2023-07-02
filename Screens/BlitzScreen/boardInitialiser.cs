@@ -89,7 +89,7 @@ namespace WordBlitz.Screens.BlitzScreen
                     labels[i, j] = new Label()
                     {
                         BackgroundColor = Colors.Green,
-                        Opacity = 0.25,
+                        Opacity = 0,
                     };
                     board.Add(labels[i,j],i,j);
                 }
