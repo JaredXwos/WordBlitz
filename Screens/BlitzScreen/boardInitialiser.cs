@@ -21,7 +21,7 @@ namespace WordBlitz.Screens.BlitzScreen
                 {
                     TextColor = Colors.White,
                     BackgroundColor = Colors.Navy,
-                    FontSize = 40,
+                    FontSize = 30,
                     CornerRadius = 4000,
                     WidthRequest = board.HeightRequest/4,
                     HeightRequest = board.HeightRequest/4,

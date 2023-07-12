@@ -8,7 +8,7 @@
 
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="4,0" BackgroundColor="LightBlue">
             <Label Text="Dictionary" 
-                   FontSize="Large" 
+                   FontSize="25" 
                    VerticalTextAlignment="End" 
                    HorizontalTextAlignment="Start"
                    HorizontalOptions="StartAndExpand"
@@ -21,7 +21,7 @@
                 VerticalTextAlignment="End"
                 HorizontalOptions="End"
                 HorizontalTextAlignment="End"
-                FontSize="Large"
+                FontSize="25"
                 TextColor="Black"
                 FontAutoScalingEnabled="False">
                 <Picker.ItemsSource>
@@ -34,7 +34,7 @@
 
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="4,0" BackgroundColor="LightBlue">
             <Label Text="Dice" 
-                   FontSize="Large" 
+                   FontSize="25" 
                    VerticalTextAlignment="End" 
                    HorizontalTextAlignment="Start"
                    HorizontalOptions="StartAndExpand"
@@ -47,7 +47,7 @@
                 VerticalTextAlignment="Center"
                 HorizontalOptions="End"
                 HorizontalTextAlignment="End"
-                FontSize="Large"
+                FontSize="25"
                 TextColor="Black"
                 FontAutoScalingEnabled="False">
                 <Picker.ItemsSource>
@@ -60,7 +60,7 @@
         </StackLayout>
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="4,0" BackgroundColor="LightBlue">
             <Label Text="Background" 
-                FontSize="Large" 
+                FontSize="25" 
                 VerticalTextAlignment="End" 
                 HorizontalTextAlignment="Start"
                 HorizontalOptions="StartAndExpand"
@@ -73,7 +73,7 @@
                 VerticalTextAlignment="Center"
                 HorizontalOptions="End"
                 HorizontalTextAlignment="End"
-                FontSize="Large"
+                FontSize="25"
                 TextColor="Black"
                 FontAutoScalingEnabled="False">
                 <Picker.ItemsSource>
@@ -87,7 +87,7 @@
 
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="4,0" BackgroundColor="LightBlue">
             <Label Text="Blitz Input" 
-                FontSize="Large" 
+                FontSize="25" 
                 VerticalTextAlignment="End" 
                 HorizontalTextAlignment="Start"
                 HorizontalOptions="StartAndExpand"
@@ -100,7 +100,7 @@
                 VerticalTextAlignment="Center"
                 HorizontalOptions="End"
                 HorizontalTextAlignment="End"
-                FontSize="Large"
+                FontSize="25"
                 TextColor="Black"
                 FontAutoScalingEnabled="False">
                 <Picker.ItemsSource>
@@ -116,7 +116,7 @@
 
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="4,0" BackgroundColor="LightBlue">
             <Label Text="Game Mode" 
-                FontSize="Large" 
+                FontSize="25" 
                 VerticalTextAlignment="End" 
                 HorizontalTextAlignment="Start"
                 HorizontalOptions="StartAndExpand"
@@ -130,7 +130,7 @@
                 VerticalTextAlignment="Center"
                 HorizontalOptions="End"
                 HorizontalTextAlignment="End"
-                FontSize="Large"
+                FontSize="25"
                 TextColor="Black"
                 FontAutoScalingEnabled="False">
                 <Picker.ItemsSource>
@@ -145,7 +145,7 @@
         <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="4,0" BackgroundColor="LightBlue">
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                 <Label Text="Blitz Duration" 
-                    FontSize="Large" 
+                    FontSize="25" 
                     VerticalTextAlignment="End" 
                     HorizontalTextAlignment="Start"
                     HorizontalOptions="StartAndExpand"
@@ -158,7 +158,7 @@
                     VerticalTextAlignment="Center"
                     HorizontalOptions="End"
                     HorizontalTextAlignment="End"
-                    FontSize="Large"
+                    FontSize="25"
                     TextColor="Black"
                     FontAutoScalingEnabled="False">
                 </Entry>
@@ -170,7 +170,7 @@
         </StackLayout>
         <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="4,0" BackgroundColor="LightBlue">
             <Label Text="Points" 
-                FontSize="Large" 
+                FontSize="25" 
                 VerticalTextAlignment="End" 
                 HorizontalTextAlignment="Start"
                 HorizontalOptions="StartAndExpand"

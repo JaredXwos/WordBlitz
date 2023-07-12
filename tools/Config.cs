@@ -192,8 +192,15 @@ namespace WordBlitz.tools
                 (int reward, int penalty) = list.Count > 0 && list.Select(x => x.Item1).Contains(lastword) ? new Tuple<int, int>(0, 0) : Points.Get()[word.Count];
                 wordtuple = new(lastword, Dict.dict.Contains(lastword) ? reward : penalty);
                 list.Add(wordtuple);
-                word.Clear(); pos.Clear(); //For each Clear/Push/Pop, word and pos must be done together
+                if (lastword.Contains('Q'))
+                {
+                    lastword = lastword.Replace("Q", "QU");
+                    (reward,penalty) = list.Count > 0 && list.Select(x => x.Item1).Contains(lastword) ? new Tuple<int, int>(0, 0) : Points.Get()[word.Count];
+                    wordtuple = new(lastword, Dict.dict.Contains(lastword) ? reward : penalty);
+                    list.Add(wordtuple);
+                }
             }
+            word.Clear(); pos.Clear(); //For each Clear/Push/Pop, word and pos must be done together
             label.Text = lastword;
             if (Config.gamemodeConfig == "Instant") label.Text += " " + TotalUp().ToString();
             return wordtuple ?? new Tuple<string, int>("", 0);
