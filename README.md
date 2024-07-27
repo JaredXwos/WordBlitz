@@ -1,5 +1,4 @@
 # WordBlitz
-[Note: This is the demo version. Please find the repo of the real product elsewhere]
 ### Purpose
 Provide a digital alternative for boggle players to train while on the go.
 
